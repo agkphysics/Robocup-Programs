@@ -1,3 +1,7 @@
 This is the README file.
 
 Please read it carefully!!
+
+I did read it carefully!
+
+Now what?
