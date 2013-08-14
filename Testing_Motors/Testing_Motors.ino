@@ -113,7 +113,8 @@ void setup()
  
 }
 
-
+boolean useLeftMotor = true;
+boolean useRightMotor = true;
 
 void loop()
 {
@@ -125,17 +126,19 @@ void loop()
 }
 
 void loop2() {
-  if (leftMotor.distanceToGo () == 0) {
-    leftMotor.moveTo(-leftMotor.currentPosition());
+  if (useLeftMotor == true) {
+     leftMotor.run();
+    if (leftMotor.distanceToGo () == 0) {
+      useLeftMotor==false;
+    }
   }
-  else{
-    leftMotor.run();
-  }
-  if (rightMotor.distanceToGo() == 0) {
-    rightMotor.moveTo(-rightMotor.currentPosition());
-  }
-  else {
-    rightMotor.run();
-  }
+  
+    if (useRightMotor == true) {
+     rightMotor.run();
+      if (rightMotor.distanceToGo () == 0) {
+        useRightMotor==false;
+      }
+    }
+  
   yield();
 }
