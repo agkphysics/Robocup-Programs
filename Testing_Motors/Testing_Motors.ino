@@ -1,3 +1,5 @@
+#include <Scheduler.h>
+
 /* pinconsts.h - Pin constants for the robot */
 
 /* IR LED Array */
@@ -26,7 +28,6 @@
 /* Switches */
 //#define switchSuchAndSuch 1
 
-//#include <Scheduler.h>
 
 
 #include <AccelStepper.h>
@@ -53,7 +54,7 @@ double distanceToSteps(double dist)
   return (dist * 100) / (30.25 * 3.14159265358979);
 }
 
-/*void move(int motor, double dist)
+void manualMove(int motor, double dist)
 {
   int steps = (int)distanceToSteps(dist);
   int pin = (motor == MOTOR_LEFT) ? motorLeftStepPin : motorRightStepPin;
@@ -67,7 +68,7 @@ double distanceToSteps(double dist)
     delayMicroseconds(750);
   }
 }
-*/
+
 
 
 
@@ -83,6 +84,8 @@ void lineFollowing()
   
 }
 
+  int leftSpeed = 500; //As would be calculated by linefollowing procedure
+  int rightSpeed = -500; //As would be calculated by linefollowing procedure
 
 void setup()
 {
@@ -94,18 +97,45 @@ void setup()
   digitalWrite(13, LOW);
   leftMotor.setMaxSpeed(600);
   rightMotor.setMaxSpeed(600);
+  leftMotor.setAcceleration(10000);
+  rightMotor.setAcceleration(10000);
+
+  leftMotor.setSpeed(leftSpeed);
+  rightMotor.setSpeed(rightSpeed);
+
+  leftMotor.moveTo(-500);
+  rightMotor.moveTo(500);
+
+//  manualMove(MOTOR_RIGHT, 500);
+ 
+ Scheduler.startLoop(loop2);
+
+ 
 }
+
+
 
 void loop()
 {
-  leftMotor.move(1000);
-  rightMotor.move(1000);
-  leftMotor.run();
-  rightMotor.run();
-  int leftSpeed = 500; //As would be calculated by linefollowing procedure
-  int rightSpeed = 500; //As would be calculated by linefollowing procedure
-  leftMotor.setSpeed(leftSpeed);
-  leftMotor.setSpeed(rightSpeed);
-  
+
+  delay(1000);
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
 }
 
+void loop2() {
+  if (leftMotor.distanceToGo () == 0) {
+    leftMotor.moveTo(-leftMotor.currentPosition());
+  }
+  else{
+    leftMotor.run();
+  }
+  if (rightMotor.distanceToGo() == 0) {
+    rightMotor.moveTo(-rightMotor.currentPosition());
+  }
+  else {
+    rightMotor.run();
+  }
+  yield();
+}
