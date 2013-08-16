@@ -10,10 +10,26 @@ int rightSpeed = -500; //As would be calculated by linefollowing procedure
 boolean runLeftMotor = true;
 boolean runRightMotor = true;
 
-double distanceToSteps(double dist)
+//Definition of Movement related functions
+long distanceToSteps(long cm)
 {
-  return (dist * 100) / (30.25 * 3.14159265358979);
+  return (cm * 1600)/(6.46 * 3.14159265358979);
 }
+
+boolean motorsRunning() {
+  if (leftMotor.distanceToGo() != 0 || rightMotor.distanceToGo() != 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+void forward(long cm) {
+  leftMotor.move(distanceToSteps(cm));
+  rightMotor.move(-distanceToSteps(cm));
+}
+
 
 void setup()
 {
@@ -29,10 +45,12 @@ void setup()
   leftMotor.setSpeed(leftSpeed);//Must be set once to allow movement, setSpeed(float) should be called after moveTo, not needed to be called after move()
   rightMotor.setSpeed(rightSpeed);//Must be set once to allow movement
 
-  leftMotor.move(-500);
-  rightMotor.move(500);
+  //leftMotor.move(1600);
+  //rightMotor.move(-1600);
  
  Scheduler.startLoop(runMotorLoop);
+
+
 
  
 }
@@ -40,27 +58,22 @@ void setup()
 
 void loop()
 {
-
-  delay(1000);
+  delay(500);
   digitalWrite(13, HIGH);
-  delay(1000);
+  delay(500);
   digitalWrite(13, LOW);
+  forward(20);
+  while(motorsRunning()){
+    yield();
+  }
+  delay(1000);
 }
 
+
+
+
 void runMotorLoop() {
-  if (runLeftMotor == true) {
-    leftMotor.run();
-    if (leftMotor.distanceToGo () == 0) {
-      runLeftMotor==false;
-    }
-  }
-  
-    if (runRightMotor == true) {
-      rightMotor.run();
-      if (rightMotor.distanceToGo () == 0) {
-        runRightMotor==false;
-      }
-    }
-  
+  leftMotor.run();
+  rightMotor.run();  
   yield();
 }
