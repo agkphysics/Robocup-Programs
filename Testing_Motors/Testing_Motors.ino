@@ -30,7 +30,11 @@ void straight(long cm) {
   rightMotor.move(-cmToSteps(cm));
 }
 
-
+void rotate(long deg) {//positive rotates Right, negative rotates Left
+ // long rotationCm = ((deg/360)*3.14159265358979*13.25);
+  leftMotor.move(cmToSteps((deg/360)*3.14159265358979*13.7));
+  rightMotor.move(cmToSteps((deg/360)*3.14159265358979*13.7));
+}
 
 
 
@@ -66,7 +70,7 @@ void loop()
   digitalWrite(13, HIGH);
   delay(500);
   digitalWrite(13, LOW);
-  straight(-20);
+  rotate(360);
   while(motorsRunning()) yield();
   delay(1000);
 }
