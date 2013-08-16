@@ -5,13 +5,13 @@ AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
 AccelStepper rightMotor(AccelStepper::DRIVER, 5, 4);
 
 
-int leftSpeed = 500; //As would be calculated by linefollowing procedure
-int rightSpeed = -500; //As would be calculated by linefollowing procedure
+int leftSpeed = 500; //Initial Speed (for testing purposes)
+int rightSpeed = -500; //Initial Speed (for testing purposes)
 boolean runLeftMotor = true;
 boolean runRightMotor = true;
 
 //Definition of Movement related functions
-long distanceToSteps(long cm)
+long cmToSteps(long cm)
 {
   return (cm * 1600)/(6.46 * 3.14159265358979);
 }
@@ -25,10 +25,14 @@ boolean motorsRunning() {
   }
 }
 
-void forward(long cm) {
-  leftMotor.move(distanceToSteps(cm));
-  rightMotor.move(-distanceToSteps(cm));
+void straight(long cm) {
+  leftMotor.move(cmToSteps(cm));
+  rightMotor.move(-cmToSteps(cm));
 }
+
+
+
+
 
 
 void setup()
@@ -62,10 +66,8 @@ void loop()
   digitalWrite(13, HIGH);
   delay(500);
   digitalWrite(13, LOW);
-  forward(20);
-  while(motorsRunning()){
-    yield();
-  }
+  straight(-20);
+  while(motorsRunning()) yield();
   delay(1000);
 }
 
