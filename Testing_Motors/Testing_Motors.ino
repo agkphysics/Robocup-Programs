@@ -72,19 +72,25 @@ void setup()
 
 void loop()
 {
-  delay(500);
-  digitalWrite(13, HIGH);
-  delay(500);
-  digitalWrite(13, LOW);
-  rotate(360);
-  while(motorsRunning()) yield();
-  straight(10);
-  while(motorsRunning()) yield();
-  swingWithLeft(90.0);
-  while(motorsRunning()) yield();
-  swingWithRight(90.0);
-  while(motorsRunning()) yield();
   delay(1000);
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  swingWithLeft(45.0);
+  while(motorsRunning()) yield();
+  straight(17.0);
+  while(motorsRunning()) yield();
+  rotate(-90.0);
+  while(motorsRunning()) yield();
+  straight(40.0);
+  while(motorsRunning()) yield();
+  rotate(90.0);
+  while(motorsRunning()) yield();
+  straight(17.0);
+  while(motorsRunning()) yield();
+  swingWithRight(45);
+  while(motorsRunning()) yield();
+  delay(5000);
 }
 
 void runMotorLoop() {
