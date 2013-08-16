@@ -35,8 +35,8 @@
 AccelStepper leftMotor(AccelStepper::DRIVER, motorLeftStepPin, motorLeftDirPin);
 AccelStepper rightMotor(AccelStepper::DRIVER, motorRightStepPin, motorRightDirPin);
 
-#define MOTOR_LEFT 0
-#define MOTOR_RIGHT 1
+int leftSpeedFactor = 500; //As would be calculated by linefollowing procedure
+int rightSpeedFactor = 500; //As would be calculated by linefollowing procedure
 
 void setupMotors()
 {
@@ -51,22 +51,8 @@ void setupMotors()
 
 double distanceToSteps(double dist)
 {
-  return (dist * 100) / (30.25 * 3.14159265358979);
-}
-
-void manualMove(int motor, double dist)
-{
-  int steps = (int)distanceToSteps(dist);
-  int pin = (motor == MOTOR_LEFT) ? motorLeftStepPin : motorRightStepPin;
-  digitalWrite((motor == MOTOR_LEFT) ? motorLeftDirPin : motorRightDirPin, (dist < 0) ? LOW : HIGH);
-
-  int i;
-  for (i = 0; i < steps * 8; i++)
-  {
-    digitalWrite(pin, LOW);
-    digitalWrite(pin, HIGH);
-    delayMicroseconds(750);
-  }
+  /* dist in in cm */
+  return (dist * 100) / (3.025 * 3.14159265358979);
 }
 
 
@@ -75,42 +61,103 @@ void manualMove(int motor, double dist)
 #include <QTRSensors.h>
 
 QTRSensorsAnalog lf((unsigned char[]){lineFollowingPin_1,lineFollowingPin_2,lineFollowingPin_3,lineFollowingPin_4,lineFollowingPin_5,lineFollowingPin_6,lineFollowingPin_7,lineFollowingPin_8}, 8);
+unsigned int currentlfValues[8];
+unsigned int lfOffset[8] = {0,0,0,0,0,0,0,0};
+const unsigned int linePositionFactor[8] = {-1.0, -5.0/7.0, -3.0/7.0, -1.0/7.0, 1.0/7.0, 3.0/7.0, 5.0/7.0, 1.0};
+unsigned int currentMaxSensorValue = 0;
 
+/* The following function does the bulk of the work processing all the sensor info */
+void readLineFollowing()
+{
+  lf.read(currentlfValues);
+  for (int i = 0; i < 8; i++)
+  {
+    currentlfValues[i] = currentlfValues[i] - lfOffset[i];
+    if (currentlfValues[i] > currentMaxSensorValue) currentMaxSensorValue = currentlfValues[i];
+  }
+}
 
-
+/* linePosition() returns a real number between -1 and 1 representing where the line is */
+float linePosition()
+{
+  readLineFollowing();
+  float pos;
+  for (int i = 0; i < 8; i ++)
+  {
+    pos += (currentlfValues[i] / currentMaxSensorValue) * linePositionFactor[i];
+  }
+  return pos;
+}
 
 void lineFollowing()
 {
-  
+  float linePos = linePosition();
+  if (linePos <= 0.0)
+  {
+    leftMotor.setSpeed(leftSpeedFactor * (1.0 + 2.0 * linePos));
+    rightMotor.setSpeed(rightSpeedFactor);
+  }
+  else
+  {
+    leftMotor.setSpeed(leftSpeedFactor);
+    rightMotor.setSpeed(rightSpeedFactor * (1.0 - 2.0 * linePos));
+  }
+  yield();
 }
 
-  int leftSpeed = 500; //As would be calculated by linefollowing procedure
-  int rightSpeed = -500; //As would be calculated by linefollowing procedure
+void calibrateLineFollowing()
+{
+  unsigned int calibration[8];
+  
+  /* First stage is to place robot with IR LED array centred on black line. May not be needed */
+  /* TODO: Finish */
+  /*
+  lf.read(calibration);
+  unsigned int total;
+  for (int i = 0; i < 8; i++)
+  {
+    total += calibration[i];
+  }
+  */
+  
+  delay(3000);
+  
+  /* Second stage is to place IR array on white so all sensors detect white */
+  lf.read(calibration);
+  for (int i = 0; i < 8; i++)
+  {
+    lfOffset[i] = calibration[i];
+  }
+  
+  delay(3000);
+}
+
+
+
 
 void setup()
 {
-  setupMotors();
   pinMode(13, OUTPUT); // For the led
-  
-  digitalWrite(13, HIGH);
-  delay(500);
-  digitalWrite(13, LOW);
+  setupMotors();
+  calibrateLineFollowing();
+
   leftMotor.setMaxSpeed(600);
   rightMotor.setMaxSpeed(600);
   leftMotor.setAcceleration(10000);
   rightMotor.setAcceleration(10000);
 
-  leftMotor.setSpeed(leftSpeed);
-  rightMotor.setSpeed(rightSpeed);
+  leftMotor.setSpeed(leftSpeedFactor);
+  rightMotor.setSpeed(rightSpeedFactor);
 
-  leftMotor.moveTo(-500);
-  rightMotor.moveTo(500);
-
-//  manualMove(MOTOR_RIGHT, 500);
+  /* THis just indicates that the program is about to run */
+  digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  
+  leftMotor.move(5000000);
+  rightMotor.move(-5000000);
  
- Scheduler.startLoop(loop2);
-
- 
+  Scheduler.startLoop(motorLoop);
 }
 
 boolean useLeftMotor = true;
@@ -118,27 +165,12 @@ boolean useRightMotor = true;
 
 void loop()
 {
-
-  delay(1000);
-  digitalWrite(13, HIGH);
-  delay(1000);
-  digitalWrite(13, LOW);
+  lineFollowing();
+  delay(50);
 }
 
-void loop2() {
-  if (useLeftMotor == true) {
-     leftMotor.run();
-    if (leftMotor.distanceToGo () == 0) {
-      useLeftMotor==false;
-    }
-  }
-  
-    if (useRightMotor == true) {
-     rightMotor.run();
-      if (rightMotor.distanceToGo () == 0) {
-        useRightMotor==false;
-      }
-    }
-  
+void motorLoop() {
+  leftMotor.run();
+  rightMotor.run();
   yield();
 }
