@@ -31,18 +31,18 @@ void straight(float cm) {
 }
 
 void rotate(float deg) {//positive rotates Right, negative rotates Left
-  leftMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.99)); //Note that 13.99 is the 'diameter' that gives the most accurate movement for a 360 rotate
-  rightMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.99));
+  leftMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.75)); //Note that 13.99 is the 'diameter' that gives the most accurate movement for a 360 rotate
+  rightMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.75));
 }
 
 void swingWithRight (float deg) { //Positive turns LEFT!!!  Negative turns RIGHT!!! (going backwards)
   leftMotor.move(0);
-  rightMotor.move(-cmToSteps((deg/360.0)*3.14159265358979*13.99*2));
+  rightMotor.move(-cmToSteps((deg/360.0)*3.14159265358979*13.75*2));
 }
 
 void swingWithLeft(float deg) {//Positive turns Right, Negative turns Left (going backwards)
   rightMotor.move(0);
-  leftMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.99*2));
+  leftMotor.move(cmToSteps((deg/360.0)*3.14159265358979*13.75*2));
 }
 
 void setup()
@@ -72,6 +72,29 @@ void setup()
 
 void loop()
 {
+  delay(500);
+  digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  rotate(360.0);
+  while(motorsRunning()) yield();
+  delay(5000);
+  swingWithRight(360);
+  while(motorsRunning()) yield();
+  swingWithLeft(360);
+  while(motorsRunning()) yield();
+}
+
+void runMotorLoop() {
+  leftMotor.run();
+  rightMotor.run();  
+  yield();
+}
+
+
+
+
+/* Gridlock 1
   delay(1000);
   digitalWrite(13, HIGH);
   delay(1000);
@@ -91,10 +114,4 @@ void loop()
   swingWithRight(45);
   while(motorsRunning()) yield();
   delay(5000);
-}
-
-void runMotorLoop() {
-  leftMotor.run();
-  rightMotor.run();  
-  yield();
-}
+  */
