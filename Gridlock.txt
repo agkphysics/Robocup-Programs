@@ -1,0 +1,21 @@
+/* Gridlock 1
+  delay(1000);
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  swingWithLeft(45.0);
+  while(motorsRunning()) yield();
+  straight(17.0);
+  while(motorsRunning()) yield();
+  rotate(-90.0);
+  while(motorsRunning()) yield();
+  straight(40.0);
+  while(motorsRunning()) yield();
+  rotate(90.0);
+  while(motorsRunning()) yield();
+  straight(17.0);
+  while(motorsRunning()) yield();
+  swingWithRight(45);
+  while(motorsRunning()) yield();
+  delay(5000);
+  */
