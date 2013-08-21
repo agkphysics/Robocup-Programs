@@ -12,20 +12,16 @@ void setup() {
   motors.setup();
 }
 
+float leftSpeed = 600;
+float rightSpeed = 600;
+
 void loop() {
-  motors.rotate(90.0);
-  motors.wait();
-  motors.straight(10.0);
-  motors.wait();
-  motors.swingWithLeft(90.0);
-  motors.wait();
-  motors.straight(10);
-  motors.wait();
-  motors.rotate(90);
-  motors.wait();
-  motors.swingWithRight(90);
-  motors.wait();
-  delay(5000);
+  motors.setActiveSpeeds(leftSpeed, rightSpeed);
+  if (leftSpeed > -200 || rightSpeed >-200) {
+    leftSpeed = leftSpeed-1;
+    rightSpeed = rightSpeed-1;
+  }
+  delay(10);
 }
 
 void runMotorLoop() {
