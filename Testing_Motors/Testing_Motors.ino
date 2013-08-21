@@ -5,8 +5,8 @@ AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
 AccelStepper rightMotor(AccelStepper::DRIVER, 5, 4);
 
 
-int leftSpeed = 800; //Initial Speed (for testing purposes)
-int rightSpeed = 800; //Initial Speed (for testing purposes)
+float leftSpeed = 500.0; //Initial Speed (for testing purposes)
+float rightSpeed = 500.0; //Initial Speed (for testing purposes)
 boolean runLeftMotor = true;
 boolean runRightMotor = true;
 
@@ -66,23 +66,48 @@ void setup()
 
 
 
+
+  straight(10000);
  
 }
 
+void setMotorSpeeds() {
+  if (leftSpeed > 0) {
+    leftMotor.move(1000000);
+    leftMotor.setSpeed(leftSpeed);
+  }
+  else if (leftSpeed < 0) {
+    leftMotor.move(-1000000);
+    leftMotor.setSpeed(leftSpeed);
+  }
+  else {
+    leftMotor.move(0);
+    leftMotor.setSpeed(0);
+  }
+  
+  if (rightSpeed > 0) {
+    rightMotor.move(-1000000);
+    rightMotor.setSpeed(-rightSpeed);
+  }
+  else if (rightSpeed < 0) {
+    rightMotor.move(1000000);
+    rightMotor.setSpeed(-rightSpeed);
+  }
+  else {
+    rightMotor.move(0);
+    rightMotor.setSpeed(0);
+  }
+}
 
 void loop()
 {
-  delay(500);
-  digitalWrite(13, HIGH);
-  delay(500);
-  digitalWrite(13, LOW);
-  rotate(360.0);
-  while(motorsRunning()) yield();
-  delay(5000);
-  swingWithRight(360);
-  while(motorsRunning()) yield();
-  swingWithLeft(360);
-  while(motorsRunning()) yield();
+
+  setMotorSpeeds();
+  if (leftSpeed > 0 || rightSpeed >0) {
+    leftSpeed = leftSpeed-1;
+    rightSpeed = rightSpeed-1;
+  }
+  delay(10);
 }
 
 void runMotorLoop() {

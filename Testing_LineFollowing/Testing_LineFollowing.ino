@@ -25,6 +25,11 @@
 #define liftArmUpPin 2
 #define liftArmClosePin 3
 
+float leftSpeed = 500.0; //Initial Speed (for testing purposes)
+float rightSpeed = 500.0; //Initial Speed (for testing purposes)
+
+
+
 /* Switches */
 //#define switchSuchAndSuch 1
 
@@ -37,6 +42,34 @@ AccelStepper rightMotor(AccelStepper::DRIVER, motorRightStepPin, motorRightDirPi
 
 int leftSpeedFactor = 500; //As would be calculated by linefollowing procedure
 int rightSpeedFactor = 500; //As would be calculated by linefollowing procedure
+
+void setMotorSpeeds() {
+  if (leftSpeed > 0) {
+    leftMotor.move(1000000);
+    leftMotor.setSpeed(leftSpeed);
+  }
+  else if (leftSpeed < 0) {
+    leftMotor.move(-1000000);
+    leftMotor.setSpeed(leftSpeed);
+  }
+  else {
+    leftMotor.move(0);
+    leftMotor.setSpeed(0);
+  }
+  
+  if (rightSpeed > 0) {
+    rightMotor.move(-1000000);
+    rightMotor.setSpeed(-rightSpeed);
+  }
+  else if (rightSpeed < 0) {
+    rightMotor.move(1000000);
+    rightMotor.setSpeed(-rightSpeed);
+  }
+  else {
+    rightMotor.move(0);
+    rightMotor.setSpeed(0);
+  }
+}
 
 void setupMotors()
 {
@@ -60,7 +93,27 @@ double distanceToSteps(double dist)
 
 #include <QTRSensors.h>
 
-QTRSensorsAnalog lf((unsigned char[]){lineFollowingPin_1,lineFollowingPin_2,lineFollowingPin_3,lineFollowingPin_4,lineFollowingPin_5,lineFollowingPin_6,lineFollowingPin_7,lineFollowingPin_8}, 8);
+#define NUM_SENSORS             8  // number of sensors used
+#define NUM_SAMPLES_PER_SENSOR  9  // average 4 analog samples per sensor reading
+#define EMITTER_PIN             QTR_NO_EMITTER_PIN  // emitter is controlled by digital pin 2
+
+// sensors 0 through 5 are connected to analog inputs 0 through 5, respectively
+QTRSensorsAnalog lf((unsigned char[]) {7,6,5,4,3,2,1,0}, 
+  NUM_SENSORS, NUM_SAMPLES_PER_SENSOR, EMITTER_PIN);
+unsigned int sensorValues[NUM_SENSORS];
+
+void calibrateV2() {
+  delay(2000);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);    // turn on Arduino's LED to indicate we are in calibration mode
+  for (int i = 0; i < 400; i++)  // make the calibration take about 10 seconds
+  {
+    lf.calibrate();       // reads all sensors 10 times at 2.5 ms per six sensors (i.e. ~25 ms per call)
+  }
+  digitalWrite(13, LOW);     // turn off Arduino's LED to indicate we are through with calibration
+}
+
+//QTRSensorsAnalog lf((unsigned char[]){lineFollowingPin_1,lineFollowingPin_2,lineFollowingPin_3,lineFollowingPin_4,lineFollowingPin_5,lineFollowingPin_6,lineFollowingPin_7,lineFollowingPin_8}, 8);
 unsigned int currentlfValues[8];
 unsigned int lfOffset[8] = {0,0,0,0,0,0,0,0};
 const unsigned int linePositionFactor[8] = {-1.0, -5.0/7.0, -3.0/7.0, -1.0/7.0, 1.0/7.0, 3.0/7.0, 5.0/7.0, 1.0};
@@ -91,16 +144,16 @@ float linePosition()
 
 void lineFollowing()
 {
-  float linePos = linePosition();
+  float linePos = (lf.readLine(sensorValues)/3500 - 1);
   if (linePos <= 0.0)
   {
-    leftMotor.setSpeed(leftSpeedFactor * (1.0 + 2.0 * linePos));
-    rightMotor.setSpeed(rightSpeedFactor);
+    leftSpeed = (leftSpeedFactor * (1.0 + 2.0 * linePos));
+    rightSpeed = (rightSpeedFactor);
   }
   else
   {
-    leftMotor.setSpeed(leftSpeedFactor);
-    rightMotor.setSpeed(rightSpeedFactor * (1.0 - 2.0 * linePos));
+    leftSpeed = (leftSpeedFactor);
+    rightSpeed = (rightSpeedFactor * (1.0 - 2.0 * linePos));
   }
   yield();
 }
@@ -166,6 +219,7 @@ boolean useRightMotor = true;
 void loop()
 {
   lineFollowing();
+  setMotorSpeeds();
   delay(50);
 }
 
