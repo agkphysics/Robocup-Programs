@@ -1,17 +1,16 @@
-#include <HM6352.h>
-
-
-
-
+#include <Compass.h>
 #include <Wire.h>
 
-HM6352 compass();
+Compass compass;
 
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
 }
 
 void loop(){
+  Serial.print(compass.heading());
+  Serial.println(" heading");
   delay(100);
 }
