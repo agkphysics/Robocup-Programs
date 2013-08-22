@@ -102,49 +102,14 @@ QTRSensorsAnalog lf((unsigned char[]) {7,6,5,4,3,2,1,0},
   NUM_SENSORS, NUM_SAMPLES_PER_SENSOR, EMITTER_PIN);
 unsigned int sensorValues[NUM_SENSORS];
 
-void calibrateV2() {
-  delay(2000);
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);    // turn on Arduino's LED to indicate we are in calibration mode
-  for (int i = 0; i < 400; i++)  // make the calibration take about 10 seconds
-  {
-    lf.calibrate();       // reads all sensors 10 times at 2.5 ms per six sensors (i.e. ~25 ms per call)
-  }
-  digitalWrite(13, LOW);     // turn off Arduino's LED to indicate we are through with calibration
-}
-
 //QTRSensorsAnalog lf((unsigned char[]){lineFollowingPin_1,lineFollowingPin_2,lineFollowingPin_3,lineFollowingPin_4,lineFollowingPin_5,lineFollowingPin_6,lineFollowingPin_7,lineFollowingPin_8}, 8);
 unsigned int currentlfValues[8];
 unsigned int lfOffset[8] = {0,0,0,0,0,0,0,0};
-const unsigned int linePositionFactor[8] = {-1.0, -5.0/7.0, -3.0/7.0, -1.0/7.0, 1.0/7.0, 3.0/7.0, 5.0/7.0, 1.0};
 unsigned int currentMaxSensorValue = 0;
-
-/* The following function does the bulk of the work processing all the sensor info */
-void readLineFollowing()
-{
-  lf.read(currentlfValues);
-  for (int i = 0; i < 8; i++)
-  {
-    currentlfValues[i] = currentlfValues[i] - lfOffset[i];
-    if (currentlfValues[i] > currentMaxSensorValue) currentMaxSensorValue = currentlfValues[i];
-  }
-}
-
-/* linePosition() returns a real number between -1 and 1 representing where the line is */
-float linePosition()
-{
-  readLineFollowing();
-  float pos;
-  for (int i = 0; i < 8; i ++)
-  {
-    pos += (currentlfValues[i] / currentMaxSensorValue) * linePositionFactor[i];
-  }
-  return pos;
-}
 
 void lineFollowing()
 {
-  float linePos = (lf.readLine(sensorValues)/3500 - 1);
+  float linePos = (float)lf.readLine(sensorValues) / 3500.0 - 1.0;
   if (linePos <= 0.0)
   {
     leftSpeed = (leftSpeedFactor * (1.0 + 2.0 * linePos));
@@ -162,27 +127,15 @@ void calibrateLineFollowing()
 {
   unsigned int calibration[8];
   
-  /* First stage is to place robot with IR LED array centred on black line. May not be needed */
-  /* TODO: Finish */
-  /*
-  lf.read(calibration);
-  unsigned int total;
-  for (int i = 0; i < 8; i++)
+  delay(2000);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);    // turn on Arduino's LED to indicate we are in calibration mode
+  for (int i = 0; i < 400; i++)  // make the calibration take about 10 seconds
   {
-    total += calibration[i];
+    lf.calibrate();       // reads all sensors 10 times at 2.5 ms per six sensors (i.e. ~25 ms per call)
   }
-  */
-  
-  delay(3000);
-  
-  /* Second stage is to place IR array on white so all sensors detect white */
-  lf.read(calibration);
-  for (int i = 0; i < 8; i++)
-  {
-    lfOffset[i] = calibration[i];
-  }
-  
-  delay(3000);
+  digitalWrite(13, LOW);     // turn off Arduino's LED to indicate we are through with calibration
+  delay(500);
 }
 
 
