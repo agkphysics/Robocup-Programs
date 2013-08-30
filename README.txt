@@ -1,7 +1,3 @@
 This is the README file.
 
-Please read it carefully!!
-
-I did read it carefully!
-
-Changing stuff
+This is a collection of the programs related to our Robcup Junior Premier Rescue Project.
