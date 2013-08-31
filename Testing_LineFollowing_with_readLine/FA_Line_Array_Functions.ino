@@ -4,19 +4,20 @@ void setLineFollowingSpeeds()
   
   if (currentLinePosition <= 0.0)
   {
-    leftSpeed = leftSpeedFactor * (1.0 + 5.0 * currentLinePosition);
-    rightSpeed = rightSpeedFactor;
+    leftSpeedBuffer.putValue(leftSpeedFactor * (1.0 + 5.0 * currentLinePosition));
+    rightSpeedBuffer.putValue(rightSpeedFactor);
   }
   else
   {
-    leftSpeed = leftSpeedFactor;
-    rightSpeed = rightSpeedFactor * (1.0 - 5.0 * currentLinePosition);
+    leftSpeedBuffer.putValue(leftSpeedFactor);
+    rightSpeedBuffer.putValue(rightSpeedFactor * (1.0 - 5.0 * currentLinePosition));
   }
-
+  
+  leftSpeed = leftSpeedBuffer.getAverage();
+  rightSpeed = rightSpeedBuffer.getAverage();
+  
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
-
-void 
 
 float linePosition()
 {
