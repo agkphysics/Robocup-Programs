@@ -13,3 +13,4 @@ float leftSpeedFactor = 500.0; //As would be calculated by linefollowing procedu
 float rightSpeedFactor = 500.0; //As would be calculated by linefollowing procedure
 
 
+int intersectionCount = 1;

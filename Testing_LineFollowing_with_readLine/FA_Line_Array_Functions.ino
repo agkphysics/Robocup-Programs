@@ -1,42 +1,21 @@
 void setLineFollowingSpeeds()
 {
   float currentLinePosition = linePosition();
-  float currentBlacknessRatio = (1-blackness())/0.8;
-  if (currentBlacknessRatio < 0.1) {
-    currentBlacknessRatio = 0.1;
-  }
-  if (currentBlacknessRatio > 1){
-    currentBlacknessRatio = 1;
-  }
-  
-  //linePositionBuffer.putValue(currentLinePosition);
-  //float averageLinePosition = linePositionBuffer.getAverage();
   
   if (currentLinePosition <= 0.0)
   {
-    leftSpeed =  leftSpeedFactor * (1.0 - 1.0 * currentLinePosition* currentLinePosition* currentLinePosition*currentLinePosition);//Linepos needs to  be minused for this one in the end
+    leftSpeed = leftSpeedFactor * (1.0 + 5.0 * currentLinePosition*currentLinePosition*currentLinePosition);
     rightSpeed = rightSpeedFactor;
-
   }
   else
   {
     leftSpeed = leftSpeedFactor;
-    rightSpeed = rightSpeedFactor * (1.0 - 1.0 * currentLinePosition* currentLinePosition* currentLinePosition*currentLinePosition); //Line pos needs to be minused in the end
+    rightSpeed = rightSpeedFactor * (1.0 - 5.0 * currentLinePosition*currentLinePosition*currentLinePosition);
   }
-  /*
-  Serial.print(currentLinePosition);
-  Serial.print(" ");
-//  Serial.print(averageLinePosition);
-  Serial.print(" ");
-  Serial.print(leftSpeed);
-  Serial.print(" ");
-  Serial.print(rightSpeed);
-  Serial.print(" ");
-  Serial.print(currentBlacknessRatio);
-  Serial.print(" ");
-*/
+
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
+
 
 
 float linePosition()
@@ -65,10 +44,12 @@ void calibrateLineFollowing()
 }
 
 float blackness() { //0 to 8000
-  qtra.readCalibrated(currentSensorValues);
+  //Must have just called this in LineFollowingSetSpeeds: qtra.readCalibrated(currentSensorValues);
   unsigned int sum = 0;
   for (int i=0; i<8; i++) {
     sum += currentSensorValues[i];
+    yield();
   }
   return (float)sum/6000.0;  
+  return 0.3;
 }
