@@ -1,12 +1,7 @@
 boolean reachedIntersection(){ //TODO
-  qtra.readCalibrated(currentSensorValues);
-  unsigned int sum = 0;
-  for (int i=0; i<8; i++) {
-    sum += currentSensorValues[i];
-  }
-  
-  Serial.println(sum);
-  if (sum>5000){
+  float currentBlackness = blackness();
+  Serial.println(currentBlackness);
+  if (currentBlackness>0.625){
     return true;
   }
   else return false;

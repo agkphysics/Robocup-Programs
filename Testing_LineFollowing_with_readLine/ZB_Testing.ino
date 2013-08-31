@@ -1,6 +1,6 @@
 void setup() {
   setupRobot(); //Includes calibrate line sensors
-  while(true) {
+  /*while(true) {
     setLineFollowingSpeeds();
     if (reachedIntersection()){
       digitalWrite(13, HIGH);
@@ -11,10 +11,12 @@ void setup() {
     }
     delay(1);
   }
+  */
 }
 
 void loop(){
-  
+  setLineFollowingSpeeds();
+  yield();
 }
 
 void runMotorLoop() {
