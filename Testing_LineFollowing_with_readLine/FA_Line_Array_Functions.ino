@@ -4,13 +4,17 @@ void setLineFollowingSpeeds()
   
   if (currentLinePosition <= 0.0)
   {
-    leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
-    rightSpeed = (1.5-blackness())*rightSpeedFactor;
+    leftSpeed = leftSpeedFactor * (1.0 - 30.0 * currentLinePosition * currentLinePosition * currentLinePosition * currentLinePosition);
+    rightSpeed = rightSpeedFactor;
+//    leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+//    rightSpeed = (1.5-blackness())*rightSpeedFactor;
   }
   else
   {
-    leftSpeed = (1.5-blackness())*leftSpeedFactor;
-    rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+    leftSpeed = leftSpeedFactor;
+    rightSpeed = rightSpeedFactor * (1.0 - 30.0 * currentLinePosition * currentLinePosition * currentLinePosition * currentLinePosition);
+  //  leftSpeed = (1.5-blackness())*leftSpeedFactor;
+  //  rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
   }
 
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
@@ -48,7 +52,6 @@ float blackness() { //0 to 8000
   unsigned int sum = 0;
   for (int i=0; i<8; i++) {
     sum += currentSensorValues[i];
-    yield();
   }
   return (float)sum/6000.0;  
 }
