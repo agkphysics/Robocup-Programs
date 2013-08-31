@@ -4,13 +4,13 @@ void setLineFollowingSpeeds()
   
   if (currentLinePosition <= 0.0)
   {
-    leftSpeed = leftSpeedFactor * (1.0 + 5.0 * currentLinePosition*currentLinePosition*currentLinePosition);
-    rightSpeed = rightSpeedFactor;
+    leftSpeed = (1-blackness())*leftSpeedFactor * (1.0 + 10.0 * currentLinePosition);
+    rightSpeed = (1-blackness())*rightSpeedFactor;
   }
   else
   {
-    leftSpeed = leftSpeedFactor;
-    rightSpeed = rightSpeedFactor * (1.0 - 5.0 * currentLinePosition*currentLinePosition*currentLinePosition);
+    leftSpeed = (1-blackness())*leftSpeedFactor;
+    rightSpeed = (1-blackness())*rightSpeedFactor * (1.0 - 10.0 * currentLinePosition);
   }
 
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
@@ -51,5 +51,4 @@ float blackness() { //0 to 8000
     yield();
   }
   return (float)sum/6000.0;  
-  return 0.3;
 }

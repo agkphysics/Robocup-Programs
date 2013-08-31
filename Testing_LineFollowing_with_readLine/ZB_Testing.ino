@@ -4,7 +4,23 @@ void setup() {
 }
 
 void loop(){
-   /* 
+
+  
+  setLineFollowingSpeeds();
+  delay(2);
+}
+
+void runMotorLoop() {
+  motors.run();
+  yield();
+}
+
+
+/*
+
+  */
+  
+     /* 
       if (reachedIntersection()){
         digitalWrite(13, HIGH);
         Serial.println("Reached intersection");
@@ -20,17 +36,3 @@ void loop(){
       else {
         digitalWrite(13, LOW);
       }*/
-  
-  setLineFollowingSpeeds();
-  delay(2);
-}
-
-void runMotorLoop() {
-  motors.run();
-  yield();
-}
-
-
-/*
-
-  */
