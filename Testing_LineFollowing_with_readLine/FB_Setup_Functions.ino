@@ -3,4 +3,5 @@ void setupRobot(){
   Wire.begin();
   Scheduler.startLoop(runMotorLoop);
   motors.setup();
+  Serial.begin(9600);
 }

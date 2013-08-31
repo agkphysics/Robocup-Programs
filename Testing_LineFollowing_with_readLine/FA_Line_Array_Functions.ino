@@ -16,6 +16,8 @@ void setLineFollowingSpeeds()
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
+void 
+
 float linePosition()
 {
   float lineReadScaled = (float)qtra.readLine(currentSensorValues) / 3500.0; 
