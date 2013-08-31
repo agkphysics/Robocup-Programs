@@ -36,7 +36,7 @@ void calibrateLineFollowing()
 
 float linePosition()
 {
-  float lineReadScaled = (float)qtra.readLine(sensorValues) / 3500.0; 
+  float lineReadScaled = (float)qtra.readLine(currentSensorValues) / 3500.0; 
   return (lineReadScaled - 1.0);
 }
 
