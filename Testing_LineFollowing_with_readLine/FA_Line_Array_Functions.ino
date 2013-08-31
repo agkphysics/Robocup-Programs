@@ -4,13 +4,13 @@ void setLineFollowingSpeeds()
   
   if (currentLinePosition <= 0.0)
   {
-    leftSpeed = (1-blackness())*leftSpeedFactor * (1.0 + 10.0 * currentLinePosition);
-    rightSpeed = (1-blackness())*rightSpeedFactor;
+    leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+    rightSpeed = (1.5-blackness())*rightSpeedFactor;
   }
   else
   {
-    leftSpeed = (1-blackness())*leftSpeedFactor;
-    rightSpeed = (1-blackness())*rightSpeedFactor * (1.0 - 10.0 * currentLinePosition);
+    leftSpeed = (1.5-blackness())*leftSpeedFactor;
+    rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
   }
 
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
