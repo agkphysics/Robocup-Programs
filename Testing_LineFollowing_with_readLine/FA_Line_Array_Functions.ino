@@ -4,13 +4,13 @@ void setLineFollowingSpeeds()
   
    if (currentLinePosition <= 0.0)
    {
-      leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
-      rightSpeed = (1.5-blackness())*rightSpeedFactor;
+      leftSpeed = leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+      rightSpeed = rightSpeedFactor;
    }
    else
    { 
-      leftSpeed = (1.5-blackness())*leftSpeedFactor;
-      rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+      leftSpeed = leftSpeedFactor;
+      rightSpeed = rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
    }
 
 
@@ -50,5 +50,5 @@ float blackness() { //0 to 8000
   for (int i=0; i<8; i++) {
     sum += currentSensorValues[i];
   }
-  return (float)sum/6000.0;  
+  return (float)sum/8000.0;  
 }

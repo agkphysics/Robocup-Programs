@@ -4,6 +4,11 @@ void setup() {
 
 void loop(){
   setLineFollowingSpeeds();
+    //  Serial.println(blackness());
+  if(blackness()>0.8){
+  //  Serial.print("   Intersection");
+    navigateIntersection();
+  }
   delay(2);
 }
 
