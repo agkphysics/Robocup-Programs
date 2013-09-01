@@ -5,7 +5,7 @@ void setup() {
 void loop(){
   setLineFollowingSpeeds();
     //  Serial.println(blackness());
-  if(blackness()>0.8){
+  if(blackness()>1.1){
   //  Serial.print("   Intersection");
     navigateIntersection();
   }
