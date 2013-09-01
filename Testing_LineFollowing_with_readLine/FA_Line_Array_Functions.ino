@@ -2,20 +2,17 @@ void setLineFollowingSpeeds()
 {
   float currentLinePosition = linePosition();
   
-  if (currentLinePosition <= 0.0)
-  {
-    leftSpeed = leftSpeedFactor * (1.0 - 30.0 * currentLinePosition * currentLinePosition * currentLinePosition * currentLinePosition);
-    rightSpeed = rightSpeedFactor;
-//    leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
-//    rightSpeed = (1.5-blackness())*rightSpeedFactor;
-  }
-  else
-  {
-    leftSpeed = leftSpeedFactor;
-    rightSpeed = rightSpeedFactor * (1.0 - 30.0 * currentLinePosition * currentLinePosition * currentLinePosition * currentLinePosition);
-  //  leftSpeed = (1.5-blackness())*leftSpeedFactor;
-  //  rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
-  }
+   if (currentLinePosition <= 0.0)
+   {
+      leftSpeed = (1.5-blackness())*leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+      rightSpeed = (1.5-blackness())*rightSpeedFactor;
+   }
+   else
+   { 
+      leftSpeed = (1.5-blackness())*leftSpeedFactor;
+      rightSpeed = (1.5-blackness())*rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+   }
+
 
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
