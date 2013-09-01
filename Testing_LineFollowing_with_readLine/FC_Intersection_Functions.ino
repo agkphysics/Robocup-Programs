@@ -8,11 +8,7 @@ boolean reachedIntersection(){ //TODO
 }
 
 void navigateIntersection(){//TODO
-  if (intersectionCount == 1) turnLeft();
-  if (intersectionCount == 2) turnLeft();
-  if (intersectionCount == 3) turnLeft();
-  if (intersectionCount == 4) turnLeft();
-  
+  turnLeft();
   intersectionCount++;
 }
 
