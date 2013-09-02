@@ -1,0 +1,522 @@
+Data from colour sensors on real MAT
+
+Detecting Green nicely
+
+Adjust left white color, show something white to the sensor and press y.
+Adjusting...
+Max left frequency values: 132434 127485 166339 
+Adjust right white color, show something white to the sensor and press y.
+Adjusting...
+Max right frequency values: 171404 166502 227123 
+Adjust left black color, show something black to the sensor and press y.
+Adjusting...
+Min left frequency values: 30975 27522 38232 
+Adjust right black color, show something black to the sensor and press y.
+Adjusting...
+Min right frequency values: 43470 36010 49598 
+Left values: (46.00, 41.00, 88.00)	Right values: (0.00, 0.00, 10.00)
+Left values: (44.00, 40.00, 84.00)	Right values: (0.00, 0.00, 11.00)
+Left values: (46.00, 41.00, 88.00)	Right values: (0.00, 0.00, 13.00)
+Left values: (47.00, 41.00, 88.00)	Right values: (0.00, 0.00, 10.00)
+Left values: (44.00, 41.00, 90.00)	Right values: (2.00, 0.00, 11.00)
+Left values: (46.00, 41.00, 85.00)	Right values: (0.00, 0.00, 10.00)
+Left values: (45.00, 42.00, 84.00)	Right values: (0.00, 0.00, 10.00)
+Left values: (45.00, 41.00, 86.00)	Right values: (1.00, 0.00, 12.00)
+Left values: (47.00, 41.00, 86.00)	Right values: (1.00, 0.00, 10.00)
+Left values: (45.00, 42.00, 89.00)	Right values: (2.00, 0.00, 9.00)
+Left values: (46.00, 40.00, 87.00)	Right values: (0.00, 0.00, 9.00)
+Left values: (47.00, 42.00, 86.00)	Right values: (1.00, 0.00, 10.00)
+Left values: (46.00, 41.00, 96.00)	Right values: (2.00, 0.00, 22.00)
+Left values: (159.00, 134.00, 200.00)	Right values: (183.00, 150.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (134.00, 102.00, 133.00)	Right values: (81.00, 68.00, 128.00)
+Left values: (113.00, 99.00, 120.00)	Right values: (0.00, 0.00, 0.00)
+Left values: (0.00, 26.00, 28.00)	Right values: (0.00, 24.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 30.00)	Right values: (0.00, 27.00, 27.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 30.00)	Right values: (0.00, 31.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 30.00)	Right values: (0.00, 31.00, 27.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 31.00)	Right values: (0.00, 30.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 31.00)	Right values: (0.00, 28.00, 25.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 32.00)	Right values: (0.00, 30.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 32.00)	Right values: (0.00, 30.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 37.00, 32.00)	Right values: (0.00, 32.00, 27.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 32.00)	Right values: (0.00, 32.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 38.00, 32.00)	Right values: (0.00, 35.00, 29.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 30.00, 32.00)	Right values: (0.00, 31.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 35.00, 33.00)	Right values: (0.00, 33.00, 29.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 38.00, 30.00)	Right values: (0.00, 34.00, 25.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 39.00, 33.00)	Right values: (0.00, 33.00, 27.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 31.00)	Right values: (0.00, 34.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 35.00, 32.00)	Right values: (0.00, 34.00, 27.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 37.00, 34.00)	Right values: (0.00, 34.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 33.00)	Right values: (0.00, 33.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 30.00)	Right values: (0.00, 35.00, 29.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 32.00)	Right values: (0.00, 33.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 34.00)	Right values: (0.00, 33.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 32.00)	Right values: (0.00, 35.00, 24.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 31.00)	Right values: (0.00, 24.00, 21.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 25.00, 22.00)	Right values: (0.00, 9.00, 12.00)   LEFT GREEN!!!   
+Left values: (0.00, 28.00, 29.00)	Right values: (0.00, 20.00, 19.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 30.00)	Right values: (0.00, 23.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 30.00)	Right values: (0.00, 21.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 31.00, 30.00)	Right values: (0.00, 21.00, 21.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 31.00, 30.00)	Right values: (0.00, 22.00, 21.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 31.00, 30.00)	Right values: (0.00, 21.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 31.00)	Right values: (0.00, 22.00, 22.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 30.00)	Right values: (0.00, 21.00, 18.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 28.00)	Right values: (0.00, 22.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 29.00, 30.00)	Right values: (0.00, 18.00, 18.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 30.00, 29.00)	Right values: (0.00, 20.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 31.00, 29.00)	Right values: (0.00, 18.00, 15.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 29.00)	Right values: (0.00, 15.00, 16.00)   LEFT GREEN!!!   
+Left values: (0.00, 30.00, 29.00)	Right values: (0.00, 17.00, 15.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 29.00, 28.00)	Right values: (0.00, 15.00, 13.00)   LEFT GREEN!!!   
+Left values: (0.00, 27.00, 27.00)	Right values: (0.00, 14.00, 14.00)   LEFT GREEN!!!   
+Left values: (0.00, 28.00, 28.00)	Right values: (0.00, 14.00, 13.00)   LEFT GREEN!!!   
+Left values: (0.00, 29.00, 30.00)	Right values: (0.00, 16.00, 15.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 28.00, 28.00)	Right values: (0.00, 14.00, 13.00)   LEFT GREEN!!!   
+Left values: (0.00, 28.00, 27.00)	Right values: (0.00, 15.00, 14.00)   LEFT GREEN!!!   
+Left values: (0.00, 29.00, 29.00)	Right values: (0.00, 22.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 35.00)	Right values: (0.00, 33.00, 28.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 38.00)	Right values: (0.00, 32.00, 31.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 36.00, 36.00)	Right values: (0.00, 31.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 34.00, 35.00)	Right values: (0.00, 34.00, 30.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 35.00, 35.00)	Right values: (0.00, 27.00, 26.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 28.00, 18.00)	Right values: (0.00, 3.00, 0.00)   LEFT GREEN!!!   
+Left values: (200.00, 200.00, 200.00)	Right values: (11.00, 53.00, 166.00)   RIGHT GREEN!!!   
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (34.00, 0.00, 6.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (0.00, 29.00, 26.00)   RIGHT GREEN!!!   
+Left values: (200.00, 200.00, 200.00)	Right values: (0.00, 31.00, 32.00)   RIGHT GREEN!!!   
+Left values: (200.00, 152.00, 111.00)	Right values: (0.00, 0.00, 0.00)
+Left values: (0.00, 14.00, 23.00)	Right values: (0.00, 25.00, 23.00)   RIGHT GREEN!!!   
+Left values: (0.00, 33.00, 30.00)	Right values: (0.00, 28.00, 24.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 31.00, 31.00)	Right values: (0.00, 28.00, 24.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0.00, 32.00, 31.00)	Right values: (0.00, 28.00, 20.00)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (40.00, 68.00, 200.00)	Right values: (163.00, 171.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 161.00, 182.00)
+Left values: (200.00, 185.00, 177.00)	Right values: (88.00, 56.00, 131.00)
+Left values: (128.00, 69.00, 84.00)	Right values: (43.00, 57.00, 200.00)
+Left values: (54.00, 36.00, 86.00)	Right values: (67.00, 161.00, 200.00)   RIGHT GREEN!!!   
+Left values: (26.00, 15.00, 103.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (94.00, 166.00, 200.00)	Right values: (200.00, 155.00, 189.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (138.00, 136.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 171.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (157.00, 192.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 160.00, 200.00)	Right values: (193.00, 198.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 194.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (142.00, 142.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 166.00, 200.00)
+Left values: (200.00, 200.00, 200.00)	Right values: (200.00, 200.00, 200.00)
+
+
+
+Some values - green thresh 35 on its own
+
+Adjust left white color, show something white to the sensor and press y.
+Adjusting...
+Max left frequency values: 136519 129166 167483 
+Adjust right white color, show something white to the sensor and press y.
+Adjusting...
+Max right frequency values: 169607 157352 224509 
+Adjust left black color, show something black to the sensor and press y.
+Adjusting...
+Min left frequency values: 28763 27204 37305 
+Adjust right black color, show something black to the sensor and press y.
+Adjusting...
+Min right frequency values: 45512 36557 49856 
+Left values: (50, 45, 94)	Right values: (0, 0, 10)
+Left values: (49, 44, 89)	Right values: (0, 0, 9)
+Left values: (49, 45, 91)	Right values: (2, 0, 10)
+Left values: (49, 44, 91)	Right values: (0, 0, 7)
+Left values: (49, 45, 89)	Right values: (8, 0, 8)
+Left values: (48, 42, 59)	Right values: (0, 0, 48)
+Left values: (33, 21, 56)	Right values: (86, 109, 200)
+Left values: (37, 19, 50)	Right values: (81, 130, 200)   RIGHT GREEN!!!   
+Left values: (72, 46, 102)	Right values: (200, 200, 200)
+Left values: (118, 125, 200)	Right values: (200, 200, 200)
+Left values: (88, 90, 190)	Right values: (200, 200, 200)
+Left values: (45, 23, 37)	Right values: (9, 0, 62)
+Left values: (113, 108, 130)	Right values: (85, 58, 101)
+Left values: (189, 139, 200)	Right values: (150, 81, 161)
+Left values: (200, 200, 200)	Right values: (200, 130, 181)
+Left values: (200, 170, 200)	Right values: (159, 83, 143)
+Left values: (18, 17, 80)	Right values: (147, 176, 200)
+Left values: (90, 103, 184)	Right values: (98, 126, 200)
+Left values: (101, 110, 200)	Right values: (152, 150, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (35, 10, 28)	Right values: (2, 0, 0)
+Left values: (0, 32, 33)	Right values: (0, 27, 25)
+Left values: (0, 39, 35)	Right values: (0, 24, 29)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 26, 27)   LEFT GREEN!!!   
+Left values: (0, 41, 36)	Right values: (0, 29, 24)   LEFT GREEN!!!   
+Left values: (0, 41, 34)	Right values: (0, 32, 23)   LEFT GREEN!!!   
+Left values: (0, 40, 36)	Right values: (0, 32, 24)   LEFT GREEN!!!   
+Left values: (0, 42, 35)	Right values: (0, 30, 24)   LEFT GREEN!!!   
+Left values: (0, 38, 34)	Right values: (0, 30, 24)   LEFT GREEN!!!   
+Left values: (0, 40, 36)	Right values: (0, 29, 21)   LEFT GREEN!!!   
+Left values: (0, 38, 33)	Right values: (0, 31, 22)   LEFT GREEN!!!   
+Left values: (0, 40, 34)	Right values: (0, 26, 24)   LEFT GREEN!!!   
+Left values: (0, 39, 35)	Right values: (0, 27, 26)   LEFT GREEN!!!   
+Left values: (0, 39, 35)	Right values: (0, 30, 26)   LEFT GREEN!!!   
+Left values: (0, 38, 35)	Right values: (0, 27, 25)   LEFT GREEN!!!   
+Left values: (0, 38, 36)	Right values: (0, 27, 28)   LEFT GREEN!!!   
+Left values: (0, 38, 40)	Right values: (0, 28, 26)   LEFT GREEN!!!   
+Left values: (0, 41, 36)	Right values: (0, 28, 27)   LEFT GREEN!!!   
+Left values: (0, 38, 38)	Right values: (0, 29, 29)   LEFT GREEN!!!   
+Left values: (0, 38, 36)	Right values: (0, 28, 25)   LEFT GREEN!!!   
+Left values: (0, 38, 38)	Right values: (0, 28, 22)   LEFT GREEN!!!   
+Left values: (0, 38, 37)	Right values: (0, 28, 31)   LEFT GREEN!!!   
+Left values: (0, 37, 36)	Right values: (0, 29, 27)   LEFT GREEN!!!   
+Left values: (0, 37, 36)	Right values: (0, 31, 29)   LEFT GREEN!!!   
+Left values: (0, 36, 35)	Right values: (0, 28, 32)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 31, 24)   LEFT GREEN!!!   
+Left values: (0, 35, 34)	Right values: (0, 31, 28)
+Left values: (0, 37, 37)	Right values: (0, 31, 27)   LEFT GREEN!!!   
+Left values: (0, 37, 39)	Right values: (0, 30, 27)   LEFT GREEN!!!   
+Left values: (0, 36, 37)	Right values: (0, 32, 24)   LEFT GREEN!!!   
+Left values: (0, 37, 36)	Right values: (0, 30, 23)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 31, 26)   LEFT GREEN!!!   
+Left values: (0, 40, 41)	Right values: (0, 31, 25)   LEFT GREEN!!!   
+Left values: (0, 38, 35)	Right values: (0, 31, 24)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 32, 25)   LEFT GREEN!!!   
+Left values: (0, 35, 34)	Right values: (0, 31, 25)
+Left values: (0, 36, 37)	Right values: (0, 32, 26)   LEFT GREEN!!!   
+Left values: (0, 37, 34)	Right values: (0, 24, 26)   LEFT GREEN!!!   
+Left values: (0, 39, 40)	Right values: (0, 29, 26)   LEFT GREEN!!!   
+Left values: (0, 37, 35)	Right values: (0, 29, 23)   LEFT GREEN!!!   
+Left values: (0, 36, 37)	Right values: (0, 31, 26)   LEFT GREEN!!!   
+Left values: (0, 35, 36)	Right values: (0, 31, 28)
+Left values: (0, 36, 34)	Right values: (0, 31, 28)   LEFT GREEN!!!   
+Left values: (0, 35, 35)	Right values: (0, 32, 28)
+Left values: (0, 36, 35)	Right values: (0, 32, 25)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 32, 28)   LEFT GREEN!!!   
+Left values: (0, 36, 36)	Right values: (0, 31, 28)   LEFT GREEN!!!   
+Left values: (0, 38, 37)	Right values: (0, 31, 28)   LEFT GREEN!!!   
+Left values: (0, 39, 36)	Right values: (0, 32, 28)   LEFT GREEN!!!   
+Left values: (0, 39, 36)	Right values: (0, 32, 29)   LEFT GREEN!!!   
+Left values: (0, 39, 40)	Right values: (0, 29, 29)   LEFT GREEN!!!   
+Left values: (0, 37, 38)	Right values: (0, 30, 27)   LEFT GREEN!!!   
+Left values: (0, 38, 38)	Right values: (0, 33, 27)   LEFT GREEN!!!   
+Left values: (0, 40, 37)	Right values: (0, 31, 29)   LEFT GREEN!!!   
+Left values: (0, 39, 37)	Right values: (0, 33, 29)   LEFT GREEN!!!   
+Left values: (0, 36, 34)	Right values: (0, 30, 29)   LEFT GREEN!!!   
+Left values: (0, 38, 41)	Right values: (0, 32, 32)   LEFT GREEN!!!   
+Left values: (0, 39, 40)	Right values: (0, 32, 31)   LEFT GREEN!!!   
+Left values: (0, 37, 38)	Right values: (0, 31, 26)   LEFT GREEN!!!   
+Left values: (0, 41, 41)	Right values: (0, 33, 27)   LEFT GREEN!!!   
+Left values: (0, 41, 40)	Right values: (0, 34, 30)   LEFT GREEN!!!   
+Left values: (0, 39, 41)	Right values: (0, 33, 28)   LEFT GREEN!!!   
+Left values: (0, 41, 41)	Right values: (0, 32, 30)   LEFT GREEN!!!   
+Left values: (0, 38, 43)	Right values: (0, 33, 28)   LEFT GREEN!!!   
+Left values: (0, 38, 40)	Right values: (0, 33, 28)   LEFT GREEN!!!   
+Left values: (0, 37, 38)	Right values: (0, 31, 28)   LEFT GREEN!!!   
+Left values: (0, 38, 36)	Right values: (0, 32, 28)   LEFT GREEN!!!   
+Left values: (0, 36, 36)	Right values: (0, 34, 27)   LEFT GREEN!!!   
+Left values: (0, 37, 38)	Right values: (0, 35, 27)   LEFT GREEN!!!   
+Left values: (0, 38, 39)	Right values: (0, 33, 28)   LEFT GREEN!!!   
+Left values: (0, 37, 39)	Right values: (0, 32, 29)   LEFT GREEN!!!   
+Left values: (0, 38, 39)	Right values: (0, 34, 29)   LEFT GREEN!!!   
+Left values: (0, 39, 38)	Right values: (0, 34, 28)   LEFT GREEN!!!   
+Left values: (0, 37, 39)	Right values: (0, 34, 30)   LEFT GREEN!!!   
+Left values: (0, 38, 43)	Right values: (0, 31, 23)   LEFT GREEN!!!   
+Left values: (0, 37, 35)	Right values: (0, 29, 21)   LEFT GREEN!!!   
+Left values: (0, 30, 31)	Right values: (0, 12, 12)
+Left values: (0, 32, 32)	Right values: (0, 21, 23)
+Left values: (0, 38, 36)	Right values: (0, 32, 27)   LEFT GREEN!!!   
+Left values: (0, 36, 35)	Right values: (0, 33, 31)   LEFT GREEN!!!   
+Left values: (0, 36, 38)	Right values: (0, 35, 28)   LEFT GREEN!!!   
+Left values: (0, 36, 37)	Right values: (0, 30, 28)   LEFT GREEN!!!   
+Left values: (0, 36, 35)	Right values: (0, 35, 26)   LEFT GREEN!!!   
+Left values: (0, 38, 40)	Right values: (0, 33, 28)   LEFT GREEN!!!   
+Left values: (0, 38, 40)	Right values: (0, 33, 29)   LEFT GREEN!!!   
+Left values: (0, 37, 41)	Right values: (0, 37, 29)   LEFT GREEN!!!      RIGHT GREEN!!!   
+Left values: (0, 40, 40)	Right values: (0, 31, 33)   LEFT GREEN!!!   
+Left values: (0, 40, 41)	Right values: (0, 33, 31)   LEFT GREEN!!!   
+Left values: (0, 39, 39)	Right values: (0, 31, 31)   LEFT GREEN!!!   
+Left values: (0, 37, 38)	Right values: (0, 33, 30)   LEFT GREEN!!!   
+Left values: (0, 37, 37)	Right values: (0, 31, 30)   LEFT GREEN!!!   
+Left values: (0, 37, 36)	Right values: (0, 31, 29)   LEFT GREEN!!!   
+Left values: (0, 38, 38)	Right values: (0, 32, 27)   LEFT GREEN!!!   
+Left values: (0, 38, 37)	Right values: (0, 32, 29)   LEFT GREEN!!!   
+Left values: (0, 39, 38)	Right values: (0, 32, 28)   LEFT GREEN!!!   
+Left values: (0, 40, 41)	Right values: (0, 32, 31)   LEFT GREEN!!!   
+Left values: (0, 37, 37)	Right values: (0, 32, 28)   LEFT GREEN!!!   
+Left values: (0, 39, 36)	Right values: (0, 33, 27)   LEFT GREEN!!!   
+Left values: (0, 37, 37)	Right values: (0, 31, 29)   LEFT GREEN!!!   
+Left values: (0, 37, 37)	Right values: (0, 31, 30)   LEFT GREEN!!!   
+Left values: (0, 39, 38)	Right values: (0, 31, 30)   LEFT GREEN!!!   
+Left values: (0, 37, 36)	Right values: (0, 30, 26)   LEFT GREEN!!!   
+Left values: (0, 0, 33)	Right values: (0, 0, 0)
+Left values: (74, 91, 196)	Right values: (184, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+
+
+
+After constrain was fixed:
+
+Adjusting...
+Max left frequency values: 132597 130637 171241 
+Adjust right white color, show something white to the sensor and press y.
+Adjusting...
+Max right frequency values: 174509 160947 214705 
+Adjust left black color, show something black to the sensor and press y.
+Adjusting...
+Min left frequency values: 27726 26437 35925 
+Adjust right black color, show something black to the sensor and press y.
+Adjusting...
+Min right frequency values: 43165 36060 48082 
+Left values: (45, 40, 85)	Right values: (1, 0, 10)
+Left values: (46, 47, 85)	Right values: (1, 0, 10)
+Left values: (46, 42, 89)	Right values: (4, 0, 10)
+Left values: (45, 38, 85)	Right values: (1, 0, 11)
+Left values: (45, 41, 114)	Right values: (28, 45, 108)
+Left values: (200, 200, 200)	Right values: (159, 155, 200)
+Left values: (43, 1, 14)	Right values: (3, 0, 12)
+Left values: (32, 36, 57)	Right values: (21, 0, 20)
+Left values: (200, 200, 200)	Right values: (82, 56, 134)
+Left values: (200, 200, 200)	Right values: (76, 51, 86)
+Left values: (200, 200, 200)	Right values: (158, 200, 200)
+Left values: (113, 104, 148)	Right values: (200, 88, 89)
+Left values: (11, 0, 12)	Right values: (0, 0, 0)
+Left values: (33, 15, 25)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 7)	Right values: (0, 0, 0)
+Left values: (0, 0, 10)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 26)	Right values: (0, 0, 10)
+Left values: (200, 200, 200)	Right values: (165, 149, 200)
+Left values: (200, 200, 200)	Right values: (162, 149, 200)
+Left values: (200, 200, 200)	Right values: (159, 149, 200)
+Left values: (200, 200, 200)	Right values: (167, 146, 200)
+Left values: (200, 200, 200)	Right values: (166, 148, 200)
+Left values: (200, 200, 200)	Right values: (159, 145, 200)
+Left values: (200, 200, 200)	Right values: (163, 147, 200)
+Left values: (200, 200, 200)	Right values: (163, 147, 200)
+Left values: (200, 200, 200)	Right values: (167, 147, 200)
+Left values: (198, 160, 200)	Right values: (28, 0, 10)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 99, 42)
+Left values: (0, 41, 40)	Right values: (0, 37, 31)
+Left values: (0, 38, 42)	Right values: (0, 39, 35)
+Left values: (0, 40, 46)	Right values: (0, 38, 36)
+Left values: (0, 40, 38)	Right values: (0, 27, 11)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (87, 108, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (91, 44, 57)	Right values: (11, 20, 69)
+Left values: (132, 84, 105)	Right values: (80, 83, 200)
+Left values: (129, 121, 200)	Right values: (200, 198, 200)
+Left values: (128, 129, 200)	Right values: (200, 197, 200)
+Left values: (127, 132, 200)	Right values: (200, 200, 200)
+Left values: (141, 129, 200)	Right values: (200, 108, 69)
+Left values: (200, 200, 200)	Right values: (200, 180, 200)
+Left values: (200, 200, 200)	Right values: (200, 183, 200)
+Left values: (200, 200, 200)	Right values: (200, 179, 200)
+Left values: (200, 200, 200)	Right values: (200, 173, 200)
+Left values: (39, 62, 118)	Right values: (0, 0, 1)
+Left values: (0, 38, 38)	Right values: (0, 40, 40)
+Left values: (0, 38, 37)	Right values: (0, 37, 39)
+Left values: (0, 38, 37)	Right values: (0, 37, 38)
+Left values: (0, 39, 38)	Right values: (0, 38, 37)
+Left values: (0, 40, 39)	Right values: (0, 38, 37)
+Left values: (0, 39, 39)	Right values: (0, 40, 38)
+Left values: (0, 40, 38)	Right values: (0, 39, 38)
+Left values: (0, 39, 38)	Right values: (0, 39, 37)
+Left values: (0, 38, 40)	Right values: (0, 38, 36)
+Left values: (0, 38, 40)	Right values: (0, 37, 35)
+Left values: (0, 42, 38)	Right values: (0, 39, 37)
+Left values: (0, 38, 39)	Right values: (0, 43, 38)
+Left values: (0, 39, 34)	Right values: (0, 0, 0)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+
+
+
+Before constrain was fixed
+
+Adjusting...
+Max left frequency values: 134722 129084 165685 
+Adjust right white color, show something white to the sensor and press y.
+Adjusting...
+Max right frequency values: 172221 167809 218954 
+Adjust left black color, show something black to the sensor and press y.
+Adjusting...
+Min left frequency values: 27005 25534 34113 
+Adjust right black color, show something black to the sensor and press y.
+Adjusting...
+Min right frequency values: 42736 34862 47428 
+Left values: (52, 51, 57)	Right values: (0, 0, 0)
+Left values: (52, 51, 57)	Right values: (0, 0, 0)
+Left values: (52, 49, 58)	Right values: (0, 0, 255)
+Left values: (50, 51, 58)	Right values: (0, 0, 0)
+Left values: (51, 49, 57)	Right values: (0, 0, 0)
+Left values: (52, 50, 58)	Right values: (0, 0, 0)
+Left values: (52, 52, 60)	Right values: (0, 0, 0)
+Left values: (51, 50, 59)	Right values: (0, 0, 0)
+Left values: (102, 214, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (60, 21, 20)	Right values: (18, 26, 29)
+Left values: (20, 22, 22)	Right values: (22, 25, 31)
+Left values: (23, 23, 23)	Right values: (26, 27, 32)
+Left values: (27, 26, 28)	Right values: (34, 30, 37)
+Left values: (32, 32, 33)	Right values: (41, 35, 38)
+Left values: (35, 33, 41)	Right values: (41, 37, 40)
+Left values: (31, 29, 30)	Right values: (39, 32, 37)
+Left values: (31, 33, 32)	Right values: (45, 40, 41)
+Left values: (32, 31, 28)	Right values: (41, 34, 40)
+Left values: (34, 33, 30)	Right values: (44, 38, 39)
+Left values: (37, 37, 36)	Right values: (45, 49, 41)
+Left values: (48, 51, 61)	Right values: (50, 53, 99)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (64, 2, 0)
+Left values: (1, 49, 18)	Right values: (255, 55, 23)
+Left values: (0, 48, 18)	Right values: (0, 53, 25)
+Left values: (0, 47, 23)	Right values: (0, 53, 20)
+Left values: (0, 45, 22)	Right values: (0, 54, 21)
+Left values: (0, 46, 21)	Right values: (0, 55, 17)
+Left values: (0, 49, 21)	Right values: (0, 55, 21)
+Left values: (0, 49, 22)	Right values: (0, 55, 21)
+Left values: (0, 47, 21)	Right values: (0, 54, 21)
+Left values: (0, 47, 20)	Right values: (0, 53, 22)
+Left values: (1, 50, 19)	Right values: (0, 55, 20)
+Left values: (1, 47, 18)	Right values: (0, 54, 21)
+Left values: (0, 50, 18)	Right values: (0, 54, 23)
+Left values: (0, 50, 20)	Right values: (0, 54, 20)
+Left values: (1, 51, 21)	Right values: (0, 54, 22)
+Left values: (1, 50, 23)	Right values: (0, 66, 15)
+Left values: (1, 51, 23)	Right values: (0, 54, 16)
+Left values: (1, 50, 21)	Right values: (0, 51, 15)
+Left values: (1, 50, 21)	Right values: (0, 51, 13)
+Left values: (1, 49, 21)	Right values: (0, 0, 0)
+Left values: (172, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (200, 200, 200)
+Left values: (200, 200, 200)	Right values: (143, 101, 104)
+Left values: (68, 36, 37)	Right values: (51, 16, 0)
+Left values: (14, 18, 24)	Right values: (46, 55, 53)
+Left values: (65, 65, 72)	Right values: (59, 55, 58)
+Left values: (68, 63, 74)	Right values: (62, 58, 54)
+Left values: (67, 63, 72)	Right values: (57, 54, 54)
+Left values: (67, 67, 79)	Right values: (63, 54, 51)
+Left values: (65, 63, 76)	Right values: (56, 55, 56)
+Left values: (67, 63, 76)	Right values: (57, 54, 52)
+Left values: (69, 63, 77)	Right values: (58, 55, 55)
+Left values: (67, 66, 74)	Right values: (60, 55, 51)
+Left values: (38, 39, 24)	Right values: (0, 12, 21)
+Left values: (60, 74, 86)	Right values: (81, 82, 107)
+Left values: (96, 105, 108)	Right values: (80, 81, 110)
+Left values: (98, 99, 92)	Right values: (82, 82, 109)
+Left values: (96, 101, 95)	Right values: (79, 84, 98)
+Left values: (89, 71, 69)	Right values: (53, 50, 48)
+Left values: (52, 54, 62)	Right values: (52, 48, 49)
+Left values: (52, 53, 61)	Right values: (57, 50, 55)
+Left values: (51, 49, 58)	Right values: (72, 73, 65)
+Left values: (49, 50, 58)	Right values: (76, 68, 64)
+Left values: (49, 49, 62)	Right values: (71, 73, 59)
+Left values: (50, 49, 59)	Right values: (73, 66, 60)
+Left values: (49, 50, 57)	Right values: (72, 64, 56)
+Left values: (51, 51, 74)	Right values: (88, 101, 144)
+Left values: (103, 103, 101)	Right values: (151, 112, 139)
+Left values: (103, 106, 100)	Right values: (158, 139, 152)
+Left values: (105, 105, 101)	Right values: (150, 130, 140)
+Left values: (99, 71, 88)	Right values: (95, 90, 111)
+Left values: (76, 69, 80)	Right values: (95, 97, 111)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (0, 0, 0)
+Left values: (0, 0, 0)	Right values: (3, 8, 19)
+Left values: (14, 22, 27)	Right values: (45, 42, 49)
+Left values: (29, 26, 28)	Right values: (79, 76, 101)
+Left values: (7, 7, 11)	Right values: (59, 58, 53)
+Left values: (8, 6, 14)	Right values: (144, 110, 130)
+Left values: (18, 17, 23)	Right values: (156, 118, 139)
+Left values: (38, 34, 37)	Right values: (200, 190, 183)
+Left values: (57, 53, 63)	Right values: (200, 200, 200)
+Left values: (62, 57, 74)	Right values: (200, 200, 36)
+Left values: (0, 44, 17)	Right values: (0, 40, 13)
+Left values: (0, 46, 17)	Right values: (0, 44, 16)
+Left values: (0, 49, 18)	Right values: (0, 48, 13)
+Left values: (0, 47, 19)	Right values: (0, 44, 11)
+Left values: (0, 48, 18)	Right values: (0, 48, 14)
+Left values: (0, 50, 19)	Right values: (0, 47, 12)
+Left values: (0, 49, 20)	Right values: (0, 48, 12)
+Left values: (0, 46, 18)	Right values: (0, 18, 0)
