@@ -12,7 +12,23 @@ void setup()
   pinMode(10, OUTPUT);
 
   Serial.begin(9600);
-  calibrateSensors();
+  //calibrateSensors();
+  left.maxFrequency[0] = 132434;
+  left.maxFrequency[1] = 127485;
+  left.maxFrequency[2] = 166339;
+  
+  left.minFrequency[0] = 30975;
+  left.minFrequency[1] = 27522;
+  left.minFrequency[2] = 38232;
+  
+  right.maxFrequency[0] = 171404;
+  right.maxFrequency[1] = 166502;
+  right.maxFrequency[2] = 227123;
+  
+  right.minFrequency[0] = 43470;
+  right.minFrequency[1] = 36010;
+  right.minFrequency[2] = 49598;
+  
 }
 
 void loop()
