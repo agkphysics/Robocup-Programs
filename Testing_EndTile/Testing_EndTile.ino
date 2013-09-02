@@ -21,13 +21,13 @@ void endTile(boolean left)
 {
   initialHeading = compass.heading();
   
-  motors.setSpeeds(500, 500);
+  motors.setMaxSpeeds(500, 500);
   motors.straight(0.0);
   
   if (left) motors.rotate(-90.0);
   motors.wait();
   
-  motors.setSpeeds(100, 100);
+  motors.setMaxSpeeds(100, 100);
   
   motors.rotate(90.0);
   float dist = 60.0;
@@ -51,7 +51,7 @@ void endTile(boolean left)
       dist = 60.0;
       headingToCan = 0.0;
       
-      motors.setSpeeds(50, 50);
+      motors.setMaxSpeeds(50, 50);
       motors.rotate(-90);
       motors.wait();
       motors.rotate(90.0);
