@@ -6,16 +6,15 @@
 #include <Ultrasonic.h>
 #include <AccelStepper.h>
 
-Ultrasonic ultrasonic(11, 12);
-
 AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
 AccelStepper rightMotor(AccelStepper::DRIVER, 5, 4);
+Motors motors(leftMotor, rightMotor);
+Servo closeArm;
+
+Ultrasonic ultrasonic(11, 12);
 
 Compass compass;
 float initialHeading;
-
-Motors motors(leftMotor, rightMotor);
-Servo closeArm;
 
 void endTile(boolean left)
 {
@@ -51,9 +50,10 @@ void endTile(boolean left)
       dist = 60.0;
       headingToCan = 0.0;
       
-      motors.setMaxSpeeds(50, 50);
+      motors.setMaxSpeeds(500, 500);
       motors.rotate(-90);
       motors.wait();
+      motors.setMaxSpeeds(50, 50);
       motors.rotate(90.0);
     }
   }
@@ -125,7 +125,7 @@ void endTile(boolean left)
   motors.wait();
   
   digitalWrite(13, HIGH);
-  while (true) {}
+  while (true) {} // End of program, no need to loop
 }
 
 void setup()
