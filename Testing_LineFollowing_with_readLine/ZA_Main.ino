@@ -1,18 +1,22 @@
-/*
 void setup() {
   setupRobot(); //Includes calibrate line sensors
-  
+  //delay(1000); //To wait for leo-stick to boot up if we don't need to calibrate sensors
   while(!reachedEndTile()){
+    
     setLineFollowingSpeeds();
     
-    if(reachedIntersection()){
-      navigateIntersection();
+    if(reachedIntersectionRight()){
+      turnRight();
+    }
+    
+    if(reachedIntersectionLeft()){
+      turnLeft();
     }
     
     if(reachedWaterTower()){
       navigateWaterTower();
     }
-    delay(1);
+    delay(2);
   }
 }
 
@@ -23,4 +27,4 @@ void runMotorLoop() {
   motors.run();
   yield();
 }
-*/
+

@@ -1,5 +1,8 @@
 boolean reachedWaterTower() {//TODO
-  return false;
+  if (digitalRead(49) == HIGH) {
+    return true;
+  }
+  else return false;
 }
 
 void navigateWaterTower(){ //TODO

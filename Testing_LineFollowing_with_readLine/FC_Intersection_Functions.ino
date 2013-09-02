@@ -1,11 +1,17 @@
-boolean reachedIntersection(){ //TODO
-  float currentBlackness = blackness();
-  Serial.println(currentBlackness);
-  if (currentBlackness>0.8){
+boolean reachedIntersectionLeft() {
+  if (digitalRead(53) == HIGH) { //53 is pin for if Left colour sensor is on green (from the Leostick)
     return true;
   }
   else return false;
 }
+
+boolean reachedIntersectionRight() {
+  if (digitalRead(51) == HIGH) { //51 is pin for if Right colour sensor is on green (from the Leostick)
+    return true;
+  }
+  else return false;
+}
+
 
 void navigateIntersection(){//TODO
   turnLeft();
