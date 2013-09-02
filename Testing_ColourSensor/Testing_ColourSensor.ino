@@ -17,38 +17,28 @@ void setup()
 
 void loop()
 {
-  float redL, greenL, blueL;
-  float redR, greenR, blueR;
+  float redL, greenL;
+  float redR, greenR;
   
+  //Get left Sensor Values
   redL = left.getRed();
-  delay(10);
   greenL = left.getGreen();
-  delay(10);
-  blueL = left.getBlue();
-  delay(10);
   
+  //Get right sensor Values
   redR = right.getRed();
-  delay(10);
   greenR = right.getGreen();
-  delay(10);
-  blueR = right.getBlue();
-  delay(10);
     
   Serial.print("Left values: (");
   Serial.print(redL);
   Serial.print(", ");
   Serial.print(greenL);
-  Serial.print(", ");
-  Serial.print(blueL);
-  Serial.print(")\t");
+  Serial.print(") ");
   
   Serial.print("Right values: (");
   Serial.print(redR);
   Serial.print(", ");
   Serial.print(greenR);
-  Serial.print(", ");
-  Serial.print(blueR);
-  Serial.print(")");
+  Serial.print(") ");
   
   if (((greenL - redL) > 15) && (greenL/(greenL+redL) > 0.7)) {
     digitalWrite(6, HIGH);
@@ -62,10 +52,8 @@ void loop()
      Serial.print("   RIGHT GREEN!!!   ");
   }
   else digitalWrite(7, LOW);
-  
-  
   Serial.println();
-  delay(140);
+
 }
 
 void calibrateSensors(){
