@@ -59,7 +59,7 @@ void endTile(boolean left)
   }
   float finishHeading = compass.heading();
   
-  motors.setSpeeds(500, 500);
+  motors.setMaxSpeeds(500, 500);
 
   while (abs(compass.heading() - headingToCan) > 2.0)
   {
