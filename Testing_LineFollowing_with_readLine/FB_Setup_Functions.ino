@@ -4,6 +4,9 @@ void setupRobot(){
   motors.setup();
   Serial.begin(9600);
  calibrateLineFollowing();
+ pinMode(53, INPUT);
+ pinMode(51, INPUT);
+ pinMode(49, INPUT);
 }
 
 
