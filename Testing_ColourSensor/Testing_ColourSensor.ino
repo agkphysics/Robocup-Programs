@@ -112,6 +112,8 @@ void loop()
   Serial.print(blueR);
   Serial.print(")");
   
+  
+  /* Method 1 */
   if (abs(redL - 15) < 7 && abs(greenL - 40) < 7 && abs(blueL - 20) < 7) 
   {
     digitalWrite(6, HIGH);
@@ -134,6 +136,12 @@ void loop()
     digitalWrite(13, LOW);
   }
   
+  
+  /* Method 2 */
+  if (greenL > (redL + blueL) / 2) digitalWrite(6, HIGH);
+  else digitalWrite(6, LOW);
+  
   Serial.println();
   delay(700);
 }
+
