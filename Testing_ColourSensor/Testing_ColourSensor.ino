@@ -14,23 +14,23 @@ void setup()
   Serial.begin(9600);
   //calibrateSensors();
   
-  left.maxFrequency[0] = 119803;
-  left.maxFrequency[1] = 118152;
-  left.maxFrequency[2] = 153921;
+  left.maxFrequency[0] = 124346;
+  left.maxFrequency[1] = 105406;
+  left.maxFrequency[2] = 150162;
 
-  right.maxFrequency[0] = 164705;
-  right.maxFrequency[1] = 150116;
-  right.maxFrequency[2] = 198692;
+  right.maxFrequency[0] = 157795;
+  right.maxFrequency[1] = 135947;
+  right.maxFrequency[2] = 168626;
   
   
-  left.minFrequency[0] = 25978;
-  left.minFrequency[1] = 24789;
-  left.minFrequency[2] = 33205;
+  left.minFrequency[0] = 18505;
+  left.minFrequency[1] = 17639;
+  left.minFrequency[2] = 23533;
   
 
-  right.minFrequency[0] = 41238;
-  right.minFrequency[1] = 34526;
-  right.minFrequency[2] = 46352;
+  right.minFrequency[0] = 26273;
+  right.minFrequency[1] = 22238;
+  right.minFrequency[2] = 31290;
   
 }
 
@@ -71,7 +71,7 @@ void loop()
   }
   
   Serial.print("RIGHT GREEN,");
-  if (((greenR - redR) > 15) && (greenR/(greenR+redR) > 0.7)) {
+  if (((greenR - redR) > 15) && (greenR/(greenR+redR) > 0.5)) {
     digitalWrite(7, HIGH);
      Serial.print("1,");
   }
