@@ -156,3 +156,19 @@ void runMotors()
   yield();
 }
 
+
+
+float degreesToRotateToTargetCompassDirection(float target) {
+    float current = compass.heading();    
+    
+    float currentRelativeHeading = current - target;
+    if (currentRelativeHeading < 0) {
+      currentRelativeHeading = currentRelativeHeading + 360;
+    }
+    
+    float closest360;
+    if(currentRelativeHeading>180) closest360 = 360;
+    else closest360 = 0;
+    
+    return (closest360 - currentRelativeHeading);
+}
