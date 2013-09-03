@@ -13,9 +13,28 @@ boolean reachedIntersectionRight() {
 }
 
 
-void navigateIntersection(){//TODO
-  turnLeft();
-  intersectionCount++;
+void navigateGridlock(){//TODO
+  motors.setMaxSpeeds(1500, 1500);
+  motors.swingWithLeft(45.0);
+  motors.wait();
+  motors.straight(17.0);
+  motors.wait();
+  motors.rotate(-90.0);
+  motors.wait();
+  motors.straight(40.0);
+  motors.wait();
+  motors.rotate(90.0);
+  motors.wait();
+  motors.swingWithLeft(45.0);
+  motors.wait();
+  motors.straight(2.5);
+  motors.wait();
+  motors.swingWithRight(90.0);
+  motors.wait();
+  motors.straight(1.5);
+  motors.wait(); //could put while(motors.running() && !reachedEndTile()) motors.run(); here instead if gridlock is right by endtile.
+  
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 void turnRight() {

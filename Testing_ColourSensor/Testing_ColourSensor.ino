@@ -13,21 +13,24 @@ void setup()
 
   Serial.begin(9600);
   //calibrateSensors();
-  left.maxFrequency[0] = 132434;
-  left.maxFrequency[1] = 127485;
-  left.maxFrequency[2] = 166339;
   
-  left.minFrequency[0] = 30975;
-  left.minFrequency[1] = 27522;
-  left.minFrequency[2] = 38232;
+  left.maxFrequency[0] = 119803;
+  left.maxFrequency[1] = 118152;
+  left.maxFrequency[2] = 153921;
+
+  right.maxFrequency[0] = 164705;
+  right.maxFrequency[1] = 150116;
+  right.maxFrequency[2] = 198692;
   
-  right.maxFrequency[0] = 171404;
-  right.maxFrequency[1] = 166502;
-  right.maxFrequency[2] = 227123;
   
-  right.minFrequency[0] = 43470;
-  right.minFrequency[1] = 36010;
-  right.minFrequency[2] = 49598;
+  left.minFrequency[0] = 25978;
+  left.minFrequency[1] = 24789;
+  left.minFrequency[2] = 33205;
+  
+
+  right.minFrequency[0] = 41238;
+  right.minFrequency[1] = 34526;
+  right.minFrequency[2] = 46352;
   
 }
 
@@ -44,31 +47,39 @@ void loop()
   redR = right.getRed();
   greenR = right.getGreen();
     
-  Serial.print("Left values: (");
+  Serial.print("Left values,");
   Serial.print(redL);
-  Serial.print(", ");
+  Serial.print(",");
   Serial.print(greenL);
-  Serial.print(") ");
+  Serial.print(",");
   
-  Serial.print("Right values: (");
+  Serial.print("Right values,");
   Serial.print(redR);
-  Serial.print(", ");
+  Serial.print(",");
   Serial.print(greenR);
-  Serial.print(") ");
+  Serial.print(",");
+  Serial.println();
   
+  Serial.print("LEFT GREEN,");
   if (((greenL - redL) > 15) && (greenL/(greenL+redL) > 0.7)) {
     digitalWrite(6, HIGH);
-     Serial.print("   LEFT GREEN!!!   ");
+    Serial.print("1,");
   }
-  else digitalWrite(6, LOW);
+  else {
+    digitalWrite(6, LOW);
+    Serial.print("0,");
+  }
   
-  
+  Serial.print("RIGHT GREEN,");
   if (((greenR - redR) > 15) && (greenR/(greenR+redR) > 0.7)) {
     digitalWrite(7, HIGH);
-     Serial.print("   RIGHT GREEN!!!   ");
+     Serial.print("1,");
   }
-  else digitalWrite(7, LOW);
-  Serial.println();
+  else {
+    digitalWrite(7, LOW);
+    Serial.print("0,");
+  }
+
 
 }
 
