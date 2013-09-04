@@ -24,11 +24,6 @@ float linePosition()
   return (lineReadScaled - 1.0);
 }
 
-boolean reachedEndTile() { //TODO
-  return false;
-}
-
-
 float blackness() { //0 to 8000
   //Must have just called this in LineFollowingSetSpeeds: qtra.readCalibrated(currentSensorValues);
   unsigned int sum = 0;
