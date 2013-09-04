@@ -61,11 +61,14 @@ void endTile(boolean left)
   
   motors.setMaxSpeeds(500, 500);
 
+  motors.rotate(degreesToRotateToTargetCompassDirection(headingToCan));
+  /*
   while (abs(compass.heading() - headingToCan) > 2.0)
   {
     motors.rotate(-1.0);
     motors.wait();
   }
+  */
   
   /* An extra few degrees just in case... */
   if (dist >= 40.0) motors.rotate(-13.0);
@@ -98,6 +101,8 @@ void endTile(boolean left)
   if (left) motors.rotate(-10.0);
   else motors.rotate(10.0);
   
+  motors.rotate(degreesToRotateToTargetCompassDirection(initialHeading));
+  /*
   if (left)
   {
     while (abs(compass.heading() - initialHeading) > 2.0)
@@ -114,6 +119,7 @@ void endTile(boolean left)
       motors.wait();
     }
   }
+  */
   
   motors.straight(47.0);
   motors.wait();
