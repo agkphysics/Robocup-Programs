@@ -26,3 +26,19 @@ void calibrateLineFollowing()
   motors.wait();
   motors.setMaxSpeeds(500, 500);
 }
+
+void printArrayCalibrationValues() {
+  for (int i = 0; i < 8; i++)
+  {
+    Serial.print(qtra.calibratedMinimumOn[i]);
+    Serial.print(" ");
+  }
+  Serial.println();
+  for (int i = 0; i < 8; i++)
+  {
+    Serial.print(qtra.calibratedMaximumOn[i]);
+    Serial.print(" ");
+  }
+  Serial.println();
+  
+}
