@@ -1,6 +1,6 @@
 void navigateIntersection(boolean triggeredByLeft, int intersectionCount) {
   int currentIntersection;
-  if(intersectionCount > mapArraySize) currentIntersection = ENDTILE;
+  if(intersectionCount > maxArrayIndex) currentIntersection = ENDTILE;
   else currentIntersection = mapArray[intersectionCount];
   
   switch(currentIntersection) {

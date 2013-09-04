@@ -15,4 +15,3 @@
 #define CIRCLE 3 //refers to circleDeadEnd, similarly shortened
 #define GRIDLOCK 4
 #define ENDTILE 5
-

@@ -13,5 +13,5 @@ int gridlockIntersection = 1;
 
 boolean reachedEndTile = false;
 
-int mapArray[] = {ROUNDABOUT, ENDTILE};
-int mapArraySize = (sizeof(mapArray)/sizeof(int)) - 1;
+int mapArray[] = {GRIDLOCK};
+int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;

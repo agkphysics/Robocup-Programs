@@ -32,3 +32,26 @@ float blackness() { //0 to 8000
   }
   return (float)sum/8000.0;  
 }
+
+
+void printArrayCalibrationValues() {
+  for (int i = 0; i < 8; i++)
+  {
+    Serial.print("qtra.calibratedMinimumOn[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.print(qtra.calibratedMinimumOn[i]);
+    Serial.println(";");
+  }
+  Serial.println();
+  for (int i = 0; i < 8; i++)
+  {
+    Serial.print("qtra.calibratedMaximumOn[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.print(qtra.calibratedMaximumOn[i]);
+    Serial.println(";");
+  }
+  Serial.println();
+  
+}
