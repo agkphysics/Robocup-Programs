@@ -154,7 +154,7 @@ boolean reachedIntersectionLeft() {
 }
 
 boolean reachedIntersectionRight() {
-  if (digitalRead(51) == HIGH) { //51 is pin for if Right colour sensor is on green (from the Leostick)
+  if (digitalRead(49) == HIGH) { //51 is pin for if Right colour sensor is on green (from the Leostick)
     return true;
   }
   else return false;

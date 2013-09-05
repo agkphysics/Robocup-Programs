@@ -66,11 +66,11 @@ void checkForAndOutputGreen()
   
   Serial.print("RIGHT GREEN,");
   if (((greenR - redR) > 15) && (greenR/(greenR+redR) > 0.5)) {
-    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
      Serial.print("1,");
   }
   else {
-    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
     Serial.print("0,");
   }
 }
