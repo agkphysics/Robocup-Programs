@@ -13,6 +13,23 @@ Servo closeArm;
 
 Ultrasonic ultrasonic(11, 12);
 
+#define PIN_COLOUR_LEFT 52
+#define PIN_COLOUR_RIGHT 50
+#define PIN_LEOSTICK_EXTRA 48
+#define PIN_LIFT_MOTOR 30
+#define PIN_TOWER_SWITCH 28
+
+void definePins() {
+  pinMode(PIN_COLOUR_LEFT, INPUT);
+  pinMode(PIN_COLOUR_RIGHT, INPUT);
+  pinMode(PIN_LEOSTICK_EXTRA, INPUT);
+  pinMode(PIN_LIFT_MOTOR, OUTPUT);
+  pinMode(PIN_TOWER_SWITCH, INPUT);
+  
+  digitalWrite(PIN_LIFT_MOTOR, LOW);
+}
+  
+
 Compass compass;
 float initialHeading;
 
@@ -93,9 +110,9 @@ void endTile(boolean left)
   else motors.swingWithLeft(-45.0);
   
   /* Lift arm */
-  digitalWrite(2, HIGH);
+  digitalWrite(PIN_LIFT_MOTOR, HIGH);
   delay(2000);
-  digitalWrite(2, LOW);
+  digitalWrite(PIN_LIFT_MOTOR, LOW);
   
   motors.wait();
   
@@ -143,6 +160,7 @@ void endTile(boolean left)
 
 void setup()
 {
+  definePins();
   pinMode(13, OUTPUT);
   digitalWrite(13, LOW);
   
