@@ -1,7 +1,6 @@
 void setup() {
   setupRobot(); //Includes calibrate line sensors
-  //delay(1000); //To wait for leo-stick to boot up if we don't need to calibrate sensors
-  //printArrayCalibrationValues();
+  delay(5000); //To wait for leo-stick to boot up if we don't need to calibrate sensors
   
   printArrayCalibrationValues();
   

@@ -35,7 +35,6 @@ void printCalibrationValues(){
     Serial.print(";");
     Serial.println();
   }
-  Serial.println();
   
   Serial.println("//Max right frequency values: ");
   for (int i = 0; i < 3; i++)
@@ -47,7 +46,6 @@ void printCalibrationValues(){
     Serial.print(";");
     Serial.println();
   }
-  Serial.println();
 
 
 Serial.println("//Min left frequency values: ");
@@ -60,7 +58,6 @@ Serial.println("//Min left frequency values: ");
     Serial.print(";");
     Serial.println();
   }
-  Serial.println();
     
     
   Serial.println("//Min right frequency values: ");
@@ -73,7 +70,6 @@ Serial.println("//Min left frequency values: ");
     Serial.print(";");
     Serial.println();
   }
-  Serial.println();
 }
 
 

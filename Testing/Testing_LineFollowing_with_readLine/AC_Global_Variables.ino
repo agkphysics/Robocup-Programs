@@ -15,3 +15,5 @@ boolean reachedEndTile = false;
 
 int mapArray[] = {GRIDLOCK};
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
+
+int initialHeading; //Is set in setupRobot();

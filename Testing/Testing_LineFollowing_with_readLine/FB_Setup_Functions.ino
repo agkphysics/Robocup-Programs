@@ -29,6 +29,8 @@ qtra.calibratedMaximumOn[7] = 78;
  pinMode(53, INPUT);
  pinMode(51, INPUT);
  pinMode(49, INPUT);
+ 
+ initialHeading = (int)(compass.heading());
 }
 
 

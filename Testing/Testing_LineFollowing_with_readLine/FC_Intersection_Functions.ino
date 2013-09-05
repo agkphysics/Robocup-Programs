@@ -35,10 +35,6 @@ void navigateIntersection(boolean triggeredByLeft, int intersectionCount) {
   }
 }
 
-void align() {
-  //TODO
-}
-
 void moveRoundabout(boolean triggeredByLeft) {
   if(triggeredByLeft) {
     //TODO
@@ -92,10 +88,8 @@ void moveGridlock(){
 }
 
 void turn(boolean triggeredByLeft) {
-  align();
   if (triggeredByLeft) turnLeft();
   else turnRight();
-  align();
 }
 
 

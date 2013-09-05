@@ -1,33 +1,30 @@
 void setCalibrationValues() { //Paste these in
-  
 //Max left frequency values: 
-left.maxFrequency[0] = 117646;
-left.maxFrequency[1] = 111927;
-left.maxFrequency[2] = 151306;
 
+left.maxFrequency[0] = 133333;
+left.maxFrequency[1] = 128758;
+left.maxFrequency[2] = 167809;
 
 
 //Max right frequency values: 
 
-right.maxFrequency[0] = 159149;
-right.maxFrequency[1] = 143953;
-right.maxFrequency[2] = 187908;
+right.maxFrequency[0] = 157842;
+right.maxFrequency[1] = 142109;
+right.maxFrequency[2] = 179738;
 
 
 
 //Min left frequency values: 
 
-left.minFrequency[0] = 25890;
-left.minFrequency[1] = 23987;
-left.minFrequency[2] = 33099;
-
-
+left.minFrequency[0] = 26394;
+left.minFrequency[1] = 24752;
+left.minFrequency[2] = 33446;
 
 //Min right frequency values: 
 
-right.minFrequency[0] = 31778;
-right.minFrequency[1] = 28228;
-right.minFrequency[2] = 36052;
+right.minFrequency[0] = 37462;
+right.minFrequency[1] = 32351;
+right.minFrequency[2] = 44767;
 
 }
 

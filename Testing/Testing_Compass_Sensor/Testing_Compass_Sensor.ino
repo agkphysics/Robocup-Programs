@@ -43,7 +43,7 @@ void runMotorLoop() {
 float degreesToNearest90() {
     int currentHeading = (int)(compass.heading());
 	
-    int currentRelativeHeading = currentHeading - _initialHeading;
+    int currentRelativeHeading = currentHeading - initialHeading;
     if (currentRelativeHeading < 0) {
       currentRelativeHeading = currentRelativeHeading + 360;
     }
