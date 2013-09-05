@@ -14,3 +14,6 @@
 #define CIRCLE 3 //refers to circleDeadEnd, similarly shortened
 #define GRIDLOCK 4
 #define ENDTILE 5
+
+#define PIN_LEFT_COLOUR 52
+#define PIN_RIGHT_COLOUR 50

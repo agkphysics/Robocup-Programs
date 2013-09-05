@@ -15,22 +15,27 @@ void setup() {
   Wire.begin();
   Scheduler.startLoop(runMotorLoop);
   motors.setup();
-  _initialHeading = (int)(compass.heading());
+  delay(1000);
+  _initialHeading = (int)(compass.correctedHeading());
+  _initialHeading = 0;
+  Serial.print("Initial Heading: ");
+  Serial.println(_initialHeading);
 }
 
 void loop(){
-
-
   delay(100);
-  float currentHeading = compass.heading();
+  float currentHeading = compass.correctedHeading();
+  Serial.print("currentHeading: ");
+  Serial.println(currentHeading);
   float degreesToRotate = degreesToNearest90();
-  Serial.print(degreesToRotate);
+  Serial.print("degreesToRotate: ");
+  Serial.println(degreesToRotate);
   motors.rotate(degreesToRotate);
   motors.wait();
   delay(500);
-    Serial.print(" heading");
-    Serial.print(currentHeading);
-    Serial.println(" ");
+  Serial.print("Heading: ");
+  Serial.println(currentHeading);
+  Serial.println();
 }
 
 
@@ -41,13 +46,16 @@ void runMotorLoop() {
 
 	 
 float degreesToNearest90() {
-    int currentHeading = (int)(compass.heading());
+    int currentHeading = (int)(compass.correctedHeading());
 	
     int currentRelativeHeading = currentHeading - _initialHeading;
     if (currentRelativeHeading < 0) {
       currentRelativeHeading = currentRelativeHeading + 360;
     }
-	
+    Serial.print("CurrentRelativeHeading: ");
+    Serial.println(currentRelativeHeading);
     int closest90 = ((currentRelativeHeading + 45)/90)*90;
+    Serial.print("closest90: ");
+    Serial.println(closest90);
     return (float)(closest90 - currentRelativeHeading);
 }

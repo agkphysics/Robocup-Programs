@@ -26,11 +26,10 @@ qtra.calibratedMaximumOn[7] = 273;
 
 
  
- pinMode(53, INPUT);
- pinMode(51, INPUT);
- pinMode(49, INPUT);
- 
- initialHeading = (int)(compass.heading());
+ pinMode(PIN_LEFT_COLOUR, INPUT);
+ pinMode(PIN_RIGHT_COLOUR, INPUT);
+ delay(500); //To let compass sensor protocol get ready
+ initialHeading = (int)(compass.correctedHeading());
 }
 
 
