@@ -37,10 +37,26 @@ void navigateIntersection(boolean triggeredByLeft, int intersectionCount) {
 
 void moveRoundabout(boolean triggeredByLeft) {
   if(triggeredByLeft) {
-    //TODO
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(-90.0);
+    motors.wait();
+    //Ratios thing
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
   }
   else {
-    //TODO
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(90.0);
+    motors.wait();
+    //Ratios thing
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
   }
 }
 
@@ -75,11 +91,11 @@ void moveSquareDeadEnd(boolean triggeredByLeft) {
     motors.wait();
     motors.straight(12.0);
     motors.wait();
-    motors.swingWithRight(-90.0);
+    motors.swingWithRight(90.0);
     motors.wait();
     motors.straight(22.0);
     motors.wait();
-    motors.swingWithRight(-90.0);
+    motors.swingWithRight(90.0);
     motors.wait();
     motors.straight(12.0);
     motors.wait();
@@ -93,10 +109,26 @@ void moveSquareDeadEnd(boolean triggeredByLeft) {
 
 void moveCircleDeadEnd(boolean triggeredByLeft) {
   if(triggeredByLeft) {
-    //TODO
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(-90.0);
+    motors.wait();
+    //Put ratios thing in here
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
   }
   else {
-    //TODO
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(90.0);
+    motors.wait();
+    //Put ratios thing in here
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
   }
 }
 
