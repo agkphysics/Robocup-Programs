@@ -15,14 +15,14 @@ qtra.calibratedMinimumOn[5] = 31;
 qtra.calibratedMinimumOn[6] = 36;
 qtra.calibratedMinimumOn[7] = 37;
 
-qtra.calibratedMaximumOn[0] = 62;
-qtra.calibratedMaximumOn[1] = 53;
-qtra.calibratedMaximumOn[2] = 58;
-qtra.calibratedMaximumOn[3] = 63;
-qtra.calibratedMaximumOn[4] = 54;
-qtra.calibratedMaximumOn[5] = 46;
-qtra.calibratedMaximumOn[6] = 56;
-qtra.calibratedMaximumOn[7] = 78;
+qtra.calibratedMaximumOn[0] = 103;
+qtra.calibratedMaximumOn[1] = 57;
+qtra.calibratedMaximumOn[2] = 60;
+qtra.calibratedMaximumOn[3] = 77;
+qtra.calibratedMaximumOn[4] = 58;
+qtra.calibratedMaximumOn[5] = 49;
+qtra.calibratedMaximumOn[6] = 63;
+qtra.calibratedMaximumOn[7] = 273;
 
 
  
