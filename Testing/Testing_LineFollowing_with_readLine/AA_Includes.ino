@@ -4,7 +4,6 @@
 #include <Motors.h>
 #include <AccelStepper.h>
 #include <Scheduler.h>
-#include <CircularBuffer.h>
 
 //#defines
 #define TRIGGERED_BY_LEFT true

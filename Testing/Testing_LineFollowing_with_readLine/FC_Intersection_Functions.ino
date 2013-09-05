@@ -46,10 +46,48 @@ void moveRoundabout(boolean triggeredByLeft) {
 
 void moveSquareDeadEnd(boolean triggeredByLeft) {
   if(triggeredByLeft) {
-    //TODO
+    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(12.0);
+    motors.wait();
+    motors.swingWithLeft(90.0);
+    motors.wait();
+    motors.straight(22.0);
+    motors.wait();
+    motors.swingWithLeft(90.0);
+    motors.wait();
+    motors.straight(12.0);
+    motors.wait();
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
+    motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
   }
   else {
-    //TODO
+    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
+    motors.straight(8.0);
+    motors.wait();
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(12.0);
+    motors.wait();
+    motors.swingWithRight(-90.0);
+    motors.wait();
+    motors.straight(22.0);
+    motors.wait();
+    motors.swingWithRight(-90.0);
+    motors.wait();
+    motors.straight(12.0);
+    motors.wait();
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(3.0);
+    motors.wait();
+    motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
   }
 }
 
