@@ -20,13 +20,13 @@ void endTile(boolean left)
 {
   initialHeading = compass.heading();
   
-  motors.setMaxSpeeds(2000, 2000);
+  motors.setMaxSpeeds(2500, 2500);
   motors.straight(0.0);
   
   if (left) motors.rotate(-90.0);
   motors.wait();
   
-  motors.setMaxSpeeds(100, 100);
+  motors.setMaxSpeeds(150, 150);
   
   motors.rotate(90.0);
   float dist = 60.0;
@@ -59,7 +59,7 @@ void endTile(boolean left)
   }
   float finishHeading = compass.heading();
   
-  motors.setMaxSpeeds(500, 500);
+  motors.setMaxSpeeds(750, 750);
 
   //motors.rotate(degreesToRotateToTargetCompassDirection(headingToCan));
   //*
@@ -71,7 +71,7 @@ void endTile(boolean left)
   //*/
   
   /* An extra few degrees just in case... */
-  if (dist >= 40.0) motors.rotate(-9.0);
+  if (dist >= 40.0) motors.rotate(0.0);
   else motors.rotate(-8.0);
   motors.wait();
   
@@ -88,18 +88,20 @@ void endTile(boolean left)
   closeArm.write(0); // MUST be 0, not 180!
   delay(750);
   
-  motors.setMaxSpeeds(2000, 2000);
+  motors.setMaxSpeeds(2500, 2500);
+  if (dist >= 40.0) motors.swingWithLeft(-45.0);
+  else motors.swingWithLeft(-45.0);
   
   /* Lift arm */
   digitalWrite(2, HIGH);
   delay(2000);
   digitalWrite(2, LOW);
   
-  if (dist >= 40.0) motors.swingWithLeft(-45.0);
-  else motors.swingWithLeft(-45.0);
   motors.wait();
+  
   motors.straight(-distToCan);
   motors.wait();
+  
   if (left) motors.rotate(-10.0);
   else motors.rotate(10.0);
   
@@ -127,7 +129,7 @@ void endTile(boolean left)
   motors.wait();
   
   /* Drop can etc... */
-  closeArm.write(45);
+  closeArm.write(60);
   delay(400);
   motors.swingWithLeft(-20.0);
   motors.wait();
@@ -147,7 +149,7 @@ void setup()
   Wire.begin();
   motors.setup();
   closeArm.attach(3);
-  closeArm.write(70);
+  closeArm.write(60);
   delay(500);
   Scheduler.startLoop(runMotors);
 
@@ -168,8 +170,6 @@ void runMotors()
   motors.run();
   yield();
 }
-
-
 
 float degreesToRotateToTargetCompassDirection(float target) {
     float current = compass.heading();    
