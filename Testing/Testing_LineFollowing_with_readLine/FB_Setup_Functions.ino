@@ -26,7 +26,7 @@ qtra.calibratedMaximumOn[7] = 273;
 
 
  
- pinMode(53, INPUT);
+ pinMode(, INPUT);
  pinMode(51, INPUT);
  pinMode(49, INPUT);
  
