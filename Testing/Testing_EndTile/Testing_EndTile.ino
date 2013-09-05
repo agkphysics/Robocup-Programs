@@ -18,6 +18,7 @@ Ultrasonic ultrasonic(11, 12);
 #define PIN_LEOSTICK_EXTRA 48
 #define PIN_LIFT_MOTOR 30
 #define PIN_TOWER_SWITCH 28
+#define PIN_BOARD_LED 13
 
 void definePins() {
   pinMode(PIN_COLOUR_LEFT, INPUT);
@@ -25,6 +26,7 @@ void definePins() {
   pinMode(PIN_LEOSTICK_EXTRA, INPUT);
   pinMode(PIN_LIFT_MOTOR, OUTPUT);
   pinMode(PIN_TOWER_SWITCH, INPUT);
+  pinMode(PIN_BOARD_LED, OUTPUT);
   
   digitalWrite(PIN_LIFT_MOTOR, LOW);
 }
@@ -154,15 +156,14 @@ void endTile(boolean left)
   motors.straight(-15.0);
   motors.wait();
   
-  digitalWrite(13, HIGH);
+  digitalWrite(PIN_BOARD_LED, HIGH);
   while (true) {} // End of program, no need to loop
 }
 
 void setup()
 {
   definePins();
-  pinMode(13, OUTPUT);
-  digitalWrite(13, LOW);
+  digitalWrite(PIN_BOARD_LED, LOW);
   
   Wire.begin();
   motors.setup();
@@ -172,9 +173,9 @@ void setup()
   Scheduler.startLoop(runMotors);
 
   /* Just to indicate the program is about to start */
-  digitalWrite(13, HIGH);
+  digitalWrite(PIN_BOARD_LED, HIGH);
   delay(250);
-  digitalWrite(13, LOW);
+  digitalWrite(PIN_BOARD_LED, LOW);
   delay(250);
 }
 
