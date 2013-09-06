@@ -132,7 +132,7 @@ boolean checkForEndTile() {
 }
 
 void scanForLine(float currentReadLine){ //starts from 10cm forwards
-  motors.straight(-13.0);
+  motors.straight(-15.0);
   motors.wait();
   if (currentReadLine == 0.0) motors.swingWithLeft(20.0);
   else if (currentReadLine == 7000.0) motors.swingWithRight(20.0);
