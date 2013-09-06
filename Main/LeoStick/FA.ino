@@ -1,25 +1,39 @@
 void setCalibrationValues() { //Paste these in
 
-//Dan's House Values:
+
+//Saint Kents Comp Day Values:
 //Max left frequency values: 
-left.maxFrequency[0] = 121241;
-left.maxFrequency[1] = 117810;
-left.maxFrequency[2] = 154773;
+
+left.maxFrequency[0] = 105555;
+
+left.maxFrequency[1] = 107189;
+
+left.maxFrequency[2] = 141012;
 
 //Max right frequency values: 
-right.maxFrequency[0] = 163398;
-right.maxFrequency[1] = 151470;
-right.maxFrequency[2] = 189868;
+
+right.maxFrequency[0] = 151586;
+
+right.maxFrequency[1] = 134803;
+
+right.maxFrequency[2] = 174182;
 
 //Min left frequency values: 
-left.minFrequency[0] = 20356;
-left.minFrequency[1] = 18295;
-left.minFrequency[2] = 24658;
+
+left.minFrequency[0] = 15986;
+
+left.minFrequency[1] = 15626;
+
+left.minFrequency[2] = 21060;
 
 //Min right frequency values: 
-right.minFrequency[0] = 30860;
-right.minFrequency[1] = 25161;
-right.minFrequency[2] = 34289;
+
+right.minFrequency[0] = 23347;
+
+right.minFrequency[1] = 20656;
+
+right.minFrequency[2] = 27791;
+
 
 
 

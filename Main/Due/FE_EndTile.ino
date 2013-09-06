@@ -113,7 +113,7 @@ void endTile(boolean left)
   }
   //*/
   
-  motors.straight(47.0);
+  motors.straight(52.0);//Added 5cm to original distance
   motors.wait();
   
   /* Drop can etc... */
