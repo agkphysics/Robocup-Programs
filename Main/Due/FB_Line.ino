@@ -110,7 +110,7 @@ void offLineAction(float currentReadLine) {
   boolean  foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
   
   if(!foundIntersection) {
-    checkForEndTile();
+    reachedEndTile = checkForEndTile();
   }
   
   if(!foundIntersection && !reachedEndTile) {
@@ -118,15 +118,15 @@ void offLineAction(float currentReadLine) {
   }
 }
 
-void checkForEndTile() {
+boolean checkForEndTile() {
   motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
   motors.wait();
-  delay(100);
   if (leftDetectedGreen() && rightDetectedGreen()) {
     motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
     motors.wait();
-    reachedEndTile = true;
+    return true;  
   }
+  else return false;
 }
 
 void scanForLine(float currentReadLine){ //starts from 10cm forwards
