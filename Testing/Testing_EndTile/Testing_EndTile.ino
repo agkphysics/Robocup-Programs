@@ -16,7 +16,7 @@ Ultrasonic ultrasonic(11, 12);
 #define PIN_COLOUR_LEFT 52
 #define PIN_COLOUR_RIGHT 50
 #define PIN_LEOSTICK_EXTRA 48
-#define PIN_LIFT_MOTOR 30
+#define PIN_LIFT_MOTOR 32
 #define PIN_TOWER_SWITCH 28
 #define PIN_BOARD_LED 13
 
@@ -69,10 +69,11 @@ void endTile(boolean left)
       dist = 60.0;
       headingToCan = 0.0;
       
-      motors.setMaxSpeeds(500, 500);
+      motors.setMaxSpeeds(2000, 2000);
       motors.rotate(-90);
       motors.wait();
-      motors.setMaxSpeeds(50, 50);
+      delay(2000);
+      motors.setMaxSpeeds(150, 150);
       motors.rotate(90.0);
     }
   }
@@ -110,14 +111,19 @@ void endTile(boolean left)
   motors.setMaxSpeeds(2500, 2500);
   if (dist >= 40.0) motors.swingWithLeft(-45.0);
   else motors.swingWithLeft(-45.0);
+  motors.wait();
+  
+  motors.straight(0.0);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
   
   /* Lift arm */
   digitalWrite(PIN_LIFT_MOTOR, HIGH);
-  delay(2000);
+  delayMicroseconds(4000000);
   digitalWrite(PIN_LIFT_MOTOR, LOW);
-  
-  motors.wait();
-  
+
   motors.straight(-distToCan);
   motors.wait();
   
@@ -144,7 +150,7 @@ void endTile(boolean left)
   }
   //*/
   
-  motors.straight(45.0);
+  motors.straight(47.0);
   motors.wait();
   
   /* Drop can etc... */
