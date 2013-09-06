@@ -58,6 +58,7 @@ void setupOutputs() {
   closeArm.attach(3);
   closeArm.write(60);
   delay(500);
+  digitalWrite(3, LOW);
   Scheduler.startLoop(runMotorLoop);
   motors.setup();
 }

@@ -1,5 +1,5 @@
 //Map related:
-int mapArray[] = {ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+int mapArray[] = {GRIDLOCK, CIRCLE, SQUARE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
 boolean canSide = LEFT;
 boolean reachedEndTile = false;
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
