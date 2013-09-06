@@ -48,6 +48,7 @@ void lineFollowingLoop(){
 }
 
 void offLineAction(float currentReadLine) {
+  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
   motors.straight(1);
   motors.wait();
   
@@ -116,6 +117,7 @@ void offLineAction(float currentReadLine) {
   if(!foundIntersection && !reachedEndTile) {
     scanForLine(currentReadLine);
   }
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 boolean checkForEndTile() {
@@ -135,6 +137,7 @@ void scanForLine(float currentReadLine){ //starts from 10cm forwards
   if (currentReadLine == 0.0) motors.swingWithLeft(20.0);
   else if (currentReadLine == 7000.0) motors.swingWithRight(20.0);
   motors.wait();
+  delay(250);
   float newReadLine = (float)(qtra.readLine(currentSensorValues));
     
     if (newReadLine == 0.0) {
@@ -162,12 +165,14 @@ void setLineFollowingSpeeds(float currentLinePosition)
    if (currentLinePosition <= 0.0)
    {
       leftSpeed = leftSpeedFactor * (1.0 + 18*currentLinePosition*currentLinePosition*currentLinePosition);
+//      leftSpeed = leftSpeedFactor * (1.0 + 5*currentLinePosition);
       rightSpeed = rightSpeedFactor;
    }
    else
    { 
       leftSpeed = leftSpeedFactor;
       rightSpeed = rightSpeedFactor * (1.0 - 18 *currentLinePosition*currentLinePosition*currentLinePosition);
+//      rightSpeed = rightSpeedFactor * (1.0 - 5 *currentLinePosition);
    }
    
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
