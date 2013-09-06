@@ -7,30 +7,30 @@ void lineFollowingLoop(){
     
     if (currentReadLine != 0.0 && currentReadLine != 7000.0) {
       setLineFollowingSpeeds(currentLinePosition);
-    
-      if(digitalRead(PIN_LEFT_COLOUR) == HIGH){
-        navigateIntersection(LEFT, intersectionCount);
-        intersectionCount++;
-      }
-    
-      if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
-        navigateIntersection(RIGHT, intersectionCount);
-        intersectionCount++;
-      }
-    
+      checkForGreen(intersectionCount);
       if(digitalRead(PIN_TOWER_SWITCH) == HIGH){
         moveWaterTower();
       }
       delay(2);
     }
-  else offLineAction(currentReadLine);
+  else offLineAction(currentReadLine, intersectionCount);
   }
 }
 
-void offLineAction(float currentLinePosition) {
-  
+void offLineAction(float currentLinePosition, int intersectionCount) {
+  motors.straight(1);
+  motors.wait();
+  if(checkForGreen(intersectionCount)) return;
+  motors.straight(1);
+  motors.wait();
+  if(checkForGreen(intersectionCount)) return;
+  motors.straight(1);
+  motors.wait();
+  if(checkForGreen(intersectionCount)) return;
+   
   if(checkForEndTile()) { //true means end tile is reached
     reachedEndTile = true;
+    return;
   }
   else { //if it is not end tile
     scanForLine();
@@ -38,7 +38,7 @@ void offLineAction(float currentLinePosition) {
 }
 
 boolean checkForEndTile() {
-  motors.straight(10);
+  motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
   motors.wait();
   if(digitalRead(PIN_LEFT_COLOUR) == HIGH && digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
     motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
@@ -72,7 +72,21 @@ void setLineFollowingSpeeds(float currentLinePosition)
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
+boolean checkForGreen(int intersectionCount){
 
+      if(digitalRead(PIN_LEFT_COLOUR) == HIGH){
+        navigateIntersection(LEFT, intersectionCount);
+        intersectionCount++;
+        return true;
+      }
+      
+      else if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
+        navigateIntersection(RIGHT, intersectionCount);
+        intersectionCount++;
+        return true;
+      }
+      else return false;
+}
 
 float linePosition(float currentReadLine)
 {
