@@ -1,5 +1,7 @@
 void endTile(boolean left)
 {
+  motors.straight(5.0);
+  motors.wait();
   float endTileInitialHeading = compass.heading();
   
   motors.setMaxSpeeds(2500, 2500);
@@ -11,7 +13,7 @@ void endTile(boolean left)
   motors.setMaxSpeeds(150, 150);
   
   motors.rotate(90.0);
-  float dist = 60.0;
+  float dist = 120.0;
   float headingToCan = 0.0;
   while (true)
   {
@@ -26,10 +28,10 @@ void endTile(boolean left)
       }
       yield();
     }
-    if (dist <= 50.0) break;
+    if (dist <= 100.0) break;
     else
     {
-      dist = 60.0;
+      dist = 120.0;
       headingToCan = 0.0;
       
       motors.setMaxSpeeds(2000, 2000);
@@ -113,7 +115,7 @@ void endTile(boolean left)
   }
   //*/
   
-  motors.straight(52.0);//Added 5cm to original distance
+  motors.straight(50.0);//Added 3cm to original distance
   motors.wait();
   
   /* Drop can etc... */

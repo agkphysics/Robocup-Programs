@@ -2,39 +2,40 @@ void setupLineArray() {
    qtra.calibrate();
  
 //Competition Day Values:
-qtra.calibratedMinimumOn[0] = 36;
+qtra.calibratedMinimumOn[0] = 37;
 
-qtra.calibratedMinimumOn[1] = 34;
+qtra.calibratedMinimumOn[1] = 35;
 
-qtra.calibratedMinimumOn[2] = 35;
+qtra.calibratedMinimumOn[2] = 36;
 
 qtra.calibratedMinimumOn[3] = 37;
 
-qtra.calibratedMinimumOn[4] = 34;
+qtra.calibratedMinimumOn[4] = 35;
 
-qtra.calibratedMinimumOn[5] = 31;
+qtra.calibratedMinimumOn[5] = 32;
 
 qtra.calibratedMinimumOn[6] = 36;
 
-qtra.calibratedMinimumOn[7] = 38;
+qtra.calibratedMinimumOn[7] = 39;
 
 
 
-qtra.calibratedMaximumOn[0] = 98;
+qtra.calibratedMaximumOn[0] = 70;
 
-qtra.calibratedMaximumOn[1] = 67;
+qtra.calibratedMaximumOn[1] = 54;
 
-qtra.calibratedMaximumOn[2] = 76;
+qtra.calibratedMaximumOn[2] = 59;
 
-qtra.calibratedMaximumOn[3] = 178;
+qtra.calibratedMaximumOn[3] = 66;
 
-qtra.calibratedMaximumOn[4] = 81;
+qtra.calibratedMaximumOn[4] = 56;
 
-qtra.calibratedMaximumOn[5] = 51;
+qtra.calibratedMaximumOn[5] = 48;
 
-qtra.calibratedMaximumOn[6] = 86;
+qtra.calibratedMaximumOn[6] = 59;
 
-qtra.calibratedMaximumOn[7] = 227;
+qtra.calibratedMaximumOn[7] = 169;
+
 
 
 

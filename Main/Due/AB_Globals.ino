@@ -1,6 +1,6 @@
 //Map related:
-int mapArray[] = {CIRCLE, SQUARE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
-boolean canSide = LEFT;
+int mapArray[] = {CIRCLE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+boolean canSide = RIGHT;
 boolean reachedEndTile = false;
 #define INITIAL_HEADING 90;
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
