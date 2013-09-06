@@ -3,35 +3,35 @@ void setCalibrationValues() { //Paste these in
 //ROOM 10 Values DARK:
 //Max left frequency values: 
 
-left.maxFrequency[0] = 121323;
+left.maxFrequency[0] = 125081;
 
-left.maxFrequency[1] = 114052;
+left.maxFrequency[1] = 109408;
 
-left.maxFrequency[2] = 160246;
+left.maxFrequency[2] = 151913;
 
 //Max right frequency values: 
 
-right.maxFrequency[0] = 161273;
+right.maxFrequency[0] = 159640;
 
-right.maxFrequency[1] = 150979;
+right.maxFrequency[1] = 142635;
 
-right.maxFrequency[2] = 200326;
+right.maxFrequency[2] = 174836;
 
 //Min left frequency values: 
 
-left.minFrequency[0] = 16825;
+left.minFrequency[0] = 30289;
 
-left.minFrequency[1] = 16161;
+left.minFrequency[1] = 27014;
 
-left.minFrequency[2] = 22143;
+left.minFrequency[2] = 35966;
 
 //Min right frequency values: 
 
-right.minFrequency[0] = 25582;
+right.minFrequency[0] = 43005;
 
-right.minFrequency[1] = 22094;
+right.minFrequency[1] = 35359;
 
-right.minFrequency[2] = 31066;
+right.minFrequency[2] = 48356;
 
 
 
