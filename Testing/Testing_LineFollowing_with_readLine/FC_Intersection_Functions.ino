@@ -41,7 +41,8 @@ void moveRoundabout(boolean triggeredByLeft) {
     motors.wait();
     motors.rotate(-90.0);
     motors.wait();
-    //Ratios thing
+    motors.rotateCircle(90.0, 19.8);
+    motors.wait();
     motors.rotate(-90.0);
     motors.wait();
     motors.straight(3.0);
@@ -52,7 +53,8 @@ void moveRoundabout(boolean triggeredByLeft) {
     motors.wait();
     motors.rotate(90.0);
     motors.wait();
-    //Ratios thing
+    motors.rotateCircle(-90.0, 19.8);
+    motors.wait();
     motors.rotate(90.0);
     motors.wait();
     motors.straight(3.0);
@@ -113,7 +115,8 @@ void moveCircleDeadEnd(boolean triggeredByLeft) {
     motors.wait();
     motors.rotate(-90.0);
     motors.wait();
-    //Put ratios thing in here
+    motors.rotateCircle(270.0, 19.8);
+    motors.wait();
     motors.rotate(-90.0);
     motors.wait();
     motors.straight(3.0);
@@ -124,7 +127,8 @@ void moveCircleDeadEnd(boolean triggeredByLeft) {
     motors.wait();
     motors.rotate(90.0);
     motors.wait();
-    //Put ratios thing in here
+    motors.rotateCircle(-270.0, 19.8);
+    motors.wait();
     motors.rotate(90.0);
     motors.wait();
     motors.straight(3.0);
