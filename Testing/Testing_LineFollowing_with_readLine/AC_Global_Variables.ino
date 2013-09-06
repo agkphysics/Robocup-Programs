@@ -16,7 +16,7 @@ int gridlockIntersection = 1;
 
 boolean reachedEndTile = false;
 
-int mapArray[] = {GRIDLOCK};
+int mapArray[] = {SQUARE};
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
 
 int initialHeading; //Is set in setupRobot();

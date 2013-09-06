@@ -36,14 +36,15 @@ void navigateIntersection(boolean triggeredByLeft, int intersectionCount) {
 }
 
 void moveRoundabout(boolean triggeredByLeft) {
+  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
   if(triggeredByLeft) {
     motors.straight(8.0);
     motors.wait();
-    motors.rotate(-90.0);
+    motors.rotate(-45.0);
     motors.wait();
-    motors.rotateCircle(90.0, 19.8);
+    motors.straight(28.0);
     motors.wait();
-    motors.rotate(-90.0);
+    motors.rotate(-45.0);
     motors.wait();
     motors.straight(3.0);
     motors.wait();
@@ -51,20 +52,21 @@ void moveRoundabout(boolean triggeredByLeft) {
   else {
     motors.straight(8.0);
     motors.wait();
-    motors.rotate(90.0);
+    motors.rotate(45.0);
     motors.wait();
-    motors.rotateCircle(-90.0, 19.8);
+    motors.straight(28.0);
     motors.wait();
-    motors.rotate(90.0);
+    motors.rotate(45.0);
     motors.wait();
     motors.straight(3.0);
     motors.wait();
   }
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 void moveSquareDeadEnd(boolean triggeredByLeft) {
+  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
   if(triggeredByLeft) {
-    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
     motors.straight(8.0);
     motors.wait();
     motors.rotate(-90.0);
@@ -83,10 +85,8 @@ void moveSquareDeadEnd(boolean triggeredByLeft) {
     motors.wait();
     motors.straight(3.0);
     motors.wait();
-    motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
   }
   else {
-    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
     motors.straight(8.0);
     motors.wait();
     motors.rotate(90.0);
@@ -105,19 +105,28 @@ void moveSquareDeadEnd(boolean triggeredByLeft) {
     motors.wait();
     motors.straight(3.0);
     motors.wait();
-    motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
   }
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 void moveCircleDeadEnd(boolean triggeredByLeft) {
+  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
   if(triggeredByLeft) {
     motors.straight(8.0);
     motors.wait();
-    motors.rotate(-90.0);
+    motors.rotate(-45.0);
     motors.wait();
-    motors.rotateCircle(270.0, 19.8);
+    motors.straight(28.0);
     motors.wait();
-    motors.rotate(-90.0);
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(28.0);
+    motors.wait();
+    motors.rotate(90.0);
+    motors.wait();
+    motors.straight(28.0);
+    motors.wait();
+    motors.rotate(-45.0);
     motors.wait();
     motors.straight(3.0);
     motors.wait();
@@ -125,15 +134,24 @@ void moveCircleDeadEnd(boolean triggeredByLeft) {
   else {
     motors.straight(8.0);
     motors.wait();
-    motors.rotate(90.0);
+    motors.rotate(45.0);
     motors.wait();
-    motors.rotateCircle(-270.0, 19.8);
+    motors.straight(28.0);
     motors.wait();
-    motors.rotate(90.0);
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(28.0);
+    motors.wait();
+    motors.rotate(-90.0);
+    motors.wait();
+    motors.straight(28.0);
+    motors.wait();
+    motors.rotate(45.0);
     motors.wait();
     motors.straight(3.0);
     motors.wait();
   }
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 
