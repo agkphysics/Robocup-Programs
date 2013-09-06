@@ -4,34 +4,68 @@ void lineFollowingLoop(){
     float currentReadLine = (float)qtra.readLine(currentSensorValues);
     float currentLinePosition = linePosition(currentReadLine);
     
-    if (currentReadLine != 0.0 && currentReadLine != 7000.0) {
-      setLineFollowingSpeeds(currentLinePosition);
-      boolean randomTest = checkForGreen();
-      if(digitalRead(PIN_TOWER_SWITCH) == HIGH){
-        moveWaterTower();
-      }
-      delay(2);
+    setLineFollowingSpeeds(currentLinePosition);
+    
+    if(digitalRead(PIN_LEFT_COLOUR) == HIGH){
+        navigateIntersection(LEFT);
+        intersectionCount++;
     }
-  else offLineAction(currentReadLine);
+      
+    if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
+      navigateIntersection(RIGHT);
+      intersectionCount++;
+    }
+    
+    if (currentReadLine == 0.0 || currentReadLine == 7000.0) { //i.e. if Off the Line
+      offLineAction(currentReadLine);
+    }
+    
+    if(reachedIntersectionLeft) {
+      navigateIntersection(LEFT);
+      intersectionCount++;
+      reachedIntersectionLeft = false;
+    }
+    
+    if(reachedIntersectionRight) {
+      navigateIntersection(RIGHT);
+      intersectionCount++;
+      reachedIntersectionRight = false;
+    }
+      
+      
+    
+    if(digitalRead(PIN_TOWER_SWITCH) == HIGH){
+      moveWaterTower();
+    }
+    delay(2);
   }
 }
 
-void offLineAction(float currentLinePosition) {
-  motors.straight(1);
-  motors.wait();
-  if(checkForGreen()) return;
-  motors.straight(1);
-  motors.wait();
-  if(checkForGreen()) return;
-  motors.straight(1);
-  motors.wait();
-  if(checkForGreen()) return;
-   
-  if(checkForEndTile()) { //true means end tile is reached
-    reachedEndTile = true;
-    return;
+void offLineAction(float currentReadLine) {
+  motors.straight(3);
+  while(motors.running() && !reachedIntersectionLeft && !reachedIntersectionRight){
+    if(digitalRead(PIN_LEFT_COLOUR) == HIGH){
+      reachedIntersectionLeft = true;
+    }
+    
+    if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
+      reachedIntersectionRight = true;
+    }
+    yield();
   }
-  else { //if it is not end tile
+  
+  boolean foundIntersection;
+  
+  if(!reachedIntersectionLeft && !reachedIntersectionRight) {
+    foundIntersection = true;
+  }
+  else foundIntersection = false;
+  
+  if(!foundIntersection) {
+    reachedEndTile = checkForEndTile();
+  }
+  
+  if(!foundIntersection && !reachedEndTile) {
     scanForLine();
   }
 }
@@ -39,7 +73,7 @@ void offLineAction(float currentLinePosition) {
 boolean checkForEndTile() {
   motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
   motors.wait();
-  if(digitalRead(PIN_LEFT_COLOUR) == HIGH && digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
+  if (digitalRead(PIN_LEFT_COLOUR) == HIGH && digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
     motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
     motors.wait();
     return true;  
@@ -47,8 +81,9 @@ boolean checkForEndTile() {
   else return false;
 }
 
-void scanForLine(){
-  //TODO
+void scanForLine(){ //starts from 10cm forwards
+  motors.rotate(360);
+  motors.wait();
 }
   
   
