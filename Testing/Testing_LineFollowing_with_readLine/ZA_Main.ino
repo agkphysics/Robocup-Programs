@@ -5,27 +5,8 @@ void setup() {
   printArrayCalibrationValues();
   
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
-  
-  int intersectionCount = 0;
-  while(!reachedEndTile){
-    
-    setLineFollowingSpeeds();
-    
-    if(reachedIntersectionLeft()){
-      navigateIntersection(TRIGGERED_BY_LEFT, intersectionCount);
-      intersectionCount++;
-    }
-    
-    if(reachedIntersectionRight()){
-      navigateIntersection(TRIGGERED_BY_RIGHT, intersectionCount);
-      intersectionCount++;
-    }
-    
-    if(reachedWaterTower()){
-      navigateWaterTower();
-    }
-    delay(2);
-  }
+  lineFollowingLoop(); //Blocks until end tile
+
 }
 
 void loop(){
