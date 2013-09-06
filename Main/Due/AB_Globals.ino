@@ -4,6 +4,8 @@ boolean canSide = LEFT;
 boolean reachedEndTile = false;
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
 int intersectionCount = 0;
+boolean reachedIntersectionLeft = false;
+boolean reachedIntersectionRight = false;
 
 
 //Speeds:
