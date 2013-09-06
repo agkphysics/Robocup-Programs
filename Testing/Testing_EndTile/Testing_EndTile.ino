@@ -3,6 +3,7 @@
 #include <Compass.h>
 #include <Wire.h>
 #include <Motors.h>
+#include <Ultrasonic.h>
 
 #include <AccelStepper.h>
 
@@ -15,7 +16,7 @@ Ultrasonic ultrasonic(11, 12);
 
 
 #define PIN_LEOSTICK_EXTRA 48
-#define PIN_LIFT_MOTOR 32
+#define PIN_LIFT_MOTOR 9
 #define PIN_TOWER_SWITCH 28
 #define PIN_BOARD_LED 13
 
@@ -125,6 +126,7 @@ void endTile(boolean left)
   
   if (left) motors.rotate(-10.0);
   else motors.rotate(10.0);
+  motors.wait();
   
   //motors.rotate(degreesToRotateToTargetCompassDirection(endTileInitialHeading));
   //*
