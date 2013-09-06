@@ -201,14 +201,14 @@ void turnLeft() {
 }
   
 boolean reachedIntersectionLeft() {
-  if (digitalRead(PIN_LEFT_COLOUR) == HIGH) { //53 is pin for if Left colour sensor is on green (from the Leostick)
+  if (digitalRead(PIN_LEFT_COLOUR) == HIGH) { 
     return true;
   }
   else return false;
 }
 
 boolean reachedIntersectionRight() {
-  if (digitalRead(PIN_RIGHT_COLOUR) == HIGH) { //51 is pin for if Right colour sensor is on green (from the Leostick)
+  if (digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
     return true;
   }
   else return false;

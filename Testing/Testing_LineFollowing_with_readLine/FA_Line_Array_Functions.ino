@@ -9,12 +9,12 @@ void lineFollowingLoop(){
       setLineFollowingSpeeds(currentLinePosition);
     
       if(reachedIntersectionLeft()){
-        navigateIntersection(TRIGGERED_BY_LEFT, intersectionCount);
+        navigateIntersection(LEFT, intersectionCount);
         intersectionCount++;
       }
     
       if(reachedIntersectionRight()){
-        navigateIntersection(TRIGGERED_BY_RIGHT, intersectionCount);
+        navigateIntersection(RIGHT, intersectionCount);
         intersectionCount++;
       }
     

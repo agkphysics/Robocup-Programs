@@ -6,8 +6,8 @@
 #include <Scheduler.h>
 
 //#defines
-#define TRIGGERED_BY_LEFT true
-#define TRIGGERED_BY_RIGHT false
+#define LEFT true
+#define RIGHT false
 
 #define ROUNDABOUT 1
 #define SQUARE 2 //refers to squareDeadEnd, shortened to save time on the day

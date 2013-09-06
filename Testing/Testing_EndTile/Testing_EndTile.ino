@@ -3,7 +3,7 @@
 #include <Compass.h>
 #include <Wire.h>
 #include <Motors.h>
-#include <Ultrasonic.h>
+
 #include <AccelStepper.h>
 
 AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
@@ -13,16 +13,13 @@ Servo closeArm;
 
 Ultrasonic ultrasonic(11, 12);
 
-#define PIN_COLOUR_LEFT 52
-#define PIN_COLOUR_RIGHT 50
+
 #define PIN_LEOSTICK_EXTRA 48
 #define PIN_LIFT_MOTOR 32
 #define PIN_TOWER_SWITCH 28
 #define PIN_BOARD_LED 13
 
 void definePins() {
-  pinMode(PIN_COLOUR_LEFT, INPUT);
-  pinMode(PIN_COLOUR_RIGHT, INPUT);
   pinMode(PIN_LEOSTICK_EXTRA, INPUT);
   pinMode(PIN_LIFT_MOTOR, OUTPUT);
   pinMode(PIN_TOWER_SWITCH, INPUT);
@@ -33,11 +30,10 @@ void definePins() {
   
 
 Compass compass;
-float initialHeading;
 
 void endTile(boolean left)
 {
-  initialHeading = compass.heading();
+  float endTileInitialHeading = compass.heading();
   
   motors.setMaxSpeeds(2500, 2500);
   motors.straight(0.0);
@@ -130,11 +126,11 @@ void endTile(boolean left)
   if (left) motors.rotate(-10.0);
   else motors.rotate(10.0);
   
-  //motors.rotate(degreesToRotateToTargetCompassDirection(initialHeading));
+  //motors.rotate(degreesToRotateToTargetCompassDirection(endTileInitialHeading));
   //*
   if (left)
   {
-    while (abs(compass.heading() - initialHeading) > 2.0)
+    while (abs(compass.heading() - endTileInitialHeading) > 2.0)
     {
       motors.rotate(1.0);
       motors.wait();
@@ -142,7 +138,7 @@ void endTile(boolean left)
   }
   else
   {
-    while (abs(compass.heading() - initialHeading) > 2.0)
+    while (abs(compass.heading() - endTileInitialHeading) > 2.0)
     {
       motors.rotate(-1.0);
       motors.wait();
