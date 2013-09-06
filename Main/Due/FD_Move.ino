@@ -1,5 +1,23 @@
-void moveWaterTower(){ //TODO
-  
+void moveWaterTower()
+{
+  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
+  motors.straight(-3.0);
+  motors.wait();
+  motors.rotate(90.0);
+  motors.wait();
+  motors.straight(20.0);
+  motors.wait();
+  motors.rotate(-90.0);
+  motors.wait();
+  motors.straight(42.0);
+  motors.wait();
+  motors.rotate(-90.0);
+  motors.wait();
+  motors.straight(20.0);
+  motors.wait();
+  motors.rotate(90.0);
+  motors.wait();
+  motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
 void moveRoundabout(boolean triggeredByLeft) {
