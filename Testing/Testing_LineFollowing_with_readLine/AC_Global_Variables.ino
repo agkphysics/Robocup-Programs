@@ -12,8 +12,6 @@ float rightSpeedFactor = 600.0; //Max Speed on straight for linefollowing
 
 float maxSpeedManualSections = 4000.0;
 
-int gridlockIntersection = 1;
-
 boolean reachedEndTile = false;
 
 int mapArray[] = {SQUARE};

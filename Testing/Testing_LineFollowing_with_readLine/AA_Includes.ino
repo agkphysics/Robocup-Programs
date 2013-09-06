@@ -17,3 +17,4 @@
 
 #define PIN_LEFT_COLOUR 52
 #define PIN_RIGHT_COLOUR 50
+#define PIN_BOARD_LED 13

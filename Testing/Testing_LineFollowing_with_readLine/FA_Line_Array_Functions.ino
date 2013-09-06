@@ -1,6 +1,62 @@
-void setLineFollowingSpeeds()
+void lineFollowingLoop(){
+  
+  int intersectionCount = 0;
+  while(!reachedEndTile){
+    float currentReadLine = (float)qtra.readLine(currentSensorValues);
+    float currentLinePosition = linePosition(currentReadLine);
+    
+    if (currentReadLine != 0.0 && currentReadLine != 7000.0) {
+      setLineFollowingSpeeds(currentLinePosition);
+    
+      if(reachedIntersectionLeft()){
+        navigateIntersection(TRIGGERED_BY_LEFT, intersectionCount);
+        intersectionCount++;
+      }
+    
+      if(reachedIntersectionRight()){
+        navigateIntersection(TRIGGERED_BY_RIGHT, intersectionCount);
+        intersectionCount++;
+      }
+    
+      if(reachedWaterTower()){
+        navigateWaterTower();
+      }
+      delay(2);
+    }
+  else offLineAction(currentReadLine);
+  }
+}
+
+void offLineAction(float currentLinePosition) {
+  
+  if(checkForEndTile()) { //true means end tile is reached
+    reachedEndTile = true;
+  }
+  else { //if it is not end tile
+    scanForLine();
+  }
+}
+
+boolean checkForEndTile() {
+  motors.straight(10);
+  motors.wait();
+  if(digitalRead(PIN_LEFT_COLOUR) == HIGH && digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
+    motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
+    motors.wait();
+    return true;  
+  }
+  else return false;
+}
+
+void scanForLine(){
+  //TODO
+}
+  
+  
+
+void setLineFollowingSpeeds(float currentLinePosition)
 {
-  float currentLinePosition = linePosition();
+  
   
    if (currentLinePosition <= 0.0)
    {
@@ -18,9 +74,9 @@ void setLineFollowingSpeeds()
 
 
 
-float linePosition()
+float linePosition(float currentReadLine)
 {
-  float lineReadScaled = (float)qtra.readLine(currentSensorValues) / 3500.0; 
+  float lineReadScaled = currentReadLine / 3500.0; 
   return (lineReadScaled - 1.0);
 }
 
@@ -55,3 +111,5 @@ void printArrayCalibrationValues() {
   Serial.println();
   
 }
+
+
