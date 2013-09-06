@@ -6,30 +6,32 @@ void setupRobot(){
  //calibrateLineFollowing();
  qtra.calibrate();
  
-qtra.calibratedMinimumOn[0] = 36;
-qtra.calibratedMinimumOn[1] = 34;
-qtra.calibratedMinimumOn[2] = 35;
-qtra.calibratedMinimumOn[3] = 36;
-qtra.calibratedMinimumOn[4] = 34;
-qtra.calibratedMinimumOn[5] = 31;
-qtra.calibratedMinimumOn[6] = 36;
-qtra.calibratedMinimumOn[7] = 37;
+ //Room 10
+//Calibration Values: 
+ 
+qtra.calibratedMinimumOn[0] = 37;
+qtra.calibratedMinimumOn[1] = 36;
+qtra.calibratedMinimumOn[2] = 37;
+qtra.calibratedMinimumOn[3] = 38;
+qtra.calibratedMinimumOn[4] = 36;
+qtra.calibratedMinimumOn[5] = 33;
+qtra.calibratedMinimumOn[6] = 37;
+qtra.calibratedMinimumOn[7] = 39;
 
-qtra.calibratedMaximumOn[0] = 103;
-qtra.calibratedMaximumOn[1] = 57;
+qtra.calibratedMaximumOn[0] = 67;
+qtra.calibratedMaximumOn[1] = 54;
 qtra.calibratedMaximumOn[2] = 60;
-qtra.calibratedMaximumOn[3] = 77;
-qtra.calibratedMaximumOn[4] = 58;
-qtra.calibratedMaximumOn[5] = 49;
-qtra.calibratedMaximumOn[6] = 63;
-qtra.calibratedMaximumOn[7] = 273;
-
-
+qtra.calibratedMaximumOn[3] = 64;
+qtra.calibratedMaximumOn[4] = 55;
+qtra.calibratedMaximumOn[5] = 48;
+qtra.calibratedMaximumOn[6] = 60;
+qtra.calibratedMaximumOn[7] = 104;
  
  pinMode(PIN_LEFT_COLOUR, INPUT);
  pinMode(PIN_RIGHT_COLOUR, INPUT);
  delay(500); //To let compass sensor protocol get ready
-3
+ initialHeading = (int)compass.correctedHeading();
+
 }
 
 

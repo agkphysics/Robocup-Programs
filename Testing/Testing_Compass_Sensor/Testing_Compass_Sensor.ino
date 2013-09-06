@@ -17,13 +17,17 @@ void setup() {
   motors.setup();
   delay(1000);
   _initialHeading = (int)(compass.correctedHeading());
-  _initialHeading = 0;
   Serial.print("Initial Heading: ");
   Serial.println(_initialHeading);
 }
 
 void loop(){
   delay(100);
+  
+  float rawHeading = compass.heading();
+  Serial.print("rawHeading: ");
+  Serial.println(rawHeading);
+  
   float currentHeading = compass.correctedHeading();
   Serial.print("currentHeading: ");
   Serial.println(currentHeading);

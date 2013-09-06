@@ -1,0 +1,108 @@
+//Calibration Values: 
+
+//Room 10
+//Calibration Values: 
+ 
+qtra.calibratedMinimumOn[0] = 37;
+qtra.calibratedMinimumOn[1] = 36;
+qtra.calibratedMinimumOn[2] = 37;
+qtra.calibratedMinimumOn[3] = 38;
+qtra.calibratedMinimumOn[4] = 36;
+qtra.calibratedMinimumOn[5] = 33;
+qtra.calibratedMinimumOn[6] = 37;
+qtra.calibratedMinimumOn[7] = 39;
+
+qtra.calibratedMaximumOn[0] = 67;
+qtra.calibratedMaximumOn[1] = 54;
+qtra.calibratedMaximumOn[2] = 60;
+qtra.calibratedMaximumOn[3] = 64;
+qtra.calibratedMaximumOn[4] = 55;
+qtra.calibratedMaximumOn[5] = 48;
+qtra.calibratedMaximumOn[6] = 60;
+qtra.calibratedMaximumOn[7] = 104;
+
+//room 10
+
+//Calibration Values: 
+ 
+qtra.calibratedMinimumOn[0] = 37;
+qtra.calibratedMinimumOn[1] = 35;
+qtra.calibratedMinimumOn[2] = 36;
+qtra.calibratedMinimumOn[3] = 38;
+qtra.calibratedMinimumOn[4] = 35;
+qtra.calibratedMinimumOn[5] = 33;
+qtra.calibratedMinimumOn[6] = 37;
+qtra.calibratedMinimumOn[7] = 39;
+
+qtra.calibratedMaximumOn[0] = 67;
+qtra.calibratedMaximumOn[1] = 54;
+qtra.calibratedMaximumOn[2] = 60;
+qtra.calibratedMaximumOn[3] = 69;
+qtra.calibratedMaximumOn[4] = 58;
+qtra.calibratedMaximumOn[5] = 48;
+qtra.calibratedMaximumOn[6] = 61;
+qtra.calibratedMaximumOn[7] = 128;
+
+
+
+ //Room 10
+qtra.calibratedMinimumOn[0] = 35;
+qtra.calibratedMinimumOn[1] = 33;
+qtra.calibratedMinimumOn[2] = 35;
+qtra.calibratedMinimumOn[3] = 36;
+qtra.calibratedMinimumOn[4] = 34;
+qtra.calibratedMinimumOn[5] = 31;
+qtra.calibratedMinimumOn[6] = 36;
+qtra.calibratedMinimumOn[7] = 37;
+
+qtra.calibratedMaximumOn[0] = 60;
+qtra.calibratedMaximumOn[1] = 51;
+qtra.calibratedMaximumOn[2] = 56;
+qtra.calibratedMaximumOn[3] = 61;
+qtra.calibratedMaximumOn[4] = 53;
+qtra.calibratedMaximumOn[5] = 46;
+qtra.calibratedMaximumOn[6] = 58;
+qtra.calibratedMaximumOn[7] = 80;
+
+ 
+//Calibration Values: 
+ //Room 10
+qtra.calibratedMinimumOn[0] = 35;
+qtra.calibratedMinimumOn[1] = 33;
+qtra.calibratedMinimumOn[2] = 35;
+qtra.calibratedMinimumOn[3] = 36;
+qtra.calibratedMinimumOn[4] = 34;
+qtra.calibratedMinimumOn[5] = 31;
+qtra.calibratedMinimumOn[6] = 36;
+qtra.calibratedMinimumOn[7] = 37;
+
+qtra.calibratedMaximumOn[0] = 60;
+qtra.calibratedMaximumOn[1] = 51;
+qtra.calibratedMaximumOn[2] = 56;
+qtra.calibratedMaximumOn[3] = 61;
+qtra.calibratedMaximumOn[4] = 54;
+qtra.calibratedMaximumOn[5] = 47;
+qtra.calibratedMaximumOn[6] = 58;
+qtra.calibratedMaximumOn[7] = 106;
+
+ 
+ 
+//Calibration Values: 
+ //Room 10
+qtra.calibratedMinimumOn[0] = 35;
+qtra.calibratedMinimumOn[1] = 33;
+qtra.calibratedMinimumOn[2] = 35;
+qtra.calibratedMinimumOn[3] = 36;
+qtra.calibratedMinimumOn[4] = 34;
+qtra.calibratedMinimumOn[5] = 31;
+qtra.calibratedMinimumOn[6] = 36;
+qtra.calibratedMinimumOn[7] = 37;
+
+qtra.calibratedMaximumOn[0] = 61;
+qtra.calibratedMaximumOn[1] = 52;
+qtra.calibratedMaximumOn[2] = 56;
+qtra.calibratedMaximumOn[3] = 61;
+qtra.calibratedMaximumOn[4] = 54;
+qtra.calibratedMaximumOn[5] = 47;
+qtra.calibratedMaximumOn[6] = 59;
+qtra.calibratedMaximumOn[7] = 154;
