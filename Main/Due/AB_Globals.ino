@@ -1,6 +1,6 @@
 //Map related:
-int mapArray[] = {CIRCLE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
-boolean canSide = RIGHT;
+int mapArray[] = {CIRCLE}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+boolean canSide = LEFT;
 boolean reachedEndTile = false;
 #define INITIAL_HEADING 90;
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
@@ -10,8 +10,8 @@ boolean reachedIntersectionRight = false;
 
 
 //Speeds:
-float leftSpeedFactor = 600.0; //Max Speed on straight for linefollowing
-float rightSpeedFactor = 600.0; //Max Speed on straight for linefollowing
+float leftSpeedFactor = 1500.0; //Max Speed on straight for linefollowing
+float rightSpeedFactor = 1500.0; //Max Speed on straight for linefollowing
 
 float maxSpeedManualSections = 4000.0;
 

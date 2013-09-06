@@ -25,6 +25,7 @@ void navigateIntersection(boolean triggeredByLeft) {
       align();
       break;
     case ENDTILE:
+      align();
       reachedEndTile = true;
       align();
       break;

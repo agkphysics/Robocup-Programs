@@ -33,6 +33,8 @@ void lineFollowingLoop(){
     }
     
     if(reachedIntersectionRight) {
+      motors.straight(-2);
+      motors.wait();
       navigateIntersection(RIGHT);
       intersectionCount++;
       reachedIntersectionRight = false;
@@ -118,6 +120,7 @@ void offLineAction(float currentReadLine) {
     scanForLine(currentReadLine);
   }
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
+  
 }
 
 boolean checkForEndTile() {
@@ -164,14 +167,14 @@ void setLineFollowingSpeeds(float currentLinePosition)
   
    if (currentLinePosition <= 0.0)
    {
-      leftSpeed = leftSpeedFactor * (1.0 + 18*currentLinePosition*currentLinePosition*currentLinePosition);
+      leftSpeed = leftSpeedFactor * (1.0 - 24*currentLinePosition*currentLinePosition);
 //      leftSpeed = leftSpeedFactor * (1.0 + 5*currentLinePosition);
       rightSpeed = rightSpeedFactor;
    }
    else
    { 
       leftSpeed = leftSpeedFactor;
-      rightSpeed = rightSpeedFactor * (1.0 - 18 *currentLinePosition*currentLinePosition*currentLinePosition);
+      rightSpeed = rightSpeedFactor * (1.0 - 24 *currentLinePosition*currentLinePosition);
 //      rightSpeed = rightSpeedFactor * (1.0 - 5 *currentLinePosition);
    }
    
