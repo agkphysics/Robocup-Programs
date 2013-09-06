@@ -1,32 +1,31 @@
 void lineFollowingLoop(){
   
-  int intersectionCount = 0;
   while(!reachedEndTile){
     float currentReadLine = (float)qtra.readLine(currentSensorValues);
     float currentLinePosition = linePosition(currentReadLine);
     
     if (currentReadLine != 0.0 && currentReadLine != 7000.0) {
       setLineFollowingSpeeds(currentLinePosition);
-      checkForGreen(intersectionCount);
+      boolean randomTest = checkForGreen();
       if(digitalRead(PIN_TOWER_SWITCH) == HIGH){
         moveWaterTower();
       }
       delay(2);
     }
-  else offLineAction(currentReadLine, intersectionCount);
+  else offLineAction(currentReadLine);
   }
 }
 
-void offLineAction(float currentLinePosition, int intersectionCount) {
+void offLineAction(float currentLinePosition) {
   motors.straight(1);
   motors.wait();
-  if(checkForGreen(intersectionCount)) return;
+  if(checkForGreen()) return;
   motors.straight(1);
   motors.wait();
-  if(checkForGreen(intersectionCount)) return;
+  if(checkForGreen()) return;
   motors.straight(1);
   motors.wait();
-  if(checkForGreen(intersectionCount)) return;
+  if(checkForGreen()) return;
    
   if(checkForEndTile()) { //true means end tile is reached
     reachedEndTile = true;
@@ -72,16 +71,16 @@ void setLineFollowingSpeeds(float currentLinePosition)
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
-boolean checkForGreen(int intersectionCount){
+boolean checkForGreen(){
 
       if(digitalRead(PIN_LEFT_COLOUR) == HIGH){
-        navigateIntersection(LEFT, intersectionCount);
+        navigateIntersection(LEFT);
         intersectionCount++;
         return true;
       }
       
       else if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
-        navigateIntersection(RIGHT, intersectionCount);
+        navigateIntersection(RIGHT);
         intersectionCount++;
         return true;
       }

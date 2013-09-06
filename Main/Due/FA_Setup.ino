@@ -1,26 +1,27 @@
 void setupLineArray() {
    qtra.calibrate();
  
- //Room 10
+ //Room 10 dark
 //Calibration Values: 
  
-qtra.calibratedMinimumOn[0] = 37;
-qtra.calibratedMinimumOn[1] = 36;
-qtra.calibratedMinimumOn[2] = 37;
-qtra.calibratedMinimumOn[3] = 38;
-qtra.calibratedMinimumOn[4] = 36;
-qtra.calibratedMinimumOn[5] = 33;
-qtra.calibratedMinimumOn[6] = 37;
-qtra.calibratedMinimumOn[7] = 39;
+qtra.calibratedMinimumOn[0] = 35;
+qtra.calibratedMinimumOn[1] = 33;
+qtra.calibratedMinimumOn[2] = 34;
+qtra.calibratedMinimumOn[3] = 35;
+qtra.calibratedMinimumOn[4] = 33;
+qtra.calibratedMinimumOn[5] = 30;
+qtra.calibratedMinimumOn[6] = 35;
+qtra.calibratedMinimumOn[7] = 36;
 
-qtra.calibratedMaximumOn[0] = 67;
-qtra.calibratedMaximumOn[1] = 54;
-qtra.calibratedMaximumOn[2] = 60;
-qtra.calibratedMaximumOn[3] = 64;
-qtra.calibratedMaximumOn[4] = 55;
-qtra.calibratedMaximumOn[5] = 48;
-qtra.calibratedMaximumOn[6] = 60;
-qtra.calibratedMaximumOn[7] = 104;
+qtra.calibratedMaximumOn[0] = 80;
+qtra.calibratedMaximumOn[1] = 57;
+qtra.calibratedMaximumOn[2] = 70;
+qtra.calibratedMaximumOn[3] = 100;
+qtra.calibratedMaximumOn[4] = 69;
+qtra.calibratedMaximumOn[5] = 51;
+qtra.calibratedMaximumOn[6] = 106;
+qtra.calibratedMaximumOn[7] = 229;
+
 
 }
 
