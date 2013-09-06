@@ -1,21 +1,22 @@
 void setCalibrationValues() { //Paste these in
 
+//ROOM 10 Values:
 //Max left frequency values: 
-left.maxFrequency[0] = 144070;
-left.maxFrequency[1] = 134593;
-left.maxFrequency[2] = 177123;
+left.maxFrequency[0] = 115686;
+left.maxFrequency[1] = 117810;
+left.maxFrequency[2] = 152567;
 //Max right frequency values: 
-right.maxFrequency[0] = 172385;
-right.maxFrequency[1] = 159803;
-right.maxFrequency[2] = 212091;
+right.maxFrequency[0] = 159756;
+right.maxFrequency[1] = 148797;
+right.maxFrequency[2] = 186600;
 //Min left frequency values: 
-left.minFrequency[0] = 20706;
-left.minFrequency[1] = 18813;
-left.minFrequency[2] = 25998;
+left.minFrequency[0] = 17640;
+left.minFrequency[1] = 16564;
+left.minFrequency[2] = 22352;
 //Min right frequency values: 
-right.minFrequency[0] = 27203;
-right.minFrequency[1] = 22628;
-right.minFrequency[2] = 31778;
+right.minFrequency[0] = 28287;
+right.minFrequency[1] = 24739;
+right.minFrequency[2] = 34032;
 
 
 }
