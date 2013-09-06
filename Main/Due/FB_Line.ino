@@ -16,9 +16,9 @@ void lineFollowingLoop(){
       intersectionCount++;
     }
     
-    if (currentReadLine == 0.0 || currentReadLine == 7000.0) { //i.e. if Off the Line
-      offLineAction(currentReadLine);
-    }
+    //if (currentReadLine == 0.0 || currentReadLine == 7000.0) { //i.e. if Off the Line
+    //  offLineAction(currentReadLine);
+    //}
     
     if(reachedIntersectionLeft) {
       navigateIntersection(LEFT);
@@ -51,15 +51,10 @@ void offLineAction(float currentReadLine) {
     if(digitalRead(PIN_RIGHT_COLOUR) == HIGH){
       reachedIntersectionRight = true;
     }
-    yield();
+    delay(50);
   }
-  
-  boolean foundIntersection;
-  
-  if(!reachedIntersectionLeft && !reachedIntersectionRight) {
-    foundIntersection = true;
-  }
-  else foundIntersection = false;
+    
+  boolean  foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
   
   if(!foundIntersection) {
     reachedEndTile = checkForEndTile();
@@ -94,13 +89,13 @@ void setLineFollowingSpeeds(float currentLinePosition)
   
    if (currentLinePosition <= 0.0)
    {
-      leftSpeed = leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+      leftSpeed = leftSpeedFactor * (1.0 + 8 * currentLinePosition);
       rightSpeed = rightSpeedFactor;
    }
    else
    { 
       leftSpeed = leftSpeedFactor;
-      rightSpeed = rightSpeedFactor * (1.0 - 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
+      rightSpeed = rightSpeedFactor * (1.0 - 8 *currentLinePosition);
    }
    
   motors.setActiveSpeeds(leftSpeed, rightSpeed);

@@ -27,11 +27,15 @@
 #define PIN_LIFT_MOTOR 32
 #define PIN_TOWER_SWITCH 8
 #define PIN_BOARD_LED 13
+#define PIN_LEFT_STEP 7
+#define PIN_LEFT_DIRECTION 6
+#define PIN_RIGHT_STEP 5
+#define PIN_RIGHT_DIRECTION 4
 
 //Objects-----------------
 Compass compass;
-AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
-AccelStepper rightMotor(AccelStepper::DRIVER, 5, 4);
+AccelStepper leftMotor(AccelStepper::DRIVER, PIN_LEFT_STEP, PIN_LEFT_DIRECTION);
+AccelStepper rightMotor(AccelStepper::DRIVER, PIN_RIGHT_STEP, PIN_RIGHT_DIRECTION);
 Motors motors(leftMotor, rightMotor);
 Servo closeArm;
 Ultrasonic ultrasonic(11, 12);

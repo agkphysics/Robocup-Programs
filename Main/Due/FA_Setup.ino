@@ -1,42 +1,44 @@
 void setupLineArray() {
    qtra.calibrate();
  
- //Room 10 dark
+ //Daniel's House
 //Calibration Values: 
- 
-qtra.calibratedMinimumOn[0] = 38;
+qtra.calibratedMinimumOn[0] = 37;
 
 qtra.calibratedMinimumOn[1] = 35;
 
 qtra.calibratedMinimumOn[2] = 36;
 
-qtra.calibratedMinimumOn[3] = 38;
+qtra.calibratedMinimumOn[3] = 37;
 
 qtra.calibratedMinimumOn[4] = 35;
 
-qtra.calibratedMinimumOn[5] = 33;
+qtra.calibratedMinimumOn[5] = 32;
 
-qtra.calibratedMinimumOn[6] = 37;
+qtra.calibratedMinimumOn[6] = 36;
 
 qtra.calibratedMinimumOn[7] = 39;
 
 
 
-qtra.calibratedMaximumOn[0] = 69;
+qtra.calibratedMaximumOn[0] = 82;
 
-qtra.calibratedMaximumOn[1] = 55;
+qtra.calibratedMaximumOn[1] = 59;
 
-qtra.calibratedMaximumOn[2] = 59;
+qtra.calibratedMaximumOn[2] = 65;
 
-qtra.calibratedMaximumOn[3] = 70;
+qtra.calibratedMaximumOn[3] = 77;
 
-qtra.calibratedMaximumOn[4] = 57;
+qtra.calibratedMaximumOn[4] = 61;
 
-qtra.calibratedMaximumOn[5] = 48;
+qtra.calibratedMaximumOn[5] = 50;
 
-qtra.calibratedMaximumOn[6] = 61;
+qtra.calibratedMaximumOn[6] = 70;
 
-qtra.calibratedMaximumOn[7] = 213;
+qtra.calibratedMaximumOn[7] = 207;
+
+
+
 
 
 

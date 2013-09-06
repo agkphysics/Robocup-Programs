@@ -1,37 +1,26 @@
 void setCalibrationValues() { //Paste these in
 
-//ROOM 10 Values DARK:
+//Dan's House Values:
 //Max left frequency values: 
-
-left.maxFrequency[0] = 125081;
-
-left.maxFrequency[1] = 109408;
-
-left.maxFrequency[2] = 151913;
+left.maxFrequency[0] = 121241;
+left.maxFrequency[1] = 117810;
+left.maxFrequency[2] = 154773;
 
 //Max right frequency values: 
-
-right.maxFrequency[0] = 159640;
-
-right.maxFrequency[1] = 142635;
-
-right.maxFrequency[2] = 174836;
+right.maxFrequency[0] = 163398;
+right.maxFrequency[1] = 151470;
+right.maxFrequency[2] = 189868;
 
 //Min left frequency values: 
-
-left.minFrequency[0] = 30289;
-
-left.minFrequency[1] = 27014;
-
-left.minFrequency[2] = 35966;
+left.minFrequency[0] = 20356;
+left.minFrequency[1] = 18295;
+left.minFrequency[2] = 24658;
 
 //Min right frequency values: 
+right.minFrequency[0] = 30860;
+right.minFrequency[1] = 25161;
+right.minFrequency[2] = 34289;
 
-right.minFrequency[0] = 43005;
-
-right.minFrequency[1] = 35359;
-
-right.minFrequency[2] = 48356;
 
 
 
