@@ -48,22 +48,69 @@ void lineFollowingLoop(){
 }
 
 void offLineAction(float currentReadLine) {
-  motors.straight(3);
-  while(motors.running() && !reachedIntersectionLeft && !reachedIntersectionRight){
+  motors.straight(1);
+  motors.wait();
+  
+  if(leftDetectedGreen()){
+    motors.straight(0);
+    delay(200);
     if(leftDetectedGreen()){
       reachedIntersectionLeft = true;
     }
-    
-    if(rightDetectedGreen()){
+  }
+      
+  if(rightDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(rightDetectedGreen()) {
       reachedIntersectionRight = true;
     }
-    delay(50);
   }
+  
+    motors.straight(1);
+  motors.wait();
+  
+  if(leftDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(leftDetectedGreen()){
+      reachedIntersectionLeft = true;
+    }
+  }
+      
+  if(rightDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(rightDetectedGreen()) {
+      reachedIntersectionRight = true;
+    }
+  }
+  
+    motors.straight(1);
+  motors.wait();
+  
+  if(leftDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(leftDetectedGreen()){
+      reachedIntersectionLeft = true;
+    }
+  }
+      
+  if(rightDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(rightDetectedGreen()) {
+      reachedIntersectionRight = true;
+    }
+  }
+  
+  
     
   boolean  foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
   
   if(!foundIntersection) {
-    reachedEndTile = checkForEndTile();
+    checkForEndTile();
   }
   
   if(!foundIntersection && !reachedEndTile) {
@@ -71,15 +118,15 @@ void offLineAction(float currentReadLine) {
   }
 }
 
-boolean checkForEndTile() {
+void checkForEndTile() {
   motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
   motors.wait();
+  delay(100);
   if (leftDetectedGreen() && rightDetectedGreen()) {
     motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
     motors.wait();
-    return true;  
+    reachedEndTile = true;
   }
-  else return false;
 }
 
 void scanForLine(float currentReadLine){ //starts from 10cm forwards
@@ -89,20 +136,21 @@ void scanForLine(float currentReadLine){ //starts from 10cm forwards
   else if (currentReadLine == 7000.0) motors.swingWithRight(20.0);
   motors.wait();
   float newReadLine = (float)(qtra.readLine(currentSensorValues));
-  if(newReadLine == 0.0 || newReadLine == 7000.0){
-    if (currentReadLine == 0.0) {
+    
+    if (newReadLine == 0.0) {
       motors.swingWithLeft(-20.0);
       motors.wait();
-      motors.swingWithRight(20);
+      motors.swingWithRight(20.0);
       motors.wait();
     }
-    else if (currentReadLine == 7000.0) {
+    
+    if (newReadLine == 7000.0) {
       motors.swingWithRight(-20.0);
       motors.wait();
-      motors.swingWithLeft(20);
+      motors.swingWithLeft(20.0);
       motors.wait();
     }
-  }
+  
 }
   
   
@@ -148,7 +196,7 @@ float linePosition(float currentReadLine)
 }
 
 boolean leftDetectedGreen() {
-  return (digitalRead(PIN_LEFT_COLOUR) == HIGH);
+  return  (analogRead(PIN_LEFT_COLOUR) > 100);
 }
     
 boolean rightDetectedGreen() {

@@ -21,8 +21,8 @@
 #define RIGHT false
 
 //Pin Definitions:
-#define PIN_LEFT_COLOUR 52
-#define PIN_RIGHT_COLOUR 9
+#define PIN_LEFT_COLOUR 8
+#define PIN_RIGHT_COLOUR 10
 #define PIN_LEOSTICK_EXTRA 50
 #define PIN_LIFT_MOTOR 9
 #define PIN_TOWER_SWITCH 8

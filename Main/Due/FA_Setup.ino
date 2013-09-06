@@ -45,8 +45,8 @@ qtra.calibratedMaximumOn[7] = 207;
 }
 
 void definePins() {
-  pinMode(PIN_LEFT_COLOUR, INPUT);
-  pinMode(PIN_RIGHT_COLOUR, INPUT);
+  //pinMode(PIN_LEFT_COLOUR, INPUT);// Uncomment out if using DIGITAL pins
+  //pinMode(PIN_RIGHT_COLOUR, INPUT);// Uncomment out if using DIGITAL pins
   pinMode(PIN_LEOSTICK_EXTRA, INPUT);
   pinMode(PIN_LIFT_MOTOR, OUTPUT);
   pinMode(PIN_TOWER_SWITCH, INPUT);
@@ -66,7 +66,8 @@ void setupOutputs() {
 void setupCompass() {
   Wire.begin();
   delay(500);
-  initialHeading = (int)compass.correctedHeading();
+  //initialHeading = (int)compass.correctedHeading();
+  initialHeading = INITIAL_HEADING;
 }
 
 void setupAll() {
