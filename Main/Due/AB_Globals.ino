@@ -1,5 +1,5 @@
 //Map related:
-int mapArray[] = {CIRCLE}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+int mapArray[] = {CIRCLE, ROUNDABOUT, GRIDLOCK}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
 boolean canSide = LEFT;
 boolean reachedEndTile = false;
 #define INITIAL_HEADING 90;

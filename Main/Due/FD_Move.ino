@@ -1,3 +1,24 @@
+void moveSquiggles() {
+    motors.setMaxSpeeds(maxSpeedManualSections - 1000, maxSpeedManualSections - 1000);
+    motors.straight(30);
+    motors.wait();
+    motors.rotate(90);
+    motors.wait();
+    motors.straight(10);
+    motors.wait();
+    motors.swingWithRight(180);
+    motors.wait();
+    motors.straight(22);
+    motors.wait();
+    motors.swingWithLeft(180);
+    motors.wait();
+    motors.straight(12);
+    motors.wait();
+    motors.rotate(-90);
+    motors.wait();
+    motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
+}
+
 void moveWaterTower()
 {
   motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
@@ -46,6 +67,7 @@ void moveRoundabout(boolean triggeredByLeft) {
     motors.straight(3.0);
     motors.wait();
   }
+  
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
@@ -158,7 +180,7 @@ void moveGridlock(){
   motors.wait();
   motors.swingWithRight(90.0);
   motors.wait();
-  motors.straight(1.5);
+  motors.straight(4.5);
   motors.wait(); //could put while(motors.running() && !reachedEndTile()) motors.run(); here instead if gridlock is right by endtile.
   
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
