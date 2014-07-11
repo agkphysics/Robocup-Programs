@@ -2,127 +2,96 @@
 
 #include <AccelStepper.h>
 #include <Wire.h>
+#include <Motors.h>
 
 #define MOTOR_ARDUINO_ADDRESS 0x01
-#define PIN_LEFT_STEP 7
-#define PIN_LEFT_DIRECTION 6
-#define PIN_RIGHT_STEP 5
-#define PIN_RIGHT_DIRECTION 4
+#define PIN_LEFT_STEP 10
+#define PIN_LEFT_DIRECTION 12
+#define PIN_RIGHT_STEP 11
+#define PIN_RIGHT_DIRECTION 13
 
 AccelStepper leftMotor(AccelStepper::DRIVER, PIN_LEFT_STEP, PIN_LEFT_DIRECTION);
 AccelStepper rightMotor(AccelStepper::DRIVER, PIN_RIGHT_STEP, PIN_RIGHT_DIRECTION);
 
+Motors motors(leftMotor, rightMotor);
+
+boolean running = false;
+
 void recievedData(int numBytes)
 {
-    byte code;
+    int code;
     char buffer1[25];
     char buffer2[25];
     float arg1, arg2;
-    if (Wire.available()) code = Wire.read();
-    
+    code = Wire.read();
+    if (Wire.available()) arg1 = Wire.parseFloat();
+    if (Wire.available()) arg2 = Wire.parseFloat();
+
+    /*
     for (int i = 0; Wire.available(); i++)
     {
         char c = Wire.read();
-        if (c == ' ') continue;
-        else if (c == ',')
+        if (c == ' ') 
         {
-            i = 0;
-            break;
+            i--;
+            continue;
         }
+        else if (c == ',') break;
+        
         buffer1[i] = Wire.read();
     }
-    for (int i = 0; Wire.available(); i++)
+    for (int j = 0; Wire.available(); j++)
     {
         char c = Wire.read();
-        buffer2[i] = Wire.read();
+        buffer2[j] = Wire.read();
     }
+    */
 
-    if (code == 9) /* Running? */ (leftMotor.distanceToGo() != 0 || rightMotor.distanceToGo() != 0) ? Wire.write(1) : Wire.write(0);
-    else if (1 <= code && code <= 4)
+    if (1 <= code && code <= 4)
     {
-        arg1 = atof(buffer1);
+        //arg1 = atof(buffer1);
         processData(code, arg1, 0.0);
     }
     else if (5 <= code && code <= 8)
     {
-        arg2 = atof(buffer2);
+        //arg2 = atof(buffer2);
         processData(code, arg1, arg2);
     }
 }
 
-/*
-long cmToSteps(float cm)
+void requestedData()
 {
-    return ((long)((cm * 1600.0)/(6.46 * 3.14159265358979)));
+    Wire.write(motors.running() ? 1 : 0);
 }
-*/
 
-#define cmToSteps(x) ((long)(((x) * 1600.0)/(6.46 * 3.14159265358979)))
-
-void processData(byte code, float arg1, float arg2)
+void processData(int code, float arg1, float arg2)
 {
     switch(code)
     {
     case 1:
-        leftMotor.move(cmToSteps(arg1));
-        rightMotor.move(-cmToSteps(arg1));
+        motors.straight(arg1);
+        //Could wait here.
         break;
     case 2:
-        leftMotor.move(cmToSteps((arg1/360.0)*3.14159265358979*13.75)); //Note that 13.75 is the diameter that gives the most accurate movement for a 360 rotate
-        rightMotor.move(cmToSteps((arg1/360.0)*3.14159265358979*13.75));
+        motors.rotate(arg1);
         break;
     case 3:
-        leftMotor.move(0);
-        rightMotor.move(-cmToSteps((arg1/360.0)*3.14159265358979*13.75*2));
+        motors.swingWithRight(arg1);
         break;
     case 4:
-        rightMotor.move(0);
-        leftMotor.move(cmToSteps((arg1/360.0)*3.14159265358979*13.75*2));
+        motors.swingWithLeft(arg1);
         break;
     case 5:
-        if (arg1 > 0)
-        {
-    	    leftMotor.move(1000000);
-    	    leftMotor.setSpeed(arg1);
-        }
-        else if (arg1 < 0)
-        {
-    	    leftMotor.move(-1000000);
-    	    leftMotor.setSpeed(arg1);
-        }
-        else
-        {
-    	    leftMotor.move(0);
-    	    leftMotor.setSpeed(0);
-        }
-      
-        if (arg1 > 0)
-        {
-    	    rightMotor.move(-1000000);
-    	    rightMotor.setSpeed(-arg1);
-        }
-        else if (arg1 < 0)
-        {
-    	    rightMotor.move(1000000);
-    	    rightMotor.setSpeed(-arg1);
-        }
-        else
-        {
-    	    rightMotor.move(0);
-    	    rightMotor.setSpeed(0);
-        }
+        motors.setActiveSpeeds(arg1, arg2);
         break;
     case 6:
-        leftMotor.setSpeed(arg1);
-        rightMotor.setSpeed(arg2);    
+        motors.setSpeeds(arg1, arg2);   
         break;
     case 7:
-        leftMotor.setMaxSpeed(arg1);
-        rightMotor.setMaxSpeed(arg2);
+        motors.setMaxSpeeds(arg1, arg2);
         break;
     case 8:
-        leftMotor.setAcceleration(arg1);
-        rightMotor.setAcceleration(arg2);
+        motors.setAccelerations(arg1, arg2);
         break;
     }
 }
@@ -130,19 +99,22 @@ void processData(byte code, float arg1, float arg2)
 void setup()
 {
     Wire.begin(MOTOR_ARDUINO_ADDRESS);
-    
-    leftMotor.setMaxSpeed(900);
-    rightMotor.setMaxSpeed(900);
-    leftMotor.setAcceleration(10000);
-    rightMotor.setAcceleration(10000);
-    leftMotor.setSpeed(500); //Must be set once to allow movement, setSpeed(float, float) should be called after moveTo, not needed to be called after move()
-    rightMotor.setSpeed(500); //Must be set once to allow movement
-    
+    motors.setup();
     Wire.onReceive(recievedData);
+    Wire.onRequest(requestedData);
 }
 
 void loop()
 {
-    leftMotor.run();
-    rightMotor.run();
+    /*
+    motors.straight(20.0);
+    while(motors.running()) motors.run();
+    motors.rotate(90.0);
+    while(motors.running()) motors.run();
+    motors.straight(10.0);
+    while(motors.running()) motors.run();
+    motors.rotate(-60.0);
+    while(motors.running()) motors.run();
+    */
+    motors.run();
 }
