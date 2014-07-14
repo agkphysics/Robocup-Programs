@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <Motors.h>
 
-#define MOTOR_ARDUINO_ADDRESS 0x01
+#define MOTOR_ARDUINO_ADDRESS 0x33
 #define PIN_LEFT_STEP 10
 #define PIN_LEFT_DIRECTION 12
 #define PIN_RIGHT_STEP 11
@@ -23,9 +23,17 @@ void recievedData(int numBytes)
     char buffer1[25];
     char buffer2[25];
     float arg1, arg2;
+    arg1 = 0.0;
+    arg2 = 0.0;
+    Serial.println("Received data: ");
     code = Wire.read();
-    if (Wire.available()) arg1 = Wire.parseFloat();
-    if (Wire.available()) arg2 = Wire.parseFloat();
+    if (Wire.available()) arg1 = Wire.readBytesUntil(',', buffer1, 7);
+    if (Wire.available()) arg2 = Wire.readBytes(buffer2, 7);
+    Serial.print(code);
+    Serial.print(", ");
+    Serial.print(arg1);
+    Serial.print(", ");
+    Serial.println(arg2);
 
     /*
     for (int i = 0; Wire.available(); i++)
@@ -61,6 +69,7 @@ void recievedData(int numBytes)
 
 void requestedData()
 {
+    Serial.println("Got a request for data");
     Wire.write(motors.running() ? 1 : 0);
 }
 
@@ -99,6 +108,7 @@ void processData(int code, float arg1, float arg2)
 void setup()
 {
     Wire.begin(MOTOR_ARDUINO_ADDRESS);
+    Serial.begin(9600);
     motors.setup();
     Wire.onReceive(recievedData);
     Wire.onRequest(requestedData);
