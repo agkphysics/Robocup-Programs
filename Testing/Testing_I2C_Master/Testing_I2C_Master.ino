@@ -1,7 +1,8 @@
 #include <Wire.h>
 #include <MotorDriver.h>
 
-MotorDriver motors(0x33);
+#define MOTOR_ARDUINO_ADDRESS 0x20
+MotorDriver motors(MOTOR_ARDUINO_ADDRESS);
 
 void setup()
 {
@@ -14,12 +15,10 @@ void setup()
 
 void loop()
 {
-    /*
+    //*
     motors.setSpeeds(500.0, 500.0);
-    delay(40);
     motors.straight(20.0);
-    //motors.wait();
-    delay(5000);
+    motors.wait();
     motors.rotate(90.0);
     motors.wait();
     motors.straight(10.0);
@@ -28,26 +27,21 @@ void loop()
     motors.wait();
     //*/
     
-    int e;
-    Wire.beginTransmission(0x33);
-    Wire.write(1);
-    Wire.write("20.0");
-    Serial.print("Wrote straight 20.0 ");
-    e = Wire.endTransmission();
-    Serial.println(e);
-    delay(40);
+    /*
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    //*/
     
-    delay(5000);
-    
-    Wire.beginTransmission(0x33);
-    Wire.write(2);
-    Wire.write("90.0");
-    Serial.print("Wrote rotate 90.0 ");
-    e = Wire.endTransmission();
-    Serial.println(e);
-    delay(40);
-    
-    delay(5000);
+    /*
+    u.fval = 0.0;
+    Serial.print("Wrote runnning ");
+    Wire.requestFrom(MOTOR_ARDUINO_ADDRESS, 1);
+    Serial.println(Wire.read());
+    delay(30);
+    //*/
     
     /*
     char buffer[25];

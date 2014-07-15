@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <Motors.h>
 
-#define MOTOR_ARDUINO_ADDRESS 0x33
+#define MOTOR_ARDUINO_ADDRESS 0x20
 #define PIN_LEFT_STEP 10
 #define PIN_LEFT_DIRECTION 12
 #define PIN_RIGHT_STEP 11
@@ -15,61 +15,85 @@ AccelStepper rightMotor(AccelStepper::DRIVER, PIN_RIGHT_STEP, PIN_RIGHT_DIRECTIO
 
 Motors motors(leftMotor, rightMotor);
 
-boolean running = false;
-
 void recievedData(int numBytes)
 {
-    int code;
-    char buffer1[25];
-    char buffer2[25];
+    int code = 0;
+    char buffer1[4];
+    char buffer2[4];
     float arg1, arg2;
     arg1 = 0.0;
     arg2 = 0.0;
-    Serial.println("Received data: ");
+    Serial.print("Received data: ");
     code = Wire.read();
-    if (Wire.available()) arg1 = Wire.readBytesUntil(',', buffer1, 7);
-    if (Wire.available()) arg2 = Wire.readBytes(buffer2, 7);
     Serial.print(code);
-    Serial.print(", ");
-    Serial.print(arg1);
-    Serial.print(", ");
-    Serial.println(arg2);
+    
+    //*
+    for (int i = 0; Wire.available(); i++)
+    {
+        buffer1[i] = Wire.read();
+    }
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    u.b[0] = buffer1[0];
+    u.b[1] = buffer1[1];
+    u.b[2] = buffer1[2];
+    u.b[3] = buffer1[3];
+    arg1 = u.fval;
+    
+    for (int j = 0; Wire.available(); j++)
+    {
+        buffer2[j] = Wire.read();
+    }
+    union t_tag
+    {
+        byte c[4];
+        float fval;
+    } t;
+    t.c[0] = buffer2[0];
+    t.c[1] = buffer2[1];
+    t.c[2] = buffer2[2];
+    t.c[3] = buffer2[3];
+    arg2 = t.fval;
+    //*/
 
     /*
     for (int i = 0; Wire.available(); i++)
     {
-        char c = Wire.read();
-        if (c == ' ') 
-        {
-            i--;
-            continue;
-        }
-        else if (c == ',') break;
-        
-        buffer1[i] = Wire.read();
+        char c = (char)Wire.read();
+        if (c == ',') break;
+        buffer1[i] = c;
     }
     for (int j = 0; Wire.available(); j++)
     {
-        char c = Wire.read();
-        buffer2[j] = Wire.read();
+        char c = (char)Wire.read();
+        buffer2[j] = c;
     }
-    */
+    //*/
 
     if (1 <= code && code <= 4)
     {
-        //arg1 = atof(buffer1);
+        //arg1 = atof(buffer1);    
+        Serial.print(", ");
+        Serial.println(arg1);
         processData(code, arg1, 0.0);
     }
     else if (5 <= code && code <= 8)
     {
         //arg2 = atof(buffer2);
+        Serial.print(", ");
+        Serial.print(arg1);
+        Serial.print(", ");
+        Serial.println(arg2);
         processData(code, arg1, arg2);
     }
 }
 
 void requestedData()
 {
-    Serial.println("Got a request for data");
+    Serial.println("Got a request for buffer1");
     Wire.write(motors.running() ? 1 : 0);
 }
 
@@ -116,15 +140,6 @@ void setup()
 
 void loop()
 {
-    /*
-    motors.straight(20.0);
-    while(motors.running()) motors.run();
-    motors.rotate(90.0);
-    while(motors.running()) motors.run();
-    motors.straight(10.0);
-    while(motors.running()) motors.run();
-    motors.rotate(-60.0);
-    while(motors.running()) motors.run();
-    */
+    //Serial.println("Loop");
     motors.run();
 }
