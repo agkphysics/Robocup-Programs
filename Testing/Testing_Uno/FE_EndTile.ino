@@ -1,8 +1,14 @@
 int getDistance()
 {
-    Wire.requestFrom(ULTRASONIC_ARDUINO_ADDRESS, 1);
-    if (Wire.available()) return Wire.read();
-    return 255;
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    
+    Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
+    for (int i = 0; Wire.available(); i++) u.b[i] =  Wire.read();
+    return u.fval;
 }
 
 void endTile(boolean left)
@@ -10,6 +16,10 @@ void endTile(boolean left)
   motors.straight(5.0);
   motors.wait();
   float endTileInitialHeading = compass.heading();
+  
+  Wire.beginTransmission(LIGHT_ARDUINO_ADDRESS);
+  Wire.write(1);
+  Wire.endTransmission();
   
   motors.setMaxSpeeds(2500, 2500);
   motors.straight(0.0);
@@ -20,14 +30,14 @@ void endTile(boolean left)
   motors.setMaxSpeeds(150, 150);
   
   motors.rotate(90.0);
-  int dist = 120;
+  float dist = 120;
   float headingToCan = 0.0;
   while (true)
   {
     /* Search for can */
     while (motors.running())
     {
-      int currentDist = getDistance();
+      float currentDist = getDistance();
       if (currentDist < dist)
       {
         headingToCan = compass.heading();
@@ -76,7 +86,9 @@ void endTile(boolean left)
   motors.wait();
   delay(250);
   
-  closeArm.write(0); // MUST be 0, not 180!
+  Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
+  Wire.write(0);
+  Wire.endTransmission();
   delay(750);
   
   motors.setMaxSpeeds(2500, 2500);
@@ -125,7 +137,10 @@ void endTile(boolean left)
   motors.wait();
   
   /* Drop can etc... */
-  closeArm.write(60);
+  Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
+  Wire.write(1);
+  Wire.endTransmission();
+  
   delay(400);
   motors.swingWithLeft(-20.0);
   motors.wait();

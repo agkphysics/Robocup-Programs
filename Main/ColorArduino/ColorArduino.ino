@@ -4,7 +4,7 @@
 #include <ColorRecognitionTCS230PI.h>
 #include <Wire.h>
 
-#define COLOR_ARDUINO_ADDRESS 0x17
+#define COLOR_ARDUINO_ADDRESS 0x30
 #define PIN_LEFT_COLOUR 8
 #define PIN_RIGHT_COLOUR 10
 

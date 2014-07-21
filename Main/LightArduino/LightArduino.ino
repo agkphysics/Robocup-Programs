@@ -4,12 +4,12 @@
 #include <Ultrasonic.h>
 #include <Wire.h>
 
-#define LIGHT_ARDUINO_ADDRESS 0x10
-//#define PIN_TRIG 11
-//#define PIN_ECHO 12
+#define LIGHT_ARDUINO_ADDRESS 0x07
+#define PIN_TRIG 11
+#define PIN_ECHO 10
 
-//Ultrasonic ultrasonic(PIN_TRIG, PIN_ECHO);
-int lastDistance = 0;
+Ultrasonic ultrasonic(PIN_TRIG, PIN_ECHO);
+float lastDistance = 0.0;
 
 QTRSensorsAnalog qtra((unsigned char[]) {2, 1, 0, 7, 6, 3}, 6, 9, QTR_NO_EMITTER_PIN); //({Pins}, number of sensors, number of samples per reading to average, emitterpin)
 
@@ -53,21 +53,29 @@ void setupLineArray() {
 void requestedData()
 {
     Serial.println("Got a request for data");
-    char buffer[25];
+    //char buffer[25];
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    
     if (!distMode)
     {
-        char *f_rl = dtostrf(lastReadLine, 3, 1, buffer);
-        Wire.write(f_rl);>> 8)
+        //char *f_rl = dtostrf(lastReadLine, 3, 1, buffer);
+        //Wire.write(f_rl);>> 8)
         //Wire.write((lastReadLine >> 8) & 0x000F);
         //Wire.write(lastReadLine & 0x000F);
-        Serial.print("Wrote '");
-        Serial.print(f_rl);
-        Serial.println("'");
+        //Serial.print("Wrote '");
+        //Serial.print(f_rl);
+        //Serial.println("'");
+        u.fval = (float)lastReadLine;
     }
     else
     {
-        Wire.write(lastDistance);
+        u.fval = lastDistance;
     }
+    Wire.write(u.b, 4);
 }
 
 void receivedData(int numBytes)
@@ -87,6 +95,7 @@ void setup()
 void loop()
 {
     if (!distMode) lastReadLine = qtra.readLine(currentSensorValues);
-    //else lastDistance = (int)ultrasonic.distance();
+    else lastDistance = ultrasonic.distance();
     //Serial.println(lastReadLine);
+    //Serial.println(lastDistance);
 }

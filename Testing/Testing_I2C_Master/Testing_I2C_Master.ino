@@ -2,7 +2,7 @@
 #include <MotorDriver.h>
 
 #define MOTOR_ARDUINO_ADDRESS 0x20
-MotorDriver motors(MOTOR_ARDUINO_ADDRESS);
+//MotorDriver motors(MOTOR_ARDUINO_ADDRESS);
 
 void setup()
 {
@@ -15,7 +15,7 @@ void setup()
 
 void loop()
 {
-    //*
+    /*
     motors.setSpeeds(500.0, 500.0);
     motors.straight(20.0);
     motors.wait();
@@ -27,7 +27,7 @@ void loop()
     motors.wait();
     //*/
     
-    /*
+    //*
     union u_tag
     {
         byte b[4];
@@ -35,26 +35,16 @@ void loop()
     } u;
     //*/
     
-    /*
-    u.fval = 0.0;
-    Serial.print("Wrote runnning ");
-    Wire.requestFrom(MOTOR_ARDUINO_ADDRESS, 1);
-    Serial.println(Wire.read());
-    delay(30);
-    //*/
-    
-    /*
-    char buffer[25];
-    unsigned char b1, b2;
-    Wire.requestFrom(0x10, 6);
-    //Wire,requestFrom(0x10, 2);
-    for (int i = 0; Wire.available(); i++)
+    for (int j = 0; j < 20; j++)
     {
-        buffer[i] = Wire.read();
-        //b1 = buffer.read
+        Wire.requestFrom(0x07, 4);
+        for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
+        Serial.println(u.fval);
+        delay(40);
     }
-    float currentReadLine = atof(buffer);
-    Serial.println(currentReadLine);
+    
+    Wire.beginTransmission(0x07);
+    Wire.write(1);
+    int e = Wire.endTransmission();
     delay(40);
-    */
 }
