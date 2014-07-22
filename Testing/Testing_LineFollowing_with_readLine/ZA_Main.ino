@@ -1,19 +1,10 @@
 void setup() {
   setupRobot(); //Includes calibrate line sensors
-  delay(5000); //To wait for leo-stick to boot up if we don't need to calibrate sensors
-  
-  printArrayCalibrationValues();
-  
+  delay(1000);
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
+  delay(50);
   lineFollowingLoop(); //Blocks until end tile
-
 }
 
-void loop(){
-}
-
-void runMotorLoop() {
-  motors.run();
-  yield();
-}
+void loop() {}
 

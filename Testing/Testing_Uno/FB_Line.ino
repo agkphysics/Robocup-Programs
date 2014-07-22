@@ -1,12 +1,14 @@
 float getReadLine()
 {
-    Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 3);
-    char buffer[25];
-    for (int i = 0; Wire.available(); i++)
+    union u_tag
     {
-        buffer[i] = Wire.read();
-    }
-    return atof(buffer);
+        byte b[4];
+        float fval;
+    } u;
+    
+    Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
+    for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
+    delay(40);
 }
 
 void lineFollowingLoop(){

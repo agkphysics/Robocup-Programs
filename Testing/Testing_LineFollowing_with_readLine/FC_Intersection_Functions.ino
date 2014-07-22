@@ -201,15 +201,9 @@ void turnLeft() {
 }
   
 boolean reachedIntersectionLeft() {
-  if (digitalRead(PIN_LEFT_COLOUR) == HIGH) { 
-    return true;
-  }
-  else return false;
+  return false;
 }
 
 boolean reachedIntersectionRight() {
-  if (digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
-    return true;
-  }
-  else return false;
+  return false;
 }

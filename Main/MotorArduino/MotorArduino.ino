@@ -23,11 +23,8 @@ void recievedData(int numBytes)
     float arg1, arg2;
     arg1 = 0.0;
     arg2 = 0.0;
-    Serial.print("Received data: ");
     code = Wire.read();
-    Serial.print(code);
-    
-    //*
+
     for (int i = 0; Wire.available(); i++)
     {
         buffer1[i] = Wire.read();
@@ -57,43 +54,19 @@ void recievedData(int numBytes)
     t.c[2] = buffer2[2];
     t.c[3] = buffer2[3];
     arg2 = t.fval;
-    //*/
-
-    /*
-    for (int i = 0; Wire.available(); i++)
-    {
-        char c = (char)Wire.read();
-        if (c == ',') break;
-        buffer1[i] = c;
-    }
-    for (int j = 0; Wire.available(); j++)
-    {
-        char c = (char)Wire.read();
-        buffer2[j] = c;
-    }
-    //*/
 
     if (1 <= code && code <= 4)
     {
-        //arg1 = atof(buffer1);    
-        Serial.print(", ");
-        Serial.println(arg1);
         processData(code, arg1, 0.0);
     }
     else if (5 <= code && code <= 8)
     {
-        //arg2 = atof(buffer2);
-        Serial.print(", ");
-        Serial.print(arg1);
-        Serial.print(", ");
-        Serial.println(arg2);
         processData(code, arg1, arg2);
     }
 }
 
 void requestedData()
 {
-    Serial.println("Got a request for buffer1");
     Wire.write(motors.running() ? 1 : 0);
 }
 
@@ -140,6 +113,5 @@ void setup()
 
 void loop()
 {
-    //Serial.println("Loop");
     motors.run();
 }

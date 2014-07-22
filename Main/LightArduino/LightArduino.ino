@@ -11,70 +11,68 @@
 Ultrasonic ultrasonic(PIN_TRIG, PIN_ECHO);
 float lastDistance = 0.0;
 
-QTRSensorsAnalog qtra((unsigned char[]) {2, 1, 0, 7, 6, 3}, 6, 9, QTR_NO_EMITTER_PIN); //({Pins}, number of sensors, number of samples per reading to average, emitterpin)
+QTRSensorsAnalog qtra((unsigned char[]) {3, 6, 7, 0, 1, 2}, 6, 9, QTR_NO_EMITTER_PIN); //({Pins}, number of sensors, number of samples per reading to average, emitterpin)
 
 unsigned int currentSensorValues[6];
 unsigned int lastReadLine = 2500;
 
 boolean distMode = false;
 
-void setupLineArray() {
-    
-    Serial.println("Calibrating...");
-    
-    /*
+void calibrateManually()
+{
     int i;
     for (i = 0; i < 250; i++)  // make the calibration take about 5 seconds
     {
         qtra.calibrate();
-        delay(20);
+        delay(15);
     }
-    */
+}
 
-    qtra.calibrate();
-    //Competition Day Values:
-    qtra.calibratedMinimumOn[0] = 37;
-    qtra.calibratedMinimumOn[1] = 35;
-    qtra.calibratedMinimumOn[2] = 36;
-    qtra.calibratedMinimumOn[3] = 37;
-    qtra.calibratedMinimumOn[4] = 35;
-    qtra.calibratedMinimumOn[5] = 32;
+void setupLineArray()
+{
     
-    qtra.calibratedMaximumOn[0] = 70;
-    qtra.calibratedMaximumOn[1] = 54;
-    qtra.calibratedMaximumOn[2] = 59;
-    qtra.calibratedMaximumOn[3] = 66;
-    qtra.calibratedMaximumOn[4] = 56;
-    qtra.calibratedMaximumOn[5] = 48;
+    Serial.println("Calibrating...");
+
+    //*
+    qtra.calibrate();
+    //Aaron's House (Scary Mansion) Values:
+    qtra.calibratedMinimumOn[0] = 25;
+    qtra.calibratedMinimumOn[1] = 24;
+    qtra.calibratedMinimumOn[2] = 24;
+    qtra.calibratedMinimumOn[3] = 22;
+    qtra.calibratedMinimumOn[4] = 26;
+    qtra.calibratedMinimumOn[5] = 28;
+    
+    qtra.calibratedMaximumOn[0] = 589;
+    qtra.calibratedMaximumOn[1] = 602;
+    qtra.calibratedMaximumOn[2] = 533;
+    qtra.calibratedMaximumOn[3] = 380;
+    qtra.calibratedMaximumOn[4] = 589;
+    qtra.calibratedMaximumOn[5] = 700;
+    //*/
+    
+    //calibrateManually();
+    
+    Serial.println("Min values");
+    for (int i = 0; i < 6; i++) Serial.println(qtra.calibratedMinimumOn[i]);
+    Serial.println();
+    Serial.println("Max values");
+    for (int i = 0; i < 6; i++) Serial.println(qtra.calibratedMaximumOn[i]);
     
     Serial.println("Finished calibrating");
 }
 
 void requestedData()
 {
-    Serial.println("Got a request for data");
-    //char buffer[25];
     union u_tag
     {
         byte b[4];
         float fval;
     } u;
     
-    if (!distMode)
-    {
-        //char *f_rl = dtostrf(lastReadLine, 3, 1, buffer);
-        //Wire.write(f_rl);>> 8)
-        //Wire.write((lastReadLine >> 8) & 0x000F);
-        //Wire.write(lastReadLine & 0x000F);
-        //Serial.print("Wrote '");
-        //Serial.print(f_rl);
-        //Serial.println("'");
-        u.fval = (float)lastReadLine;
-    }
-    else
-    {
-        u.fval = lastDistance;
-    }
+    if (!distMode) u.fval = (float)lastReadLine;
+    else u.fval = lastDistance;
+    
     Wire.write(u.b, 4);
 }
 

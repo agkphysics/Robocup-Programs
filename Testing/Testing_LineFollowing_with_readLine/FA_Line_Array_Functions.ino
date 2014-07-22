@@ -1,11 +1,25 @@
-void lineFollowingLoop(){
-  
+float getReadLine()
+{
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    
+    Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
+    for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
+    delay(40);
+    return u.fval;
+}
+
+void lineFollowingLoop()
+{
   int intersectionCount = 0;
   while(!reachedEndTile){
-    float currentReadLine = (float)qtra.readLine(currentSensorValues);
+    float currentReadLine = (float)getReadLine();
     float currentLinePosition = linePosition(currentReadLine);
     
-    if (currentReadLine != 0.0 && currentReadLine != 7000.0) {
+    if (currentReadLine != 0.0 && currentReadLine != 5000.0) {
       setLineFollowingSpeeds(currentLinePosition);
     
       if(reachedIntersectionLeft()){
@@ -40,24 +54,15 @@ void offLineAction(float currentLinePosition) {
 boolean checkForEndTile() {
   motors.straight(10);
   motors.wait();
-  if(digitalRead(PIN_LEFT_COLOUR) == HIGH && digitalRead(PIN_RIGHT_COLOUR) == HIGH) {
-    motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
-    motors.wait();
-    return true;  
-  }
-  else return false;
+  return false;
 }
 
 void scanForLine(){
   //TODO
 }
-  
-  
 
 void setLineFollowingSpeeds(float currentLinePosition)
 {
-  
-  
    if (currentLinePosition <= 0.0)
    {
       leftSpeed = leftSpeedFactor * (1.0 + 15.0 * currentLinePosition* currentLinePosition*currentLinePosition);
@@ -72,44 +77,9 @@ void setLineFollowingSpeeds(float currentLinePosition)
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
-
-
 float linePosition(float currentReadLine)
 {
-  float lineReadScaled = currentReadLine / 3500.0; 
+  float lineReadScaled = currentReadLine / 2500.0; 
   return (lineReadScaled - 1.0);
 }
-
-float blackness() { //0 to 8000
-  //Must have just called this in LineFollowingSetSpeeds: qtra.readCalibrated(currentSensorValues);
-  unsigned int sum = 0;
-  for (int i=0; i<8; i++) {
-    sum += currentSensorValues[i];
-  }
-  return (float)sum/8000.0;  
-}
-
-
-void printArrayCalibrationValues() {
-  for (int i = 0; i < 8; i++)
-  {
-    Serial.print("qtra.calibratedMinimumOn[");
-    Serial.print(i);
-    Serial.print("] = ");
-    Serial.print(qtra.calibratedMinimumOn[i]);
-    Serial.println(";");
-  }
-  Serial.println();
-  for (int i = 0; i < 8; i++)
-  {
-    Serial.print("qtra.calibratedMaximumOn[");
-    Serial.print(i);
-    Serial.print("] = ");
-    Serial.print(qtra.calibratedMaximumOn[i]);
-    Serial.println(";");
-  }
-  Serial.println();
-  
-}
-
 
