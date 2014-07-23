@@ -1,4 +1,5 @@
 void align() {
+    return;
   float degreesToRotate = degreesToNearest90();
   Serial.print(degreesToRotate);
   motors.rotate(degreesToRotate);

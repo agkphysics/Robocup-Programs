@@ -9,11 +9,13 @@ float getReadLine()
     Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
     for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
     delay(40);
+    return u.fval;
 }
 
-void lineFollowingLoop(){
-  
-  while(!reachedEndTile){
+void lineFollowingLoop()
+{
+  while(!reachedEndTile)
+  {
     float currentReadLine = getReadLine();
     float currentLinePosition = linePosition(currentReadLine);
     
@@ -35,8 +37,8 @@ void lineFollowingLoop(){
       }
     }
     
-    if (currentReadLine == 0.0 || currentReadLine == 7000.0) { //i.e. if Off the Line
-      offLineAction(currentReadLine);
+    if (currentReadLine == 0.0 || currentReadLine == 5000.0) { //i.e. if Off the Line
+      //offLineAction(currentReadLine);
     }
     
     if(reachedIntersectionLeft) {
@@ -121,41 +123,39 @@ void offLineAction(float currentReadLine) {
     }
   }
   
-  
-    
-  boolean  foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
+  boolean foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
   
   if(!foundIntersection) {
     reachedEndTile = checkForEndTile();
   }
   
   if(!foundIntersection && !reachedEndTile) {
-    scanForLine(currentReadLine);
+    //scanForLine(currentReadLine);
   }
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
-  
 }
 
 boolean checkForEndTile() {
+    return false;
   motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
   motors.wait();
   if (leftDetectedGreen() && rightDetectedGreen()) {
-    motors.straight(-11); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
+    motors.straight(-11.0); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
     motors.wait();
-    return true;  
+    return true;
   }
   else return false;
 }
 
-void scanForLine(float currentReadLine){ //starts from 10cm forwards
-  motors.straight(-15.0);
+void scanForLine(float currentReadLine) { //starts from 10cm forwards
+  //*
+  motors.straight(-3.0);
   motors.wait();
-  if (currentReadLine == 0.0) motors.swingWithLeft(20.0);
-  else if (currentReadLine == 7000.0) motors.swingWithRight(20.0);
+  if (currentReadLine == 0.0) motors.swingWithLeft(15.0);
+  else if (currentReadLine == 5000.0) motors.swingWithRight(15.0);
   motors.wait();
   delay(250);
   float newReadLine = getReadLine();
-    
     if (newReadLine == 0.0) {
       motors.swingWithLeft(-20.0);
       motors.wait();
@@ -163,32 +163,29 @@ void scanForLine(float currentReadLine){ //starts from 10cm forwards
       motors.wait();
     }
     
-    if (newReadLine == 7000.0) {
+    if (newReadLine == 5000.0) {
       motors.swingWithRight(-20.0);
       motors.wait();
       motors.swingWithLeft(20.0);
       motors.wait();
     }
-  
 }
-  
-  
 
 void setLineFollowingSpeeds(float currentLinePosition)
 {
    if (currentLinePosition <= 0.0)
    {
-      leftSpeed = leftSpeedFactor * (1.0 - 24*currentLinePosition*currentLinePosition);
+       //old val was 24
+      leftSpeed = leftSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
 //      leftSpeed = leftSpeedFactor * (1.0 + 5*currentLinePosition);
       rightSpeed = rightSpeedFactor;
    }
    else
    { 
       leftSpeed = leftSpeedFactor;
-      rightSpeed = rightSpeedFactor * (1.0 - 24 *currentLinePosition*currentLinePosition);
+      rightSpeed = rightSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
 //      rightSpeed = rightSpeedFactor * (1.0 - 5 *currentLinePosition);
    }
-   
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
@@ -210,29 +207,31 @@ boolean checkForGreen(){
 
 float linePosition(float currentReadLine)
 {
-  float lineReadScaled = currentReadLine / 3500.0; 
+  float lineReadScaled = currentReadLine / 2500.0; 
   return (lineReadScaled - 1.0);
 }
 
 boolean leftDetectedGreen()
 {
+    return false;
   Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
   if (Wire.available())
   {
       //boolean b = Wire.read() ? true : false;
       //Wire.read(); //Discard second byte
       //return b;
-      return Wire.read() ? true : false;
+      return (Wire.read() == 1) ? true : false;
   }
   return false;
 }
     
-boolean rightDetectedGreen() {
-  Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 2);
+boolean rightDetectedGreen()
+{
+    return false;
+  Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
   if (Wire.available())
   {
-      Wire.read(); //Discard 1st byte
-      return Wire.read() ? true : false;
+      return (Wire.read() == 2) ? true : false;
   }
   return false;
 }

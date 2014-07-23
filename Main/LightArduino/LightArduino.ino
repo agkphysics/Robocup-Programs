@@ -37,18 +37,18 @@ void setupLineArray()
     qtra.calibrate();
     //Aaron's House (Scary Mansion) Values:
     qtra.calibratedMinimumOn[0] = 25;
-    qtra.calibratedMinimumOn[1] = 24;
+    qtra.calibratedMinimumOn[1] = 25;
     qtra.calibratedMinimumOn[2] = 24;
     qtra.calibratedMinimumOn[3] = 22;
     qtra.calibratedMinimumOn[4] = 26;
-    qtra.calibratedMinimumOn[5] = 28;
+    qtra.calibratedMinimumOn[5] = 27;
     
-    qtra.calibratedMaximumOn[0] = 589;
-    qtra.calibratedMaximumOn[1] = 602;
-    qtra.calibratedMaximumOn[2] = 533;
-    qtra.calibratedMaximumOn[3] = 380;
-    qtra.calibratedMaximumOn[4] = 589;
-    qtra.calibratedMaximumOn[5] = 700;
+    qtra.calibratedMaximumOn[0] = 822;
+    qtra.calibratedMaximumOn[1] = 833;
+    qtra.calibratedMaximumOn[2] = 799;
+    qtra.calibratedMaximumOn[3] = 733;
+    qtra.calibratedMaximumOn[4] = 843;
+    qtra.calibratedMaximumOn[5] = 903;
     //*/
     
     //calibrateManually();

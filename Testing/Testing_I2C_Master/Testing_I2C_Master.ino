@@ -35,9 +35,10 @@ void loop()
     //*/
     motors.setMaxSpeeds(1000.0, 1000.0);
     motors.rotate(360.0);
+    //motors.straight(20.0);
     motors.wait();
     delay(1000);
-    
+
     /*
     union u_tag
     {

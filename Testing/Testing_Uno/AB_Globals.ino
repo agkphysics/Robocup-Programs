@@ -1,5 +1,5 @@
 //Map related:
-int mapArray[] = {CIRCLE, ROUNDABOUT, GRIDLOCK}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+int mapArray[] = {CIRCLE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
 boolean canSide = LEFT;
 boolean reachedEndTile = false;
 #define INITIAL_HEADING 90;
@@ -10,8 +10,8 @@ boolean reachedIntersectionRight = false;
 
 
 //Speeds:
-float leftSpeedFactor = 1500.0; //Max Speed on straight for linefollowing
-float rightSpeedFactor = 1500.0; //Max Speed on straight for linefollowing
+float leftSpeedFactor = 1000.0; //Max Speed on straight for linefollowing
+float rightSpeedFactor = 1000.0; //Max Speed on straight for linefollowing
 
 float maxSpeedManualSections = 4000.0;
 
@@ -21,5 +21,3 @@ float rightSpeed = 600.0; //Initial Speed (for testing purposes)
 //Compass related:
 int initialHeading; //Is set in setupRobot();
 
-//Line array related:
-unsigned int currentSensorValues[8];

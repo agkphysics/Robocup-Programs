@@ -1,8 +1,6 @@
 void definePins() {
-  pinMode(PIN_LIFT_MOTOR, OUTPUT);
   pinMode(PIN_TOWER_SWITCH, INPUT);
   pinMode(PIN_BOARD_LED, OUTPUT);
-  digitalWrite(PIN_LIFT_MOTOR, LOW);
 }
 
 void setupCompass() {

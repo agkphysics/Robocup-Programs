@@ -43,16 +43,16 @@ void turn(boolean triggeredByLeft) {
 
 
 void turnRight() {
-  motors.straight(10);
+  motors.straight(10.0);
   motors.wait();
-  motors.rotate(90);
+  motors.rotate(90.0);
   motors.wait();
 }
 
 
 void turnLeft() {
-  motors.straight(10);
+  motors.straight(10.0);
   motors.wait();
-  motors.rotate(-90);
+  motors.rotate(-90.0);
   motors.wait();
 }

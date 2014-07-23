@@ -9,6 +9,7 @@ float getReadLine()
     Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
     for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
     delay(40);
+    Serial.println(u.fval);
     return u.fval;
 }
 
