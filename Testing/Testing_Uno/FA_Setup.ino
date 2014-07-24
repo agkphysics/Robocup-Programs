@@ -1,15 +1,18 @@
-void definePins() {
+void definePins()
+{
   pinMode(PIN_TOWER_SWITCH, INPUT);
   pinMode(PIN_BOARD_LED, OUTPUT);
 }
 
-void setupCompass() {
+void setupCompass()
+{
   delay(500);
   //initialHeading = (int)compass.correctedHeading();
   initialHeading = INITIAL_HEADING;
 }
 
-void setupAll() {
+void setupAll()
+{
   Wire.begin();
   definePins();
   setupCompass();

@@ -103,9 +103,10 @@ void endTile(boolean left)
   digitalWrite(7, HIGH);
   
   /* Lift arm */
-  digitalWrite(PIN_LIFT_MOTOR, HIGH);
-  delayMicroseconds(4000000);
-  digitalWrite(PIN_LIFT_MOTOR, LOW);
+  Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
+  Wire.write(2);
+  Wire.endTransmission();
+  delay(4000);
 
   motors.straight((float)-distToCan);
   motors.wait();

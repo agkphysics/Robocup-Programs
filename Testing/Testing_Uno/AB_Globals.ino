@@ -2,7 +2,7 @@
 int mapArray[] = {CIRCLE, ROUNDABOUT}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
 boolean canSide = LEFT;
 boolean reachedEndTile = false;
-#define INITIAL_HEADING 90;
+#define INITIAL_HEADING 90.0;
 int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
 int intersectionCount = 0;
 boolean reachedIntersectionLeft = false;

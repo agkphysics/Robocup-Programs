@@ -189,8 +189,8 @@ void setLineFollowingSpeeds(float currentLinePosition)
   motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
-boolean checkForGreen(){
-
+boolean checkForGreen()
+{
       if(leftDetectedGreen()){
         navigateIntersection(LEFT);
         intersectionCount++;
@@ -214,24 +214,30 @@ float linePosition(float currentReadLine)
 boolean leftDetectedGreen()
 {
     return false;
-  Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
-  if (Wire.available())
-  {
-      //boolean b = Wire.read() ? true : false;
-      //Wire.read(); //Discard second byte
-      //return b;
-      return (Wire.read() == 1) ? true : false;
-  }
-  return false;
+    delay(40);
+    Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
+    if (Wire.available())
+    {
+        //boolean b = Wire.read() ? true : false;
+        //Wire.read(); //Discard second byte
+        //return b;
+        int b = Wire.read();
+        return (b == 1 || b == 3);
+        //return (b & 1);
+    }
+    return false;
 }
-    
+
 boolean rightDetectedGreen()
 {
     return false;
-  Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
-  if (Wire.available())
-  {
-      return (Wire.read() == 2) ? true : false;
-  }
-  return false;
+    delay(40);
+    Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
+    if (Wire.available())
+    {
+        int b = Wire.read();
+        return (b == 2 || b == 3);
+        //return (b & 2);
+    }
+    return false;
 }

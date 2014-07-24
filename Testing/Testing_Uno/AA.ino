@@ -21,8 +21,7 @@
 #define RIGHT false
 
 //Pin Definitions:
-#define PIN_LIFT_MOTOR 9
-#define PIN_TOWER_SWITCH 8
+#define PIN_TOWER_SWITCH A0
 #define PIN_BOARD_LED 13
 
 //Objects-----------------
