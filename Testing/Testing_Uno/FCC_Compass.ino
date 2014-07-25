@@ -1,19 +1,18 @@
-void align() {
-    return;
-  float degreesToRotate = degreesToNearest90();
-  Serial.print(degreesToRotate);
-  motors.rotate(degreesToRotate);
-  motors.wait();
+void align()
+{
+    float degreesToRotate = degreesToNearest90();
+    Serial.print(degreesToRotate);
+    motors.rotate(degreesToRotate);
+    motors.wait();
 }
 
-	 
-float degreesToNearest90() {
+float degreesToNearest90()
+{
     int currentHeading = (int)(compass.correctedHeading());
 	
     int currentRelativeHeading = currentHeading - initialHeading;
-    if (currentRelativeHeading < 0) {
-      currentRelativeHeading = currentRelativeHeading + 360;
-    }
+    if (currentRelativeHeading < 0) currentRelativeHeading = currentRelativeHeading + 360;
+
     Serial.print("CurrentRelativeHeading: ");
     Serial.println(currentRelativeHeading);
     int closest90 = ((currentRelativeHeading + 45)/90)*90;
@@ -21,3 +20,4 @@ float degreesToNearest90() {
     Serial.println(closest90);
     return (float)(closest90 - currentRelativeHeading);
 }
+

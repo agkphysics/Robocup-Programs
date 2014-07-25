@@ -5,9 +5,9 @@
 #include <Motors.h>
 
 #define MOTOR_ARDUINO_ADDRESS 0x20
-#define PIN_LEFT_STEP 10
+#define PIN_LEFT_STEP 11
 #define PIN_LEFT_DIRECTION 12
-#define PIN_RIGHT_STEP 11
+#define PIN_RIGHT_STEP 10
 #define PIN_RIGHT_DIRECTION 13
 
 AccelStepper leftMotor(AccelStepper::DRIVER, PIN_LEFT_STEP, PIN_LEFT_DIRECTION);

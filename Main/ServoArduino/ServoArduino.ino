@@ -2,14 +2,14 @@
 #include <Wire.h>
 
 #define PIN_LIFT_MOTOR_UP 3
-#define PIN_LIN_MOTOR_DOWN 5
+#define PIN_LIFT_MOTOR_DOWN 5
 #define SERVO_ARDUINO_ADDRESS 0x17
 
 Servo closeArm;
 
 void receivedData(int numBytes)
 {
-    int a = Wire.read();
+    int a = (int)Wire.read();
     switch (a)
     {
     case 0:
@@ -29,6 +29,8 @@ void receivedData(int numBytes)
         digitalWrite(PIN_LIFT_MOTOR_DOWN, HIGH);
         delay(4000);
         digitalWrite(PIN_LIFT_MOTOR_DOWN, LOW);
+        break;
+    default:
         break;
     }
 }

@@ -12,6 +12,26 @@ float getReadLine()
     return u.fval;
 }
 
+float getAverageValue()
+{
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
+    
+    Wire.beginTransmission(LIGHT_ARDUINO_ADDRESS);
+    Wire.write(2);
+    Wire.endTransmission();
+    delay(5);
+    
+    Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
+    for (int i = 0; Wire.available(); i++) u.b[i] = Wire.read();
+    delay(40);
+    //Serial.println(u.fval);
+    return u.fval;
+}
+
 void lineFollowingLoop()
 {
   while(!reachedEndTile)
@@ -21,21 +41,41 @@ void lineFollowingLoop()
     
     setLineFollowingSpeeds(currentLinePosition);
     
+    if ((leftDetectedGreen() && rightDetectedGreen()))
+    {
+        if (intersections[intersectionCount] == LEFT) motors.swingWithRight(20.0);
+        else motors.swingWithLeft(20.0);
+        motors.wait();
+        while (abs(getReadLine() - 2500.0) >= 1000.0)
+        {
+            if (intersections[intersectionCount] == LEFT) motors.swingWithRight(10.0);
+            else motors.swingWithLeft(10.0);
+            motors.wait();
+        }
+        motors.straight(3.0);
+        motors.wait();
+        intersectionCount++;
+    }
+    
+    /*
     if(leftDetectedGreen()){
       motors.straight(0);
-      delay(200);
+      delay(1000);
       if(leftDetectedGreen()){
         reachedIntersectionLeft = true;
+        delay(10000);
       }
     }
-      
+    
     if(rightDetectedGreen()){
       motors.straight(0);
-      delay(200);
+      delay(1000);
       if(rightDetectedGreen()) {
         reachedIntersectionRight = true;
+        delay(10000);
       }
     }
+    */
     
     if (currentReadLine == 0.0 || currentReadLine == 5000.0) { //i.e. if Off the Line
       //offLineAction(currentReadLine);
@@ -54,8 +94,21 @@ void lineFollowingLoop()
       intersectionCount++;
       reachedIntersectionRight = false;
     }
-      
-      
+    
+    
+    
+    /*
+    if (reachedIntersection)
+    {
+        navigateIntersection(intersections[intersectionCount]);
+        intersectionCount++;
+        reachedIntersection = false;
+    }
+    */
+    
+    
+    
+    
     
     if(digitalRead(PIN_TOWER_SWITCH) == HIGH){
       moveWaterTower();
@@ -64,10 +117,44 @@ void lineFollowingLoop()
   }
 }
 
-void offLineAction(float currentReadLine) {
-  motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
-  motors.straight(1);
-  motors.wait();
+void offLineAction(float currentReadLine)
+{
+    //if (getAverageValue() >= 420.0) reachedIntersection = true;
+    /*
+    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
+    motors.straight(1);
+    motors.wait();
+    if (getAverageValue() >= 500.0) 
+    {
+        align();
+        if (getAverageValue() >= 650.0) reachedIntersection = true;
+    }
+    */
+  
+  
+    motors.setMaxSpeeds(maxSpeedManualSections, maxSpeedManualSections);
+    motors.straight(1);
+    motors.wait();
+    
+  if(leftDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(leftDetectedGreen()){
+      reachedIntersectionLeft = true;
+    }
+  }
+
+  if(rightDetectedGreen()){
+    motors.straight(0);
+    delay(200);
+    if(rightDetectedGreen()) {
+      reachedIntersectionRight = true;
+    }
+  }
+  
+    motors.straight(1);
+    motors.wait();
+    //if (getAverageValue() >= 500.0) reachedIntersection = true;
   
   if(leftDetectedGreen()){
     motors.straight(0);
@@ -86,7 +173,8 @@ void offLineAction(float currentReadLine) {
   }
   
     motors.straight(1);
-  motors.wait();
+    motors.wait();
+    //if (getAverageValue() >= 500.0) reachedIntersection = true;
   
   if(leftDetectedGreen()){
     motors.straight(0);
@@ -104,29 +192,11 @@ void offLineAction(float currentReadLine) {
     }
   }
   
-    motors.straight(1);
-  motors.wait();
-  
-  if(leftDetectedGreen()){
-    motors.straight(0);
-    delay(200);
-    if(leftDetectedGreen()){
-      reachedIntersectionLeft = true;
-    }
-  }
-      
-  if(rightDetectedGreen()){
-    motors.straight(0);
-    delay(200);
-    if(rightDetectedGreen()) {
-      reachedIntersectionRight = true;
-    }
-  }
   
   boolean foundIntersection = reachedIntersectionLeft || reachedIntersectionRight;
   
   if(!foundIntersection) {
-    reachedEndTile = checkForEndTile();
+      if(intersectionCount > maxArrayIndex) reachedEndTile = checkForEndTile();
   }
   
   if(!foundIntersection && !reachedEndTile) {
@@ -135,16 +205,22 @@ void offLineAction(float currentReadLine) {
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 }
 
-boolean checkForEndTile() {
-    return false;
-  motors.straight(7); //Only 7 rather than 10 since 3 have already been done in checking for green
-  motors.wait();
-  if (leftDetectedGreen() && rightDetectedGreen()) {
-    motors.straight(-11.0); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
+boolean checkForEndTile()
+{
+    motors.straight(7.0); //Only 7 rather than 10 since 3 have already been done in checking for green
     motors.wait();
-    return true;
-  }
-  else return false;
+    if (leftDetectedGreen() && rightDetectedGreen())
+    {
+        motors.straight(-11.0); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
+        motors.wait();
+        return true;
+    }
+    else
+    {
+        motors.straight(-10.0);
+        motors.wait();
+        return false;
+    }
 }
 
 void scanForLine(float currentReadLine) { //starts from 10cm forwards
@@ -173,36 +249,20 @@ void scanForLine(float currentReadLine) { //starts from 10cm forwards
 
 void setLineFollowingSpeeds(float currentLinePosition)
 {
-   if (currentLinePosition <= 0.0)
-   {
-       //old val was 24
-      leftSpeed = leftSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
-//      leftSpeed = leftSpeedFactor * (1.0 + 5*currentLinePosition);
-      rightSpeed = rightSpeedFactor;
-   }
-   else
-   { 
-      leftSpeed = leftSpeedFactor;
-      rightSpeed = rightSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
-//      rightSpeed = rightSpeedFactor * (1.0 - 5 *currentLinePosition);
-   }
-  motors.setActiveSpeeds(leftSpeed, rightSpeed);
-}
-
-boolean checkForGreen()
-{
-      if(leftDetectedGreen()){
-        navigateIntersection(LEFT);
-        intersectionCount++;
-        return true;
-      }
-      
-      else if(rightDetectedGreen()){
-        navigateIntersection(RIGHT);
-        intersectionCount++;
-        return true;
-      }
-      else return false;
+    if (currentLinePosition <= 0.0)
+    {
+         //old val was 24x^2
+        leftSpeed = leftSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
+      //leftSpeed = leftSpeedFactor * (1.0 + 5*currentLinePosition);
+        rightSpeed = rightSpeedFactor;
+    }
+    else
+    { 
+        leftSpeed = leftSpeedFactor;
+        rightSpeed = rightSpeedFactor * (1.0 - 4.0 * currentLinePosition * currentLinePosition);
+      //rightSpeed = rightSpeedFactor * (1.0 - 5 *currentLinePosition);
+    }
+    motors.setActiveSpeeds(leftSpeed, rightSpeed);
 }
 
 float linePosition(float currentReadLine)
@@ -213,8 +273,6 @@ float linePosition(float currentReadLine)
 
 boolean leftDetectedGreen()
 {
-    return false;
-    delay(40);
     Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
     if (Wire.available())
     {
@@ -230,8 +288,6 @@ boolean leftDetectedGreen()
 
 boolean rightDetectedGreen()
 {
-    return false;
-    delay(40);
     Wire.requestFrom(COLOR_ARDUINO_ADDRESS, 1);
     if (Wire.available())
     {

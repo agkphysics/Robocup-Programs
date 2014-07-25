@@ -30,7 +30,7 @@ void endTile(boolean left)
   motors.setMaxSpeeds(150, 150);
   
   motors.rotate(90.0);
-  float dist = 120;
+  float dist = 120.0;
   float headingToCan = 0.0;
   while (true)
   {
@@ -60,13 +60,13 @@ void endTile(boolean left)
   }
   float finishHeading = compass.heading();
   
-  motors.setMaxSpeeds(750, 750);
+  motors.setMaxSpeeds(2000, 2000);
 
   //motors.rotate(degreesToRotateToTargetCompassDirection(headingToCan));
   //*
-  while (abs(compass.heading() - headingToCan) > 2.0)
+  while (abs(compass.heading() - headingToCan) > 3.0)
   {
-    motors.rotate(-1.0);
+    motors.rotate(-2.0);
     motors.wait();
   }
   //*/
@@ -76,12 +76,12 @@ void endTile(boolean left)
   else motors.rotate(-8.0);
   motors.wait();
   
-  int distToCan = dist;
+  float distToCan = dist;
   motors.straight(distToCan);
   motors.wait();
   
   /* Swing to the right in case the can is too far right */
-  if (dist >= 40) motors.swingWithLeft(45);
+  if (dist >= 40.0) motors.swingWithLeft(45.0);
   else motors.swingWithLeft(45.0);
   motors.wait();
   delay(250);
@@ -89,26 +89,22 @@ void endTile(boolean left)
   Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
   Wire.write(0);
   Wire.endTransmission();
-  delay(750);
+  delay(500);
   
-  motors.setMaxSpeeds(2500, 2500);
-  if (dist >= 40) motors.swingWithLeft(-45);
+  motors.setMaxSpeeds(2500.0, 2500.0);
+  if (dist >= 40) motors.swingWithLeft(-45.0);
   else motors.swingWithLeft(-45.0);
   motors.wait();
   
   motors.straight(0.0);
-  digitalWrite(4, HIGH);
-  digitalWrite(5, HIGH);
-  digitalWrite(6, HIGH);
-  digitalWrite(7, HIGH);
   
   /* Lift arm */
   Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
-  Wire.write(2);
+  Wire.write(3);
   Wire.endTransmission();
   delay(4000);
 
-  motors.straight((float)-distToCan);
+  motors.straight(-distToCan);
   motors.wait();
   
   if (left) motors.rotate(-10.0);
@@ -134,7 +130,7 @@ void endTile(boolean left)
   }
   //*/
   
-  motors.straight(50.0);//Added 3cm to original distance
+  motors.straight(50.0); //Added 3cm to original distance
   motors.wait();
   
   /* Drop can etc... */

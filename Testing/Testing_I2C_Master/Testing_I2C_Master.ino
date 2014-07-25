@@ -1,39 +1,17 @@
 #include <Wire.h>
 #include <MotorDriver.h>
+#include <Compass.h>
 
 #define MOTOR_ARDUINO_ADDRESS 0x20
 MotorDriver motors(MOTOR_ARDUINO_ADDRESS);
+
+Compass compass;
 
 void setup()
 {
     Wire.begin();
     Serial.begin(9600);
     Serial.println("Starting program...");
-    
-    /*
-    Serial.println("Adjust left white color, show something white to the sensor and press y."); 
-    //waitForY();
-    delay(5000);
-    Serial.println("Adjusting...");
-  
-    Serial.println("Adjust right white color, show something white to the sensor and press y."); 
-    //waitForY();
-    delay(5000);
-    Serial.println("Adjusting...");
-  
-    Serial.println("Adjust left black color, show something black to the sensor and press y."); 
-    //waitForY();
-    delay(5000);
-    Serial.println("Adjusting...");
-
-
-    Serial.println("Adjust right black color, show something black to the sensor and press y."); 
-    //waitForY();
-    delay(5000);
-    Serial.println("Adjusting...");
-  
-    Serial.println();
-    */
     delay(1000);
 }
 
@@ -47,7 +25,11 @@ void loop()
     delay(1000);
     //*/
     
-    //*
+    Wire.requestFrom(0x30, 1);
+    Serial.println(Wire.read());
+    delay(40);
+    
+    /*
     Wire.requestFrom(0x30, 6);
     for (int i = 0; i < 3 && Wire.available(); i++)
     {

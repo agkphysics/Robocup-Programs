@@ -1,29 +1,26 @@
 #include <Compass.h>
 #include <Wire.h>
-#include <Motors.h>
-#include <AccelStepper.h>
-#include <Scheduler.h>
+#include <MotorDriver.h>
 
 Compass compass;
-AccelStepper leftMotor(AccelStepper::DRIVER, 7, 6);
-AccelStepper rightMotor(AccelStepper::DRIVER, 5, 4);
-Motors motors(leftMotor, rightMotor);
+MotorDriver motors(0x20);
 
 int _initialHeading;
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   Wire.begin();
-  Scheduler.startLoop(runMotorLoop);
-  motors.setup();
   delay(1000);
   _initialHeading = (int)(compass.correctedHeading());
   Serial.print("Initial Heading: ");
   Serial.println(_initialHeading);
 }
 
-void loop(){
+void loop()
+{
   delay(100);
   
+  //*
   float rawHeading = compass.heading();
   Serial.print("rawHeading: ");
   Serial.println(rawHeading);
@@ -36,22 +33,17 @@ void loop(){
   Serial.println(degreesToRotate);
   motors.rotate(degreesToRotate);
   motors.wait();
-  delay(500);
+  delay(1000);
   Serial.print("Heading: ");
   Serial.println(currentHeading);
   Serial.println();
+  //*/
 }
-
-
-void runMotorLoop() {
-  motors.run();
-  yield();
-}
-
 	 
-float degreesToNearest90() {
+float degreesToNearest90()
+{
     int currentHeading = (int)(compass.correctedHeading());
-	
+    
     int currentRelativeHeading = currentHeading - _initialHeading;
     if (currentRelativeHeading < 0) {
       currentRelativeHeading = currentRelativeHeading + 360;

@@ -11,12 +11,13 @@
 Ultrasonic ultrasonic(PIN_TRIG, PIN_ECHO);
 float lastDistance = 0.0;
 
-QTRSensorsAnalog qtra((unsigned char[]) {3, 6, 7, 0, 1, 2}, 6, 9, QTR_NO_EMITTER_PIN); //({Pins}, number of sensors, number of samples per reading to average, emitterpin)
+QTRSensorsAnalog qtra((unsigned char[]) {6, 3, 7, 0, 1, 2}, 6, 9, QTR_NO_EMITTER_PIN); //({Pins}, number of sensors, number of samples per reading to average, emitterpin)
 
 unsigned int currentSensorValues[6];
 unsigned int lastReadLine = 2500;
 
 boolean distMode = false;
+boolean returnAverage = false;
 
 void calibrateManually()
 {
@@ -36,19 +37,19 @@ void setupLineArray()
     //*
     qtra.calibrate();
     //Aaron's House (Scary Mansion) Values:
-    qtra.calibratedMinimumOn[0] = 25;
-    qtra.calibratedMinimumOn[1] = 25;
-    qtra.calibratedMinimumOn[2] = 24;
-    qtra.calibratedMinimumOn[3] = 22;
-    qtra.calibratedMinimumOn[4] = 26;
-    qtra.calibratedMinimumOn[5] = 27;
+    qtra.calibratedMinimumOn[0] = 26;
+    qtra.calibratedMinimumOn[1] = 27;
+    qtra.calibratedMinimumOn[2] = 26;
+    qtra.calibratedMinimumOn[3] = 24;
+    qtra.calibratedMinimumOn[4] = 28;
+    qtra.calibratedMinimumOn[5] = 30;
     
-    qtra.calibratedMaximumOn[0] = 822;
-    qtra.calibratedMaximumOn[1] = 833;
-    qtra.calibratedMaximumOn[2] = 799;
-    qtra.calibratedMaximumOn[3] = 733;
-    qtra.calibratedMaximumOn[4] = 843;
-    qtra.calibratedMaximumOn[5] = 903;
+    qtra.calibratedMaximumOn[0] = 124;
+    qtra.calibratedMaximumOn[1] = 146;
+    qtra.calibratedMaximumOn[2] = 65;
+    qtra.calibratedMaximumOn[3] = 37;
+    qtra.calibratedMaximumOn[4] = 213;
+    qtra.calibratedMaximumOn[5] = 375;
     //*/
     
     //calibrateManually();
@@ -70,6 +71,16 @@ void requestedData()
         float fval;
     } u;
     
+    if (returnAverage)
+    {
+        float sum = 0.0;
+        for (int i = 0; i < 6; i++) sum += currentSensorValues[i];
+        u.fval = sum / 6.0;
+        Wire.write(u.b, 4);
+        returnAverage = false;
+        return;
+    }
+    
     if (!distMode) u.fval = (float)lastReadLine;
     else u.fval = lastDistance;
     
@@ -78,7 +89,9 @@ void requestedData()
 
 void receivedData(int numBytes)
 {
-    if (Wire.read() == 1) distMode = true;
+    int a = Wire.read();
+    if (a == 1) distMode = true;
+    else if (a == 2) returnAverage = true;
 }
 
 void setup()
@@ -94,6 +107,10 @@ void loop()
 {
     if (!distMode) lastReadLine = qtra.readLine(currentSensorValues);
     else lastDistance = ultrasonic.distance();
-    //Serial.println(lastReadLine);
+    //Serial.print(lastReadLine);
+    //Serial.print(" : ");
+    //float sum = 0.0;
+    //for (int i = 0; i < 6; i++) sum += currentSensorValues[i];
+    //Serial.println(sum / 6.0);
     //Serial.println(lastDistance);
 }
