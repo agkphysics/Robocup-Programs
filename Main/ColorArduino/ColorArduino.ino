@@ -162,15 +162,26 @@ void loop()
     leftFreq = left.getFrequency(120);
     rightFreq = right.getFrequency(120);
     
-    /*
+    //*
+    Serial.print(leftFreq);
+    Serial.print(",");
+    Serial.print(rightFreq);
+    Serial.print(" : ");
+    
+    digitalWrite(5, HIGH);
+    digitalWrite(9, HIGH);
+    
+    leftFreq = left.getFrequency(120);
+    rightFreq = right.getFrequency(120);
+    
     Serial.print(leftFreq);
     Serial.print(",");
     Serial.print(rightFreq);
     Serial.print(" : ");
     
     int i = 0;
-    (leftFreq >= 3000.0 && leftFreq <= 5200.0) ? i |= 1 : i |= 0; //Green on left
-    (rightFreq >= 4500.0 && rightFreq <= 7500.0) ? i |= 2 : i |= 0; //Green on right
+    (leftFreq >= 3000.0 && leftFreq <= 6500.0) ? i |= 1 : i |= 0; //Green on left
+    (rightFreq >= 4500.0 && rightFreq <= 9000.0) ? i |= 2 : i |= 0; //Green on right
     Serial.println(i);
     //*/
     

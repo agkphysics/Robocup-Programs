@@ -13,6 +13,11 @@ void setup()
     Serial.begin(9600);
     Serial.println("Starting program...");
     delay(1000);
+    
+    Wire.beginTransmission(0x07);
+    Wire.write(1);
+    Wire.endTransmission();
+    delay(100);
 }
 
 void loop()
@@ -25,10 +30,16 @@ void loop()
     delay(1000);
     //*/
     
-    Wire.requestFrom(0x30, 1);
-    Serial.println(Wire.read());
-    delay(40);
+    union u_tag
+    {
+        byte b[4];
+        float fval;
+    } u;
     
+    Wire.requestFrom(0x07, 4);
+    for (int i = 0; Wire.available(); i++) u.b[i] =  Wire.read();
+    Serial.println(u.fval);
+    delay(40);
     /*
     Wire.requestFrom(0x30, 6);
     for (int i = 0; i < 3 && Wire.available(); i++)

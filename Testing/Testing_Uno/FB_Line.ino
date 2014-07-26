@@ -32,6 +32,34 @@ float getAverageValue()
     return u.fval;
 }
 
+
+void alignToCorrectHeading()
+{
+    float h = compass.heading();
+    if (h < endTileHeading)
+    {
+        while (abs(compass.heading() - endTileHeading) > 2.0)
+        {
+          motors.rotate(1.0);
+          motors.wait();
+        }
+    }
+    else
+    {
+        while (abs(compass.heading() - endTileHeading) > 2.0)
+        {
+          motors.rotate(-1.0);
+          motors.wait();
+        }
+    }
+}
+
+
+boolean ignoreTimer1 = false;
+boolean ignoreTimer2 = true;
+boolean ignoreIntersectionCount = false;
+
+
 void lineFollowingLoop()
 {
   while(!reachedEndTile)
@@ -41,8 +69,41 @@ void lineFollowingLoop()
     
     setLineFollowingSpeeds(currentLinePosition);
     
-    if ((leftDetectedGreen() && rightDetectedGreen()))
+    if ((leftDetectedGreen() || rightDetectedGreen()))
     {
+        //if (intersectionCount > maxArrayIndex) ignoreSensorValues = true;
+        
+        if ((millis() - startTime) >= 0 && !ignoreTimer1)
+        {
+            ignoreTimer1 = true;
+            ignoreSensorValues = false;
+        }
+        if (intersectionCount == 2 && !ignoreIntersectionCount)
+        {
+            startTime = millis();
+            ignoreTimer2 = false;
+            ignoreSensorValues = true;
+            ignoreIntersectionCount = true;
+        }
+        if ((millis() - startTime) >= 30000 && !ignoreTimer2)
+        {
+            ignoreTimer2 = true;
+            ignoreSensorValues = false;
+        }
+        if (intersectionCount > maxArrayIndex && !ignoreSensorValues) 
+        {
+            motors.straight(10.0);
+            alignToCorrectHeading();
+            reachedEndTile = true;
+        }
+        if (reachedEndTile) break;
+        
+        
+        
+        //if (intersectionCount == 1 || intersectionCount == 3 || intersectionCount == 5) ignoreSensorValues = true;
+        
+        if (!ignoreSensorValues)
+        {
         if (intersections[intersectionCount] == LEFT) motors.swingWithRight(20.0);
         else motors.swingWithLeft(20.0);
         motors.wait();
@@ -55,6 +116,7 @@ void lineFollowingLoop()
         motors.straight(3.0);
         motors.wait();
         intersectionCount++;
+        }
     }
     
     /*
@@ -207,11 +269,11 @@ void offLineAction(float currentReadLine)
 
 boolean checkForEndTile()
 {
-    motors.straight(7.0); //Only 7 rather than 10 since 3 have already been done in checking for green
+    motors.straight(10.0); //Only 7 rather than 10 since 3 have already been done in checking for green
     motors.wait();
     if (leftDetectedGreen() && rightDetectedGreen())
     {
-        motors.straight(-11.0); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
+        motors.straight(0.0); //Optional, could just stay where we were BUT REMEMBER the implications of changing this on scanForLine!!!
         motors.wait();
         return true;
     }

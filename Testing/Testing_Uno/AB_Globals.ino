@@ -1,11 +1,16 @@
 //Map related:
-int mapArray[] = {ROUNDABOUT, SQUARE}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
-boolean intersections[] = {LEFT, LEFT};
+int mapArray[] = {}; //{ROUNDABOUT, SQUARE, CIRCLE, GRIDLOCK};
+boolean intersections[] = {LEFT, LEFT, RIGHT, RIGHT};
 boolean canSide = RIGHT;
 boolean reachedEndTile = false;
 #define INITIAL_HEADING 90.0;
-int maxArrayIndex = (sizeof(mapArray)/sizeof(int)) - 1;
+int maxArrayIndex = (sizeof(intersections)/sizeof(boolean)) - 1;
 int intersectionCount = 0;
+
+long startTime = 0;
+boolean ignoreSensorValues = false;
+
+float endTileHeading = 237;
 
 boolean reachedIntersection = false;
 

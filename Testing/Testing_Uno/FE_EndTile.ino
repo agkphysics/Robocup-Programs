@@ -8,11 +8,15 @@ int getDistance()
     
     Wire.requestFrom(LIGHT_ARDUINO_ADDRESS, 4);
     for (int i = 0; Wire.available(); i++) u.b[i] =  Wire.read();
+    Serial.println(u.fval);
     return u.fval;
 }
 
+
+
 void endTile(boolean left)
 {
+    alignToCorrectHeading();
   motors.straight(5.0);
   motors.wait();
   float endTileInitialHeading = compass.heading();
@@ -24,12 +28,12 @@ void endTile(boolean left)
   motors.setMaxSpeeds(2500, 2500);
   motors.straight(0.0);
   
-  if (left) motors.rotate(-90.0);
+  motors.rotate(-90.0);
   motors.wait();
   
   motors.setMaxSpeeds(150, 150);
   
-  motors.rotate(90.0);
+  motors.rotate(180.0);
   float dist = 120.0;
   float headingToCan = 0.0;
   while (true)
@@ -99,10 +103,13 @@ void endTile(boolean left)
   motors.straight(0.0);
   
   /* Lift arm */
-  Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
-  Wire.write(3);
-  Wire.endTransmission();
-  delay(4000);
+  for (int i = 0; i < 15; i++)
+  {
+      Wire.beginTransmission(SERVO_ARDUINO_ADDRESS);
+      Wire.write(3);
+      Wire.endTransmission();
+      delay(100);
+  }
 
   motors.straight(-distToCan);
   motors.wait();

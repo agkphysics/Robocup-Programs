@@ -7,11 +7,14 @@ void setup(){
   delay(1100); //So we press the switch on 3, 2, "1" then it will go on GO
   digitalWrite(PIN_BOARD_LED, HIGH);
   
+  startTime = millis();
+  ignoreSensorValues = true;
+  
   //moveSquiggles();
   motors.setMaxSpeeds(leftSpeedFactor, rightSpeedFactor);
 
   lineFollowingLoop(); //Blocks until end tile
-  align();
+  //align();
   endTile(canSide);
 
   while (true) {} // End of program, no need to do ANYTHING :)
